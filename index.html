@@ -448,33 +448,99 @@
   .band-section { background: var(--smoke); }
   .band-section .section-title { text-align: center; }
   .band-section .section-label { text-align: center; }
+  .band-intro {
+    max-width: 820px;
+    margin: 1.4rem auto 0;
+    text-align: center;
+    color: var(--cream-dim);
+    line-height: 1.8;
+  }
   .members-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
     margin-top: 3.5rem;
   }
   .member-card {
-    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 0.75rem;
+    text-align: left;
+    color: var(--black);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.3), transparent 38%),
+      linear-gradient(180deg, rgba(240,232,216,0.97), rgba(216,190,130,0.92));
+    border: 1px solid rgba(212,168,55,0.5);
+    border-radius: 4px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.32);
+    overflow: hidden;
+  }
+  .member-card::before {
+    content: '';
+    position: absolute;
+    inset: 0.42rem;
+    border: 1px dashed rgba(31,12,6,0.22);
+    border-radius: 3px;
+    pointer-events: none;
+  }
+  .member-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    width: 1px;
+    height: 100%;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(31,12,6,0.22) 0 6px,
+      transparent 6px 12px
+    );
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .member-pass-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    padding: 0.35rem 0.35rem 0.65rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--rust);
+  }
+  .member-pass-code {
+    color: rgba(31,12,6,0.58);
   }
   .member-photo {
     width: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
-    filter: grayscale(50%) contrast(1.1);
-    border-radius: 3px;
+    filter: grayscale(42%) sepia(20%) contrast(1.1);
+    border: 1px solid rgba(31,12,6,0.22);
+    border-radius: 2px;
     margin-bottom: 1rem;
     transition: filter 0.3s;
     background: var(--deep);
     display: block;
   }
-  .member-card:hover .member-photo { filter: grayscale(0%) contrast(1.1); }
+  .member-card:hover .member-photo { filter: grayscale(0%) sepia(4%) contrast(1.1); }
+  .member-pass-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 0 0.35rem 0.35rem;
+  }
   .member-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--cream);
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: var(--black);
     margin-bottom: 0.2rem;
+    line-height: 1.05;
   }
   .member-role {
     font-size: 0.72rem;
@@ -483,12 +549,50 @@
     color: var(--rust);
     margin-bottom: 0.6rem;
   }
-  .member-bio {
-    font-size: 0.82rem;
-    color: var(--cream-dim);
-    line-height: 1.6;
+  .member-quote {
+    margin: 0.45rem 0 0.8rem;
+    color: rgba(31,12,6,0.92);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.35;
   }
-  .member-card.featured .member-photo { filter: grayscale(10%) contrast(1.15); }
+  .member-fact {
+    margin-top: auto;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(31,12,6,0.16);
+  }
+  .member-fact-label,
+  .member-years-label {
+    display: block;
+    font-size: 0.56rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--rust);
+  }
+  .member-fact-text {
+    margin: 0.3rem 0 0;
+    color: rgba(31,12,6,0.72);
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+  .member-years {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-top: 0.9rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(31,12,6,0.12);
+  }
+  .member-years strong {
+    color: var(--black);
+    font-size: 0.78rem;
+    text-align: right;
+  }
+  .member-card.featured .member-photo { filter: grayscale(10%) sepia(12%) contrast(1.15); }
 
   /* ── REPERTOIRE ── */
   .repertoire-section {
@@ -1054,6 +1158,7 @@
       font-size: 0.62rem;
       padding: 0.34rem 0.42rem;
     }
+    .members-grid { grid-template-columns: 1fr; }
     .instagram-grid { gap: 0.55rem; }
     .instagram-play { width: 44px; height: 44px; }
     .ig-modal { padding: 1rem; }
@@ -1114,10 +1219,9 @@
     <div class="hero-ctas">
       <a href="#videos" class="btn-primary">
         <i data-lucide="play" class="lucide-icon" aria-hidden="true"></i>
-        <span data-i18n="heroVideoCta">Ver videos</span>
+        <span data-i18n="heroVideoCta">Ver Show</span>
       </a>
-      <a href="#contacto" class="btn-secondary" data-i18n="heroBookCta">Contratar banda</a>
-      <a href="#fechas" class="btn-secondary" data-i18n="heroDatesCta">Próximas fechas</a>
+      <a href="#contacto" class="btn-secondary" data-i18n="heroBookCta">Contratar Ahora</a>
     </div>
   </div>
 </section>
@@ -1193,37 +1297,108 @@
 <!-- BAND MEMBERS -->
 <section class="band-section reveal" id="banda">
   <span class="section-label" data-i18n="bandLabel">Las personas detrás del sonido</span>
-  <h2 class="section-title" data-i18n="bandTitle">Conoce la <em>banda</em></h2>
+  <h2 class="section-title" data-i18n="bandTitle">Las almas detrás del <em>espectáculo</em></h2>
+  <p class="band-intro" data-i18n="bandIntro">Kozmic Pearls reúne a músicos apasionados por el blues, el soul y el rock clásico. Cada uno aporta su propia esencia para dar vida a un espectáculo auténtico, donde el talento individual se une en una experiencia colectiva. Contamos con un elenco flexible de músicos que nos permite mantener la misma calidad y energía en cada presentación.</p>
   <div class="members-grid">
     <div class="member-card featured">
+      <div class="member-pass-header">
+        <span data-i18n="memberPassLabel">Pase backstage</span>
+        <span class="member-pass-code">KP-01</span>
+      </div>
       <img class="member-photo" src="assets/members/patricia-web.jpg" style="object-position: 48% 16%;" alt="Patricia Arenas" loading="lazy">
-      <div class="member-name">Patricia Arenas</div>
-      <div class="member-role" data-i18n="patriciaRole">Voz & Caracterización</div>
-      <div class="member-bio" data-i18n="patriciaBio">La voz y alma del proyecto. Patricia encarna a Janis con su potencia vocal, presencia escénica y una caracterización que hace vibrar al público. También conocida como @labrujakozmica.</div>
+      <div class="member-pass-body">
+        <div class="member-name">Patricia Arenas</div>
+        <div class="member-role" data-i18n="patriciaRole">Voz & Caracterización</div>
+        <p class="member-quote" data-i18n="patriciaQuote">&quot;La voz también es memoria.&quot;</p>
+        <div class="member-fact">
+          <span class="member-fact-label" data-i18n="memberFactLabel">Dato curioso</span>
+          <p class="member-fact-text" data-i18n="patriciaFact">Sus brújulas musicales cruzan a Janis Joplin, Etta James y la fuerza teatral del rock de los 60.</p>
+        </div>
+        <div class="member-years">
+          <span class="member-years-label" data-i18n="memberYearsLabel">En Kozmic Pearls</span>
+          <strong data-i18n="patriciaYears">Desde 2014</strong>
+        </div>
+      </div>
     </div>
     <div class="member-card">
+      <div class="member-pass-header">
+        <span data-i18n="memberPassLabel">Pase backstage</span>
+        <span class="member-pass-code">KP-02</span>
+      </div>
       <img class="member-photo" src="assets/members/cris-web.jpg" style="object-position: 42% 16%;" alt="Cris - Guitarra" loading="lazy">
-      <div class="member-name">Cris</div>
-      <div class="member-role" data-i18n="crisRole">Guitarra</div>
-      <div class="member-bio" data-i18n="crisBio">Riffs cargados de blues y rock psicodélico que transportan al público a los festivales de los 60.</div>
+      <div class="member-pass-body">
+        <div class="member-name">Cris</div>
+        <div class="member-role" data-i18n="crisRole">Guitarra</div>
+        <p class="member-quote" data-i18n="crisQuote">&quot;El blues siempre encuentra el camino.&quot;</p>
+        <div class="member-fact">
+          <span class="member-fact-label" data-i18n="memberFactLabel">Dato curioso</span>
+          <p class="member-fact-text" data-i18n="crisFact">Su sonido mira directo a Woodstock: guitarras crudas, fuzz cálido y espíritu psicodélico.</p>
+        </div>
+        <div class="member-years">
+          <span class="member-years-label" data-i18n="memberYearsLabel">En Kozmic Pearls</span>
+          <strong data-i18n="crisYears">Desde 2024</strong>
+        </div>
+      </div>
     </div>
     <div class="member-card">
+      <div class="member-pass-header">
+        <span data-i18n="memberPassLabel">Pase backstage</span>
+        <span class="member-pass-code">KP-03</span>
+      </div>
       <img class="member-photo" src="assets/members/victor-web.jpg" style="object-position: 46% 14%;" alt="Victor - Bajo" loading="lazy">
-      <div class="member-name">Victor</div>
-      <div class="member-role" data-i18n="victorRole">Bajo</div>
-      <div class="member-bio" data-i18n="victorBio">El groove que sostiene cada canción. Victor aporta la base funky y poderosa que caracterizó el sonido de Janis.</div>
+      <div class="member-pass-body">
+        <div class="member-name">Victor</div>
+        <div class="member-role" data-i18n="victorRole">Bajo</div>
+        <p class="member-quote" data-i18n="victorQuote">&quot;El groove sostiene la tormenta.&quot;</p>
+        <div class="member-fact">
+          <span class="member-fact-label" data-i18n="memberFactLabel">Dato curioso</span>
+          <p class="member-fact-text" data-i18n="victorFact">Su pulso mezcla soul, funk y líneas de bajo que hacen respirar cada clásico de Janis.</p>
+        </div>
+        <div class="member-years">
+          <span class="member-years-label" data-i18n="memberYearsLabel">En Kozmic Pearls</span>
+          <strong data-i18n="victorYears">Desde 2024</strong>
+        </div>
+      </div>
     </div>
     <div class="member-card">
+      <div class="member-pass-header">
+        <span data-i18n="memberPassLabel">Pase backstage</span>
+        <span class="member-pass-code">KP-04</span>
+      </div>
       <img class="member-photo" src="assets/members/felipe-web.jpg" style="object-position: 62% 20%;" alt="Felipe - Teclado" loading="lazy">
-      <div class="member-name">Felipe</div>
-      <div class="member-role" data-i18n="felipeRole">Teclado & Órgano</div>
-      <div class="member-bio" data-i18n="felipeBio">Las texturas de Hammond y piano que completan el paisaje sonoro del rock-soul de los años 60.</div>
+      <div class="member-pass-body">
+        <div class="member-name">Felipe</div>
+        <div class="member-role" data-i18n="felipeRole">Teclado & Órgano</div>
+        <p class="member-quote" data-i18n="felipeQuote">&quot;El órgano abre la puerta del viaje.&quot;</p>
+        <div class="member-fact">
+          <span class="member-fact-label" data-i18n="memberFactLabel">Dato curioso</span>
+          <p class="member-fact-text" data-i18n="felipeFact">Sus texturas nacen del Hammond, el piano eléctrico y la niebla soul de finales de los 60.</p>
+        </div>
+        <div class="member-years">
+          <span class="member-years-label" data-i18n="memberYearsLabel">En Kozmic Pearls</span>
+          <strong data-i18n="felipeYears">Desde 2024</strong>
+        </div>
+      </div>
     </div>
     <div class="member-card">
+      <div class="member-pass-header">
+        <span data-i18n="memberPassLabel">Pase backstage</span>
+        <span class="member-pass-code">KP-05</span>
+      </div>
       <img class="member-photo" src="assets/members/luciano-web.jpg" style="object-position: 40% 30%;" alt="Luciano - Batería" loading="lazy">
-      <div class="member-name">Luciano</div>
-      <div class="member-role" data-i18n="lucianoRole">Batería</div>
-      <div class="member-bio" data-i18n="lucianoBio">El motor rítmico del show. Su energía detrás del kit mantiene el espíritu crudo y apasionado de Janis.</div>
+      <div class="member-pass-body">
+        <div class="member-name">Luciano</div>
+        <div class="member-role" data-i18n="lucianoRole">Batería</div>
+        <p class="member-quote" data-i18n="lucianoQuote">&quot;La energía entra por el pulso.&quot;</p>
+        <div class="member-fact">
+          <span class="member-fact-label" data-i18n="memberFactLabel">Dato curioso</span>
+          <p class="member-fact-text" data-i18n="lucianoFact">Su batería busca ese golpe libre y orgánico de los festivales donde todo podía pasar.</p>
+        </div>
+        <div class="member-years">
+          <span class="member-years-label" data-i18n="memberYearsLabel">En Kozmic Pearls</span>
+          <strong data-i18n="lucianoYears">Desde 2024</strong>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1266,7 +1441,7 @@
 <!-- GALLERY -->
 <section class="gallery-section reveal" id="galeria">
   <span class="section-label" data-i18n="galleryLabel">Galería</span>
-  <h2 class="section-title" data-i18n="galleryTitle">Cada escenario cuenta una historia.</h2>
+  <h2 class="section-title" data-i18n="galleryTitle">Cada escenario cuenta una <em>historia</em></h2>
   <div class="gallery-grid">
     <div class="gallery-item">
       <img src="assets/gallery-kp-9304.jpg" alt="Kozmic Pearls en Club Chocolate" loading="lazy">
@@ -1575,8 +1750,8 @@ const translations = {
     heroEyebrow: 'Tributo a Janis Joplin · Desde 2014',
     heroTitle: '<span class="hero-tagline-line">El tributo más auténtico</span><span class="hero-tagline-line">a <em>Janis Joplin</em> en Latinoamérica.</span>',
     heroText: 'Kozmic Pearls presenta un espectáculo en vivo que recrea la energía, la fuerza y la esencia de una de las voces más legendarias de la historia del rock.',
-    heroVideoCta: 'Ver videos',
-    heroBookCta: 'Contratar banda',
+    heroVideoCta: 'Ver Show',
+    heroBookCta: 'Contratar Ahora',
     heroDatesCta: 'Próximas fechas',
     videoLabel: 'En vivo',
     videoTitle: 'Vive la experiencia <em>Kozmic Pearls</em>',
@@ -1592,16 +1767,35 @@ const translations = {
     statSongs: 'Clásicos de Janis',
     statLiveMusic: 'Música en vivo',
     bandLabel: 'Las personas detrás del sonido',
-    bandTitle: 'Conoce la <em>banda</em>',
+    bandTitle: 'Las almas detrás del <em>espectáculo</em>',
+    bandIntro: 'Kozmic Pearls reúne a músicos apasionados por el blues, el soul y el rock clásico. Cada uno aporta su propia esencia para dar vida a un espectáculo auténtico, donde el talento individual se une en una experiencia colectiva. Contamos con un elenco flexible de músicos que nos permite mantener la misma calidad y energía en cada presentación.',
+    memberPassLabel: 'Pase backstage',
+    memberFactLabel: 'Dato curioso',
+    memberYearsLabel: 'En Kozmic Pearls',
     patriciaRole: 'Voz & Caracterización',
+    patriciaQuote: '"La voz también es memoria."',
+    patriciaFact: 'Sus brújulas musicales cruzan a Janis Joplin, Etta James y la fuerza teatral del rock de los 60.',
+    patriciaYears: 'Desde 2014',
     patriciaBio: 'La voz y alma del proyecto. Patricia encarna a Janis con su potencia vocal, presencia escénica y una caracterización que hace vibrar al público. También conocida como @labrujakozmica.',
     crisRole: 'Guitarra',
+    crisQuote: '"El blues siempre encuentra el camino."',
+    crisFact: 'Su sonido mira directo a Woodstock: guitarras crudas, fuzz cálido y espíritu psicodélico.',
+    crisYears: 'Desde 2024',
     crisBio: 'Riffs cargados de blues y rock psicodélico que transportan al público a los festivales de los 60.',
     victorRole: 'Bajo',
+    victorQuote: '"El groove sostiene la tormenta."',
+    victorFact: 'Su pulso mezcla soul, funk y líneas de bajo que hacen respirar cada clásico de Janis.',
+    victorYears: 'Desde 2024',
     victorBio: 'El groove que sostiene cada canción. Victor aporta la base funky y poderosa que caracterizó el sonido de Janis.',
     felipeRole: 'Teclado & Órgano',
+    felipeQuote: '"El órgano abre la puerta del viaje."',
+    felipeFact: 'Sus texturas nacen del Hammond, el piano eléctrico y la niebla soul de finales de los 60.',
+    felipeYears: 'Desde 2024',
     felipeBio: 'Las texturas de Hammond y piano que completan el paisaje sonoro del rock-soul de los años 60.',
     lucianoRole: 'Batería',
+    lucianoQuote: '"La energía entra por el pulso."',
+    lucianoFact: 'Su batería busca ese golpe libre y orgánico de los festivales donde todo podía pasar.',
+    lucianoYears: 'Desde 2024',
     lucianoBio: 'El motor rítmico del show. Su energía detrás del kit mantiene el espíritu crudo y apasionado de Janis.',
     repertoireLabel: 'El viaje kózmico',
     repertoireTitle: 'Un viaje por la historia del rock',
@@ -1609,7 +1803,7 @@ const translations = {
     repertoireText2: 'Un espectáculo enérgico y emotivo que conecta al público con el espíritu de una época que marcó la historia de la música.',
     showBadgeText: 'de show en vivo',
     galleryLabel: 'Galería',
-    galleryTitle: 'Cada escenario cuenta una historia.',
+    galleryTitle: 'Cada escenario cuenta una <em>historia</em>',
     instagramTitle: 'Momentos <em>kózmicos</em>',
     instagramText: 'Escenas del show, backstage y registros en vivo de Kozmic Pearls.',
     instagramCta: 'Seguir en Instagram',
@@ -1676,8 +1870,8 @@ const translations = {
     heroEyebrow: 'Janis Joplin Tribute · Since 2014',
     heroTitle: '<span class="hero-tagline-line">The most authentic tribute</span><span class="hero-tagline-line">to <em>Janis Joplin</em> in Latin America.</span>',
     heroText: 'Kozmic Pearls presents a live show that recreates the energy, power, and essence of one of the most legendary voices in rock history.',
-    heroVideoCta: 'Watch videos',
-    heroBookCta: 'Book the band',
+    heroVideoCta: 'Watch Show',
+    heroBookCta: 'Book Now',
     heroDatesCta: 'Upcoming dates',
     videoLabel: 'Live',
     videoTitle: 'Live the <em>Kozmic Pearls</em> experience',
@@ -1693,16 +1887,35 @@ const translations = {
     statSongs: 'Janis classics',
     statLiveMusic: 'Live music',
     bandLabel: 'The people behind the sound',
-    bandTitle: 'Meet the <em>band</em>',
+    bandTitle: 'The souls behind the <em>show</em>',
+    bandIntro: 'Kozmic Pearls brings together musicians passionate about blues, soul, and classic rock. Each one contributes their own essence to bring an authentic show to life, where individual talent comes together in a collective experience. We have a flexible roster of musicians that allows us to maintain the same quality and energy in every performance.',
+    memberPassLabel: 'Backstage pass',
+    memberFactLabel: 'Fun fact',
+    memberYearsLabel: 'With Kozmic Pearls',
     patriciaRole: 'Vocals & Characterization',
+    patriciaQuote: '"The voice is memory, too."',
+    patriciaFact: 'Her musical compass crosses Janis Joplin, Etta James, and the theatrical force of 60s rock.',
+    patriciaYears: 'Since 2014',
     patriciaBio: 'The voice and soul of the project. Patricia embodies Janis with vocal power, stage presence, and a characterization that moves the audience. Also known as @labrujakozmica.',
     crisRole: 'Guitar',
+    crisQuote: '"The blues always finds the way."',
+    crisFact: 'His sound points straight to Woodstock: raw guitars, warm fuzz, and psychedelic spirit.',
+    crisYears: 'Since 2024',
     crisBio: 'Blues-heavy and psychedelic rock riffs that take the audience back to the festivals of the 60s.',
     victorRole: 'Bass',
+    victorQuote: '"The groove holds the storm."',
+    victorFact: 'His pulse blends soul, funk, and bass lines that let every Janis classic breathe.',
+    victorYears: 'Since 2024',
     victorBio: 'The groove that holds every song together. Victor brings the funky, powerful foundation that shaped Janis’ sound.',
     felipeRole: 'Keys & Organ',
+    felipeQuote: '"The organ opens the door to the trip."',
+    felipeFact: 'His textures grow from Hammond, electric piano, and the soul haze of the late 60s.',
+    felipeYears: 'Since 2024',
     felipeBio: 'Hammond and piano textures that complete the sonic landscape of 60s rock-soul.',
     lucianoRole: 'Drums',
+    lucianoQuote: '"Energy enters through the pulse."',
+    lucianoFact: 'His drums chase the free, organic hit of festivals where anything could happen.',
+    lucianoYears: 'Since 2024',
     lucianoBio: 'The rhythmic engine of the show. His energy behind the kit keeps Janis’ raw and passionate spirit alive.',
     repertoireLabel: 'The kozmic journey',
     repertoireTitle: 'A journey through rock history',
@@ -1710,7 +1923,7 @@ const translations = {
     repertoireText2: 'An energetic and emotional show that connects audiences with the spirit of an era that shaped music history.',
     showBadgeText: 'live show',
     galleryLabel: 'Gallery',
-    galleryTitle: 'Every stage tells a story.',
+    galleryTitle: 'Every stage tells a <em>story</em>',
     instagramTitle: '<em>Kozmic</em> moments',
     instagramText: 'Scenes from the show, backstage, and live records from Kozmic Pearls.',
     instagramCta: 'Follow on Instagram',
@@ -1777,8 +1990,8 @@ const translations = {
     heroEyebrow: 'Tributo a Janis Joplin · Desde 2014',
     heroTitle: '<span class="hero-tagline-line">O tributo mais autêntico</span><span class="hero-tagline-line">a <em>Janis Joplin</em> na América Latina.</span>',
     heroText: 'Kozmic Pearls apresenta um espetáculo ao vivo que recria a energia, a força e a essência de uma das vozes mais lendárias da história do rock.',
-    heroVideoCta: 'Ver vídeos',
-    heroBookCta: 'Contratar banda',
+    heroVideoCta: 'Ver Show',
+    heroBookCta: 'Contratar Agora',
     heroDatesCta: 'Próximas datas',
     videoLabel: 'Ao vivo',
     videoTitle: 'Viva a experiência <em>Kozmic Pearls</em>',
@@ -1794,16 +2007,35 @@ const translations = {
     statSongs: 'Clássicos de Janis',
     statLiveMusic: 'Música ao vivo',
     bandLabel: 'As pessoas por trás do som',
-    bandTitle: 'Conheça a <em>banda</em>',
+    bandTitle: 'As almas por trás do <em>espetáculo</em>',
+    bandIntro: 'Kozmic Pearls reúne músicos apaixonados por blues, soul e rock clássico. Cada um aporta sua própria essência para dar vida a um espetáculo autêntico, onde o talento individual se une em uma experiência coletiva. Contamos com um elenco flexível de músicos que nos permite manter a mesma qualidade e energia em cada apresentação.',
+    memberPassLabel: 'Passe backstage',
+    memberFactLabel: 'Curiosidade',
+    memberYearsLabel: 'No Kozmic Pearls',
     patriciaRole: 'Voz & Caracterização',
+    patriciaQuote: '"A voz também é memória."',
+    patriciaFact: 'Suas bússolas musicais cruzam Janis Joplin, Etta James e a força teatral do rock dos anos 60.',
+    patriciaYears: 'Desde 2014',
     patriciaBio: 'A voz e a alma do projeto. Patricia incorpora Janis com potência vocal, presença de palco e uma caracterização que emociona o público. Também conhecida como @labrujakozmica.',
     crisRole: 'Guitarra',
+    crisQuote: '"O blues sempre encontra o caminho."',
+    crisFact: 'Seu som olha direto para Woodstock: guitarras cruas, fuzz quente e espírito psicodélico.',
+    crisYears: 'Desde 2024',
     crisBio: 'Riffs carregados de blues e rock psicodélico que transportam o público aos festivais dos anos 60.',
     victorRole: 'Baixo',
+    victorQuote: '"O groove sustenta a tempestade."',
+    victorFact: 'Seu pulso mistura soul, funk e linhas de baixo que fazem cada clássico de Janis respirar.',
+    victorYears: 'Desde 2024',
     victorBio: 'O groove que sustenta cada música. Victor traz a base funky e poderosa que caracterizou o som de Janis.',
     felipeRole: 'Teclado & Órgão',
+    felipeQuote: '"O órgão abre a porta da viagem."',
+    felipeFact: 'Suas texturas nascem do Hammond, do piano elétrico e da névoa soul do fim dos anos 60.',
+    felipeYears: 'Desde 2024',
     felipeBio: 'Texturas de Hammond e piano que completam a paisagem sonora do rock-soul dos anos 60.',
     lucianoRole: 'Bateria',
+    lucianoQuote: '"A energia entra pelo pulso."',
+    lucianoFact: 'Sua bateria busca esse golpe livre e orgânico dos festivais onde tudo podia acontecer.',
+    lucianoYears: 'Desde 2024',
     lucianoBio: 'O motor rítmico do show. Sua energia atrás da bateria mantém vivo o espírito cru e apaixonado de Janis.',
     repertoireLabel: 'A viagem kózmica',
     repertoireTitle: 'Uma viagem pela história do rock',
@@ -1811,7 +2043,7 @@ const translations = {
     repertoireText2: 'Um espetáculo enérgico e emotivo que conecta o público ao espírito de uma época que marcou a história da música.',
     showBadgeText: 'de show ao vivo',
     galleryLabel: 'Galeria',
-    galleryTitle: 'Cada palco conta uma história.',
+    galleryTitle: 'Cada palco conta uma <em>história</em>',
     instagramTitle: 'Momentos <em>kózmicos</em>',
     instagramText: 'Cenas do show, backstage e registros ao vivo de Kozmic Pearls.',
     instagramCta: 'Seguir no Instagram',
