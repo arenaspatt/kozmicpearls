@@ -1394,20 +1394,22 @@
       </div>
     </div>
 
-    <form class="contact-form" onsubmit="handleSubmit(event)">
+    <form class="contact-form" action="https://formsubmit.co/kozmicpearlstribute@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nuevo mensaje desde Kozmic Pearls">
+      <input type="hidden" name="_template" value="table">
       <div class="form-row">
         <div class="form-group">
           <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" placeholder="Tu nombre" required>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="tu@email.com" required>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required>
         </div>
       </div>
       <div class="form-group">
         <label for="evento">Tipo de evento</label>
-        <select id="evento">
+        <select id="evento" name="tipo_de_evento">
           <option value="">Selecciona una opción</option>
           <option>Festival de música</option>
           <option>Evento corporativo</option>
@@ -1418,7 +1420,7 @@
       </div>
       <div class="form-group">
         <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" placeholder="Cuéntanos sobre tu evento: fecha, lugar, capacidad..."></textarea>
+        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu evento: fecha, lugar, capacidad..."></textarea>
       </div>
       <button type="submit" class="btn-primary">
         <span>Enviar mensaje</span>
@@ -1525,43 +1527,6 @@ igModal.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && igModal.classList.contains('open')) closeIgModal();
 });
-
-// Form submit
-function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('button[type=submit]');
-  const sendButtonContent = '<span>Enviar mensaje</span><i data-lucide="send" class="lucide-icon" aria-hidden="true"></i>';
-
-  const nombre = document.getElementById('nombre').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const evento = document.getElementById('evento').value.trim() || 'No especificado';
-  const mensaje = document.getElementById('mensaje').value.trim() || 'Sin mensaje adicional';
-  const subject = 'Booking Kozmic Pearls - ' + (nombre || 'Nuevo contacto');
-  const body = [
-    'Hola Kozmic Pearls,',
-    '',
-    'Les escribo desde el formulario web.',
-    '',
-    'Nombre: ' + nombre,
-    'Email: ' + email,
-    'Tipo de evento: ' + evento,
-    '',
-    'Mensaje:',
-    mensaje
-  ].join('\n');
-  const mailtoUrl = 'mailto:kozmicpearlstribute@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-
-  btn.innerHTML = '<i data-lucide="mail" class="lucide-icon" aria-hidden="true"></i><span>Abriendo correo</span>';
-  renderLucideIcons();
-  window.location.href = mailtoUrl;
-
-  setTimeout(() => {
-    btn.innerHTML = sendButtonContent;
-    form.reset();
-    renderLucideIcons();
-  }, 3000);
-}
 </script>
 </body>
 </html>
