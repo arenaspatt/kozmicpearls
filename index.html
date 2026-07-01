@@ -1359,7 +1359,7 @@
         <div class="contact-detail-icon"><i data-lucide="mail" class="lucide-icon" aria-hidden="true"></i></div>
         <div class="contact-detail-text">
           <small>Email</small>
-          <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abc9c4c4c0c2c5ccebc0c4d1c6c2c8dbcecad9c7d885c8c4c6">[email&#160;protected]</a>
+          <a href="mailto:kozmicpearlstribute@gmail.com">kozmicpearlstribute@gmail.com</a>
         </div>
       </div>
       <div class="contact-detail">
@@ -1465,7 +1465,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
 function renderLucideIcons() {
   if (window.lucide) {
@@ -1521,19 +1521,36 @@ document.addEventListener('keydown', (e) => {
 // Form submit
 function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('button[type=submit]');
+  const form = e.target;
+  const btn = form.querySelector('button[type=submit]');
   const sendButtonContent = '<span>Enviar mensaje</span><i data-lucide="send" class="lucide-icon" aria-hidden="true"></i>';
-  btn.innerHTML = '<i data-lucide="check" class="lucide-icon" aria-hidden="true"></i><span>Mensaje enviado</span>';
-  btn.style.backgroundColor = 'rgba(42,124,79,0.16)';
-  btn.style.borderColor = '#2a7c4f';
-  btn.style.color = '#dff4e8';
+
+  const nombre = document.getElementById('nombre').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const evento = document.getElementById('evento').value.trim() || 'No especificado';
+  const mensaje = document.getElementById('mensaje').value.trim() || 'Sin mensaje adicional';
+  const subject = 'Booking Kozmic Pearls - ' + (nombre || 'Nuevo contacto');
+  const body = [
+    'Hola Kozmic Pearls,',
+    '',
+    'Les escribo desde el formulario web.',
+    '',
+    'Nombre: ' + nombre,
+    'Email: ' + email,
+    'Tipo de evento: ' + evento,
+    '',
+    'Mensaje:',
+    mensaje
+  ].join('\n');
+  const mailtoUrl = 'mailto:kozmicpearlstribute@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+  btn.innerHTML = '<i data-lucide="mail" class="lucide-icon" aria-hidden="true"></i><span>Abriendo correo</span>';
   renderLucideIcons();
+  window.location.href = mailtoUrl;
+
   setTimeout(() => {
     btn.innerHTML = sendButtonContent;
-    btn.style.backgroundColor = '';
-    btn.style.borderColor = '';
-    btn.style.color = '';
-    e.target.reset();
+    form.reset();
     renderLucideIcons();
   }, 3000);
 }
