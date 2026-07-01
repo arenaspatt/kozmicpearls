@@ -422,8 +422,9 @@
     margin-bottom: 1.5rem;
   }
   .about-stats {
-    display: flex;
-    gap: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
     margin-top: 2.5rem;
     padding-top: 2.5rem;
     border-top: 1px solid rgba(240,232,216,0.1);
@@ -823,6 +824,23 @@
     filter: none;
     transform: translateY(-1px);
   }
+  .dates-booking {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(240,232,216,0.08);
+  }
+  .dates-booking p {
+    margin: 0;
+    color: var(--cream);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    font-weight: 800;
+    line-height: 1.15;
+  }
 
   /* ── PRESS KIT ── */
   .presskit-section {
@@ -1027,7 +1045,8 @@
     footer { flex-direction: column; text-align: center; }
     .footer-copy { text-align: center; }
     .wave-divider { padding: 0 1.5rem; }
-    .about-stats { gap: 1.5rem; }
+    .about-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+    .dates-booking { flex-direction: column; align-items: flex-start; }
   }
 
   @media (max-width: 560px) {
@@ -1088,10 +1107,10 @@
       <span data-i18n="heroEyebrow">Tributo a Janis Joplin · Desde 2014</span>
     </div>
     <h1 class="hero-tagline" data-i18n="heroTitle">
-      <span class="hero-tagline-line">Revive el espíritu, la fuerza</span>
-      <span class="hero-tagline-line">y la <em>libertad</em> de Janis Joplin.</span>
+      <span class="hero-tagline-line">El tributo más auténtico</span>
+      <span class="hero-tagline-line">a <em>Janis Joplin</em> en Latinoamérica.</span>
     </h1>
-    <p data-i18n="heroText">Una banda tributo con más de 10 años de trayectoria, dedicada a mantener vivo el legado de una de las voces más icónicas del rock y el blues.</p>
+    <p data-i18n="heroText">Kozmic Pearls presenta un espectáculo en vivo que recrea la energía, la fuerza y la esencia de una de las voces más legendarias de la historia del rock.</p>
     <div class="hero-ctas">
       <a href="#videos" class="btn-primary">
         <i data-lucide="play" class="lucide-icon" aria-hidden="true"></i>
@@ -1115,8 +1134,8 @@
 <!-- VIDEO -->
 <section class="video-section reveal" id="videos">
   <span class="section-label" data-i18n="videoLabel">En vivo</span>
-  <h2 class="section-title" data-i18n="videoTitle">Siente la <em>energía</em></h2>
-  <p data-i18n="videoText">Una muestra de lo que Kozmic Pearls trae al escenario. Rock, blues y alma de los años 60.</p>
+  <h2 class="section-title" data-i18n="videoTitle">Vive la experiencia <em>Kozmic Pearls</em></h2>
+  <p data-i18n="videoText">Cada presentación es una celebración del blues, el soul y el rock psicodélico que hicieron inmortal a Janis Joplin.</p>
 
   <div class="video-wrapper">
     <video controls preload="metadata" poster="assets/video-principal-kp-poster.png" playsinline>
@@ -1139,22 +1158,24 @@
   </div>
   <div class="about-text">
     <span class="section-label" data-i18n="aboutLabel">Nuestra historia</span>
-    <h2 class="section-title" data-i18n="aboutTitle">Más que un tributo.<br>Un <em>legado vivo.</em></h2>
-    <p data-i18n="aboutText1">Kozmic Pearls nace hace más de una década con la misión de preservar el legado de Janis Joplin. Desde Venezuela hasta Chile, la banda ha llevado su tributo a distintos escenarios, recreando la energía, autenticidad y emoción que hicieron de Janis una leyenda.</p>
-    <p data-i18n="aboutText2">Más que un tributo, somos un puente entre generaciones. Nuestro repertorio recorre sus grandes clásicos con un profundo respeto por la obra original, cuidando cada detalle musical para recrear la esencia, el sonido y la intensidad de Janis y las bandas que la acompañaron.</p>
-    <p data-i18n="aboutText3">Cada presentación celebra la autenticidad, la libertad y la pasión del rock de los 60, conectando al público con el espíritu de una época que marcó para siempre la historia de la música.</p>
+    <h2 class="section-title" data-i18n="aboutTitle">No imitamos a Janis.<br>Celebramos su <em>legado.</em></h2>
+    <p data-i18n="aboutText1">Cada concierto de Kozmic Pearls nace del respeto por una artista irrepetible, recreando la intensidad de sus presentaciones con músicos en vivo, una producción cuidada y una interpretación apasionada que conecta con nuevas generaciones y con quienes vivieron su música.</p>
     <div class="about-stats">
       <div>
         <div class="stat-num">10+</div>
-        <div class="stat-label" data-i18n="statYears">Años en escena</div>
+        <div class="stat-label" data-i18n="statYears">Conciertos realizados</div>
       </div>
       <div>
         <div class="stat-num">90</div>
-        <div class="stat-label" data-i18n="statMinutes">Minutos de show</div>
+        <div class="stat-label" data-i18n="statMinutes">Minutos en vivo</div>
       </div>
       <div>
         <div class="stat-num">14</div>
-        <div class="stat-label" data-i18n="statSongs">Canciones en vivo</div>
+        <div class="stat-label" data-i18n="statSongs">Clásicos de Janis</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label" data-i18n="statLiveMusic">Música en vivo</div>
       </div>
     </div>
   </div>
@@ -1211,8 +1232,8 @@
 <section class="repertoire-section reveal" id="repertorio">
   <div class="repertoire-intro">
     <span class="section-label" data-i18n="repertoireLabel">El viaje kózmico</span>
-    <h2 class="section-title" data-i18n="repertoireTitle">Un show de <em>90 minutos</em> que no olvidarás</h2>
-    <p data-i18n="repertoireText1">Nuestro repertorio recorre los grandes clásicos de Janis con profundo respeto por la obra original. Cada canción es interpretada capturando la esencia, el sonido y la intensidad que definió a Janis Joplin.</p>
+    <h2 class="section-title" data-i18n="repertoireTitle">Un viaje por la historia del rock</h2>
+    <p data-i18n="repertoireText1">Durante 90 minutos el público revive los momentos más icónicos de Janis Joplin, desde Mercedes Benz hasta Piece of My Heart, en un espectáculo lleno de energía, improvisación y emoción.</p>
     <p data-i18n="repertoireText2">Un espectáculo enérgico y emotivo que conecta al público con el espíritu de una época que marcó la historia de la música.</p>
     <div class="show-badge">
       <div class="show-badge-icon"><i data-lucide="guitar" class="lucide-icon" aria-hidden="true"></i></div>
@@ -1245,7 +1266,7 @@
 <!-- GALLERY -->
 <section class="gallery-section reveal" id="galeria">
   <span class="section-label" data-i18n="galleryLabel">Galería</span>
-  <h2 class="section-title" data-i18n="galleryTitle">El escenario como <em>hogar</em></h2>
+  <h2 class="section-title" data-i18n="galleryTitle">Cada escenario cuenta una historia.</h2>
   <div class="gallery-grid">
     <div class="gallery-item">
       <img src="assets/gallery-kp-9304.jpg" alt="Kozmic Pearls en Club Chocolate" loading="lazy">
@@ -1352,13 +1373,20 @@
       </tr>
     </tbody>
   </table>
+  <div class="dates-booking">
+    <p data-i18n="datesBookingQuestion">¿Quieres que Kozmic Pearls se presente en tu ciudad?</p>
+    <a href="#contacto" class="btn-secondary">
+      <i data-lucide="send" class="lucide-icon" aria-hidden="true"></i>
+      <span data-i18n="datesBookingCta">Contrata el show aquí.</span>
+    </a>
+  </div>
 </section>
 
 <!-- PRESS KIT -->
 <section class="presskit-section reveal" id="presskit">
   <div>
     <span class="section-label" data-i18n="pressLabel">Para prensa y productores</span>
-    <h2 class="section-title" data-i18n="pressTitle">Descarga el <em>Press Kit</em></h2>
+    <h2 class="section-title" data-i18n="pressTitle">Press Kit para Productores</h2>
     <p data-i18n="pressText">Todo lo que necesitas para organizar un show de Kozmic Pearls: historia, rider técnico, fotografías en alta resolución, logos y videos.</p>
     <a href="#" class="btn-primary">
       <i data-lucide="download" class="lucide-icon" aria-hidden="true"></i>
@@ -1407,7 +1435,7 @@
 <!-- CONTACT -->
 <section class="contact-section reveal" id="contacto">
   <span class="section-label" data-i18n="contactLabel">¿Listo para booking?</span>
-  <h2 class="section-title" style="margin-bottom:3rem;" data-i18n="contactTitle">Hablemos de tu <em>evento</em></h2>
+  <h2 class="section-title" style="margin-bottom:3rem;" data-i18n="contactTitle">Lleva la energía de Janis Joplin a tu <em>próximo evento</em></h2>
   <div class="contact-inner">
     <div class="contact-info">
       <p data-i18n="contactText">¿Tienes un festival, evento corporativo o espacio de música en vivo? Kozmic Pearls lleva el espíritu de Janis Joplin a cualquier escenario con profesionalismo y una energía que el público no olvidará.</p>
@@ -1545,25 +1573,24 @@ const translations = {
     footerBand: 'Banda',
     footerContact: 'Contacto',
     heroEyebrow: 'Tributo a Janis Joplin · Desde 2014',
-    heroTitle: '<span class="hero-tagline-line">Revive el espíritu, la fuerza</span><span class="hero-tagline-line">y la <em>libertad</em> de Janis Joplin.</span>',
-    heroText: 'Una banda tributo con más de 10 años de trayectoria, dedicada a mantener vivo el legado de una de las voces más icónicas del rock y el blues.',
+    heroTitle: '<span class="hero-tagline-line">El tributo más auténtico</span><span class="hero-tagline-line">a <em>Janis Joplin</em> en Latinoamérica.</span>',
+    heroText: 'Kozmic Pearls presenta un espectáculo en vivo que recrea la energía, la fuerza y la esencia de una de las voces más legendarias de la historia del rock.',
     heroVideoCta: 'Ver videos',
     heroBookCta: 'Contratar banda',
     heroDatesCta: 'Próximas fechas',
     videoLabel: 'En vivo',
-    videoTitle: 'Siente la <em>energía</em>',
-    videoText: 'Una muestra de lo que Kozmic Pearls trae al escenario. Rock, blues y alma de los años 60.',
+    videoTitle: 'Vive la experiencia <em>Kozmic Pearls</em>',
+    videoText: 'Cada presentación es una celebración del blues, el soul y el rock psicodélico que hicieron inmortal a Janis Joplin.',
     videoUnsupported: 'Tu navegador no puede reproducir este video.',
     videoCaption: 'Kozmic Pearls — En vivo',
     videoYoutube: 'Abrir en YouTube',
     aboutLabel: 'Nuestra historia',
-    aboutTitle: 'Más que un tributo.<br>Un <em>legado vivo.</em>',
-    aboutText1: 'Kozmic Pearls nace hace más de una década con la misión de preservar el legado de Janis Joplin. Desde Venezuela hasta Chile, la banda ha llevado su tributo a distintos escenarios, recreando la energía, autenticidad y emoción que hicieron de Janis una leyenda.',
-    aboutText2: 'Más que un tributo, somos un puente entre generaciones. Nuestro repertorio recorre sus grandes clásicos con un profundo respeto por la obra original, cuidando cada detalle musical para recrear la esencia, el sonido y la intensidad de Janis y las bandas que la acompañaron.',
-    aboutText3: 'Cada presentación celebra la autenticidad, la libertad y la pasión del rock de los 60, conectando al público con el espíritu de una época que marcó para siempre la historia de la música.',
-    statYears: 'Años en escena',
-    statMinutes: 'Minutos de show',
-    statSongs: 'Canciones en vivo',
+    aboutTitle: 'No imitamos a Janis.<br>Celebramos su <em>legado.</em>',
+    aboutText1: 'Cada concierto de Kozmic Pearls nace del respeto por una artista irrepetible, recreando la intensidad de sus presentaciones con músicos en vivo, una producción cuidada y una interpretación apasionada que conecta con nuevas generaciones y con quienes vivieron su música.',
+    statYears: 'Conciertos realizados',
+    statMinutes: 'Minutos en vivo',
+    statSongs: 'Clásicos de Janis',
+    statLiveMusic: 'Música en vivo',
     bandLabel: 'Las personas detrás del sonido',
     bandTitle: 'Conoce la <em>banda</em>',
     patriciaRole: 'Voz & Caracterización',
@@ -1577,12 +1604,12 @@ const translations = {
     lucianoRole: 'Batería',
     lucianoBio: 'El motor rítmico del show. Su energía detrás del kit mantiene el espíritu crudo y apasionado de Janis.',
     repertoireLabel: 'El viaje kózmico',
-    repertoireTitle: 'Un show de <em>90 minutos</em> que no olvidarás',
-    repertoireText1: 'Nuestro repertorio recorre los grandes clásicos de Janis con profundo respeto por la obra original. Cada canción es interpretada capturando la esencia, el sonido y la intensidad que definió a Janis Joplin.',
+    repertoireTitle: 'Un viaje por la historia del rock',
+    repertoireText1: 'Durante 90 minutos el público revive los momentos más icónicos de Janis Joplin, desde Mercedes Benz hasta Piece of My Heart, en un espectáculo lleno de energía, improvisación y emoción.',
     repertoireText2: 'Un espectáculo enérgico y emotivo que conecta al público con el espíritu de una época que marcó la historia de la música.',
     showBadgeText: 'de show en vivo',
     galleryLabel: 'Galería',
-    galleryTitle: 'El escenario como <em>hogar</em>',
+    galleryTitle: 'Cada escenario cuenta una historia.',
     instagramTitle: 'Momentos <em>kózmicos</em>',
     instagramText: 'Escenas del show, backstage y registros en vivo de Kozmic Pearls.',
     instagramCta: 'Seguir en Instagram',
@@ -1599,8 +1626,10 @@ const translations = {
     datesHeaderEvent: 'Evento / Venue',
     datesDate: '12 de septiembre',
     datesTickets: 'Entradas',
+    datesBookingQuestion: '¿Quieres que Kozmic Pearls se presente en tu ciudad?',
+    datesBookingCta: 'Contrata el show aquí.',
     pressLabel: 'Para prensa y productores',
-    pressTitle: 'Descarga el <em>Press Kit</em>',
+    pressTitle: 'Press Kit para Productores',
     pressText: 'Todo lo que necesitas para organizar un show de Kozmic Pearls: historia, rider técnico, fotografías en alta resolución, logos y videos.',
     pressCta: 'Descargar Press Kit',
     kitName1: 'Historia & Biografía',
@@ -1614,7 +1643,7 @@ const translations = {
     kitName5: 'Videos y Shows',
     kitDesc5: 'Grabaciones en vivo de alta calidad',
     contactLabel: '¿Listo para booking?',
-    contactTitle: 'Hablemos de tu <em>evento</em>',
+    contactTitle: 'Lleva la energía de Janis Joplin a tu <em>próximo evento</em>',
     contactText: '¿Tienes un festival, evento corporativo o espacio de música en vivo? Kozmic Pearls lleva el espíritu de Janis Joplin a cualquier escenario con profesionalismo y una energía que el público no olvidará.',
     contactLocationLabel: 'Ubicación',
     contactLocation: 'Santiago de Chile',
@@ -1645,25 +1674,24 @@ const translations = {
     footerBand: 'Band',
     footerContact: 'Contact',
     heroEyebrow: 'Janis Joplin Tribute · Since 2014',
-    heroTitle: '<span class="hero-tagline-line">Revive the spirit, power</span><span class="hero-tagline-line">and <em>freedom</em> of Janis Joplin.</span>',
-    heroText: 'A tribute band with more than 10 years on stage, dedicated to keeping alive the legacy of one of rock and blues’ most iconic voices.',
+    heroTitle: '<span class="hero-tagline-line">The most authentic tribute</span><span class="hero-tagline-line">to <em>Janis Joplin</em> in Latin America.</span>',
+    heroText: 'Kozmic Pearls presents a live show that recreates the energy, power, and essence of one of the most legendary voices in rock history.',
     heroVideoCta: 'Watch videos',
     heroBookCta: 'Book the band',
     heroDatesCta: 'Upcoming dates',
     videoLabel: 'Live',
-    videoTitle: 'Feel the <em>energy</em>',
-    videoText: 'A glimpse of what Kozmic Pearls brings to the stage: rock, blues, and the soul of the 60s.',
+    videoTitle: 'Live the <em>Kozmic Pearls</em> experience',
+    videoText: 'Every performance is a celebration of the blues, soul, and psychedelic rock that made Janis Joplin immortal.',
     videoUnsupported: 'Your browser cannot play this video.',
     videoCaption: 'Kozmic Pearls — Live',
     videoYoutube: 'Open on YouTube',
     aboutLabel: 'Our story',
-    aboutTitle: 'More than a tribute.<br>A <em>living legacy.</em>',
-    aboutText1: 'Kozmic Pearls was born more than a decade ago with the mission of preserving Janis Joplin’s legacy. From Venezuela to Chile, the band has brought its tribute to different stages, recreating the energy, authenticity, and emotion that made Janis a legend.',
-    aboutText2: 'More than a tribute, we are a bridge between generations. Our repertoire travels through her greatest classics with deep respect for the original work, taking care of every musical detail to recreate the essence, sound, and intensity of Janis and the bands that accompanied her.',
-    aboutText3: 'Every performance celebrates the authenticity, freedom, and passion of 60s rock, connecting audiences with the spirit of an era that forever shaped music history.',
-    statYears: 'Years on stage',
-    statMinutes: 'Minutes of show',
-    statSongs: 'Live songs',
+    aboutTitle: 'We do not imitate Janis.<br>We celebrate her <em>legacy.</em>',
+    aboutText1: 'Every Kozmic Pearls concert is born from respect for a once-in-a-lifetime artist, recreating the intensity of her performances with live musicians, careful production, and a passionate interpretation that connects with new generations and those who lived her music.',
+    statYears: 'Concerts performed',
+    statMinutes: 'Live minutes',
+    statSongs: 'Janis classics',
+    statLiveMusic: 'Live music',
     bandLabel: 'The people behind the sound',
     bandTitle: 'Meet the <em>band</em>',
     patriciaRole: 'Vocals & Characterization',
@@ -1677,12 +1705,12 @@ const translations = {
     lucianoRole: 'Drums',
     lucianoBio: 'The rhythmic engine of the show. His energy behind the kit keeps Janis’ raw and passionate spirit alive.',
     repertoireLabel: 'The kozmic journey',
-    repertoireTitle: 'A <em>90-minute</em> show you will not forget',
-    repertoireText1: 'Our setlist travels through Janis’ greatest classics with deep respect for the original work. Each song is performed to capture the essence, sound, and intensity that defined Janis Joplin.',
+    repertoireTitle: 'A journey through rock history',
+    repertoireText1: 'For 90 minutes, the audience relives Janis Joplin’s most iconic moments, from Mercedes Benz to Piece of My Heart, in a show full of energy, improvisation, and emotion.',
     repertoireText2: 'An energetic and emotional show that connects audiences with the spirit of an era that shaped music history.',
     showBadgeText: 'live show',
     galleryLabel: 'Gallery',
-    galleryTitle: 'The stage as <em>home</em>',
+    galleryTitle: 'Every stage tells a story.',
     instagramTitle: '<em>Kozmic</em> moments',
     instagramText: 'Scenes from the show, backstage, and live records from Kozmic Pearls.',
     instagramCta: 'Follow on Instagram',
@@ -1699,8 +1727,10 @@ const translations = {
     datesHeaderEvent: 'Event / Venue',
     datesDate: 'September 12',
     datesTickets: 'Tickets',
+    datesBookingQuestion: 'Do you want Kozmic Pearls to perform in your city?',
+    datesBookingCta: 'Book the show here.',
     pressLabel: 'For press and producers',
-    pressTitle: 'Download the <em>Press Kit</em>',
+    pressTitle: 'Press Kit for Producers',
     pressText: 'Everything you need to organize a Kozmic Pearls show: story, technical rider, high-resolution photos, logos, and videos.',
     pressCta: 'Download Press Kit',
     kitName1: 'Story & Biography',
@@ -1714,7 +1744,7 @@ const translations = {
     kitName5: 'Videos and Shows',
     kitDesc5: 'High-quality live recordings',
     contactLabel: 'Ready for booking?',
-    contactTitle: 'Let’s talk about your <em>event</em>',
+    contactTitle: 'Bring the energy of Janis Joplin to your <em>next event</em>',
     contactText: 'Do you have a festival, corporate event, or live music venue? Kozmic Pearls brings the spirit of Janis Joplin to any stage with professionalism and energy the audience will not forget.',
     contactLocationLabel: 'Location',
     contactLocation: 'Santiago, Chile',
@@ -1745,25 +1775,24 @@ const translations = {
     footerBand: 'Banda',
     footerContact: 'Contato',
     heroEyebrow: 'Tributo a Janis Joplin · Desde 2014',
-    heroTitle: '<span class="hero-tagline-line">Reviva o espírito, a força</span><span class="hero-tagline-line">e a <em>liberdade</em> de Janis Joplin.</span>',
-    heroText: 'Uma banda tributo com mais de 10 anos de trajetória, dedicada a manter vivo o legado de uma das vozes mais icônicas do rock e do blues.',
+    heroTitle: '<span class="hero-tagline-line">O tributo mais autêntico</span><span class="hero-tagline-line">a <em>Janis Joplin</em> na América Latina.</span>',
+    heroText: 'Kozmic Pearls apresenta um espetáculo ao vivo que recria a energia, a força e a essência de uma das vozes mais lendárias da história do rock.',
     heroVideoCta: 'Ver vídeos',
     heroBookCta: 'Contratar banda',
     heroDatesCta: 'Próximas datas',
     videoLabel: 'Ao vivo',
-    videoTitle: 'Sinta a <em>energia</em>',
-    videoText: 'Uma amostra do que Kozmic Pearls leva ao palco. Rock, blues e a alma dos anos 60.',
+    videoTitle: 'Viva a experiência <em>Kozmic Pearls</em>',
+    videoText: 'Cada apresentação é uma celebração do blues, do soul e do rock psicodélico que tornaram Janis Joplin imortal.',
     videoUnsupported: 'Seu navegador não pode reproduzir este vídeo.',
     videoCaption: 'Kozmic Pearls — Ao vivo',
     videoYoutube: 'Abrir no YouTube',
     aboutLabel: 'Nossa história',
-    aboutTitle: 'Mais que um tributo.<br>Um <em>legado vivo.</em>',
-    aboutText1: 'Kozmic Pearls nasceu há mais de uma década com a missão de preservar o legado de Janis Joplin. Da Venezuela ao Chile, a banda levou seu tributo a diferentes palcos, recriando a energia, autenticidade e emoção que fizeram de Janis uma lenda.',
-    aboutText2: 'Mais que um tributo, somos uma ponte entre gerações. Nosso repertório percorre seus grandes clássicos com profundo respeito pela obra original, cuidando de cada detalhe musical para recriar a essência, o som e a intensidade de Janis e das bandas que a acompanharam.',
-    aboutText3: 'Cada apresentação celebra a autenticidade, a liberdade e a paixão do rock dos anos 60, conectando o público ao espírito de uma época que marcou para sempre a história da música.',
-    statYears: 'Anos em cena',
-    statMinutes: 'Minutos de show',
-    statSongs: 'Músicas ao vivo',
+    aboutTitle: 'Não imitamos Janis.<br>Celebramos seu <em>legado.</em>',
+    aboutText1: 'Cada concerto do Kozmic Pearls nasce do respeito por uma artista irrepetível, recriando a intensidade de suas apresentações com músicos ao vivo, uma produção cuidadosa e uma interpretação apaixonada que conecta novas gerações e quem viveu sua música.',
+    statYears: 'Concertos realizados',
+    statMinutes: 'Minutos ao vivo',
+    statSongs: 'Clássicos de Janis',
+    statLiveMusic: 'Música ao vivo',
     bandLabel: 'As pessoas por trás do som',
     bandTitle: 'Conheça a <em>banda</em>',
     patriciaRole: 'Voz & Caracterização',
@@ -1777,12 +1806,12 @@ const translations = {
     lucianoRole: 'Bateria',
     lucianoBio: 'O motor rítmico do show. Sua energia atrás da bateria mantém vivo o espírito cru e apaixonado de Janis.',
     repertoireLabel: 'A viagem kózmica',
-    repertoireTitle: 'Um show de <em>90 minutos</em> que você não vai esquecer',
-    repertoireText1: 'Nosso repertório percorre os grandes clássicos de Janis com profundo respeito pela obra original. Cada música é interpretada capturando a essência, o som e a intensidade que definiram Janis Joplin.',
+    repertoireTitle: 'Uma viagem pela história do rock',
+    repertoireText1: 'Durante 90 minutos, o público revive os momentos mais icônicos de Janis Joplin, de Mercedes Benz a Piece of My Heart, em um espetáculo cheio de energia, improvisação e emoção.',
     repertoireText2: 'Um espetáculo enérgico e emotivo que conecta o público ao espírito de uma época que marcou a história da música.',
     showBadgeText: 'de show ao vivo',
     galleryLabel: 'Galeria',
-    galleryTitle: 'O palco como <em>lar</em>',
+    galleryTitle: 'Cada palco conta uma história.',
     instagramTitle: 'Momentos <em>kózmicos</em>',
     instagramText: 'Cenas do show, backstage e registros ao vivo de Kozmic Pearls.',
     instagramCta: 'Seguir no Instagram',
@@ -1799,8 +1828,10 @@ const translations = {
     datesHeaderEvent: 'Evento / Venue',
     datesDate: '12 de setembro',
     datesTickets: 'Ingressos',
+    datesBookingQuestion: 'Quer que Kozmic Pearls se apresente na sua cidade?',
+    datesBookingCta: 'Contrate o show aqui.',
     pressLabel: 'Para imprensa e produtores',
-    pressTitle: 'Baixe o <em>Press Kit</em>',
+    pressTitle: 'Press Kit para Produtores',
     pressText: 'Tudo o que você precisa para organizar um show de Kozmic Pearls: história, rider técnico, fotos em alta resolução, logos e vídeos.',
     pressCta: 'Baixar Press Kit',
     kitName1: 'História & Biografia',
@@ -1814,7 +1845,7 @@ const translations = {
     kitName5: 'Vídeos e Shows',
     kitDesc5: 'Gravações ao vivo em alta qualidade',
     contactLabel: 'Pronto para booking?',
-    contactTitle: 'Vamos falar do seu <em>evento</em>',
+    contactTitle: 'Leve a energia de Janis Joplin para seu <em>próximo evento</em>',
     contactText: 'Você tem um festival, evento corporativo ou espaço de música ao vivo? Kozmic Pearls leva o espírito de Janis Joplin a qualquer palco com profissionalismo e uma energia que o público não vai esquecer.',
     contactLocationLabel: 'Localização',
     contactLocation: 'Santiago do Chile',
