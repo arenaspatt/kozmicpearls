@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kozmic Pearls — Tributo a Janis Joplin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0A0806;
+    --deep: #120E0A;
+    --cream: #F0E8D8;
+    --cream-dim: #B8A98A;
+    --rust: #C4622D;
+    --amber: #D4A837;
+    --plum: #2D1B2E;
+    --smoke: #1A1410;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(to bottom, rgba(10,8,6,0.95), transparent);
+    transition: background 0.3s;
+  }
+  nav.scrolled { background: rgba(10,8,6,0.97); border-bottom: 1px solid rgba(196,98,45,0.2); }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .nav-logo-img {
+    height: 72px;
+    width: 116px;
+    display: block;
+    color: var(--cream);
+    transition: opacity 0.2s;
+  }
+  .nav-logo:hover .nav-logo-img { opacity: 0.8; }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--cream-dim);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--amber); }
+
+  .nav-cta {
+    background: rgba(240,232,216,0.06) !important;
+    color: var(--cream) !important;
+    border: 1px solid rgba(240,232,216,0.34) !important;
+    padding: 0.45rem 1rem !important;
+    text-shadow: none;
+    font-size: 0.72rem !important;
+  }
+  .nav-cta:hover {
+    background: rgba(240,232,216,0.12) !important;
+    border-color: rgba(212,168,55,0.65) !important;
+    color: var(--cream) !important;
+    filter: none !important;
+    transform: translateY(-1px);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 3rem 6rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top, rgba(10,8,6,1) 0%, rgba(10,8,6,0.6) 40%, rgba(10,8,6,0.2) 70%, rgba(10,8,6,0.4) 100%),
+      linear-gradient(to right, rgba(10,8,6,0.7) 0%, transparent 50%),
+      url('assets/header-kp-live-9188.jpg') center/cover no-repeat;
+  }
+
+  /* Psychedelic color wash overlay */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(196,98,45,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(45,27,46,0.4) 0%, transparent 50%);
+    mix-blend-mode: multiply;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow-line {
+    height: 1px;
+    width: 48px;
+    background: var(--amber);
+  }
+  .hero-eyebrow span {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 500;
+  }
+
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--cream);
+    margin-bottom: 1.3rem;
+    max-width: 560px;
+  }
+  .hero-tagline em {
+    font-style: italic;
+    color: var(--amber);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.8);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--amber);
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--cream-dim);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline-sm,
+  .nav-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.72rem 1.2rem;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 3px;
+    cursor: pointer;
+    appearance: none;
+    background: transparent;
+    border: 1px solid transparent;
+    box-shadow: none;
+    text-shadow: none;
+    transition: background-color 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
+  }
+
+  .lucide-icon {
+    width: 1em;
+    height: 1em;
+    display: block;
+    flex-shrink: 0;
+    stroke-width: 1.8;
+  }
+  .btn-primary .lucide-icon,
+  .btn-secondary .lucide-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .btn-primary {
+    background: var(--cream);
+    color: var(--black);
+    border-color: var(--cream);
+  }
+  .btn-primary:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--black);
+    transform: translateY(-1px);
+    filter: none;
+  }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-secondary {
+    background: rgba(240,232,216,0.04);
+    color: var(--cream);
+    border-color: rgba(240,232,216,0.3);
+    font-weight: 500;
+  }
+  .btn-secondary:hover {
+    background: rgba(240,232,216,0.1);
+    border-color: rgba(240,232,216,0.65);
+    color: var(--cream);
+    transform: translateY(-1px);
+    filter: none;
+  }
+  .btn-secondary:active { transform: translateY(0); }
+
+  /* ── DIVIDER ── */
+  .wave-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 2.5rem 3rem;
+    margin: 0;
+  }
+  .wave-divider svg { flex: 1; opacity: 0.45; }
+  .divider-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 3rem; }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 2rem;
+  }
+  .section-title em { color: var(--amber); font-style: italic; }
+
+  /* ── VIDEO ── */
+  .video-section {
+    background: var(--deep);
+    text-align: center;
+  }
+  .video-section .section-title { margin-bottom: 0.75rem; }
+  .video-section p {
+    color: var(--cream-dim);
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+  }
+  .video-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 80px rgba(196,98,45,0.25);
+  }
+  .video-wrapper iframe,
+  .video-wrapper video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    display: block;
+    border: none;
+    background: var(--black);
+  }
+  .video-caption {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--cream-dim);
+    letter-spacing: 0.08em;
+  }
+  .video-fallback {
+    margin-top: 1.4rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-section {
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-img {
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .about-img img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    filter: grayscale(30%) contrast(1.1);
+  }
+  .about-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top right, rgba(196,98,45,0.15), transparent);
+  }
+  .about-img-frame {
+    position: absolute;
+    top: -12px; left: -12px;
+    right: 12px; bottom: 12px;
+    border: 1px solid rgba(212,168,55,0.3);
+    border-radius: 3px;
+    pointer-events: none;
+  }
+  .about-text p {
+    color: var(--cream-dim);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .about-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(240,232,216,0.1);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--amber);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-top: 0.4rem;
+  }
+
+  /* ── BAND MEMBERS ── */
+  .band-section { background: var(--smoke); }
+  .band-section .section-title { text-align: center; }
+  .band-section .section-label { text-align: center; }
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .member-card {
+    text-align: center;
+  }
+  .member-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: grayscale(50%) contrast(1.1);
+    border-radius: 3px;
+    margin-bottom: 1rem;
+    transition: filter 0.3s;
+    background: var(--deep);
+    display: block;
+  }
+  .member-card:hover .member-photo { filter: grayscale(0%) contrast(1.1); }
+  .member-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+  .member-role {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.6rem;
+  }
+  .member-bio {
+    font-size: 0.82rem;
+    color: var(--cream-dim);
+    line-height: 1.6;
+  }
+  .member-card.featured .member-photo { filter: grayscale(10%) contrast(1.15); }
+
+  /* ── REPERTOIRE ── */
+  .repertoire-section {
+    background: var(--deep);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .repertoire-intro p { color: var(--cream-dim); line-height: 1.8; margin-bottom: 1.5rem; }
+  .show-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(196,98,45,0.15);
+    border: 1px solid rgba(196,98,45,0.4);
+    padding: 0.8rem 1.5rem;
+    border-radius: 2px;
+    margin-top: 1rem;
+  }
+  .show-badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+    font-size: 1.5rem;
+  }
+  .show-badge-text { font-size: 0.8rem; letter-spacing: 0.1em; }
+  .show-badge-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--amber);
+    font-weight: 900;
+  }
+
+  .songs-list {
+    columns: 2;
+    column-gap: 2rem;
+    list-style: none;
+  }
+  .songs-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(240,232,216,0.08);
+    font-size: 0.88rem;
+    color: var(--cream);
+    break-inside: avoid;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+  .songs-list li::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+  .songs-list li.highlight {
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .songs-list li.highlight::before { opacity: 1; background: var(--rust); }
+
+  /* ── GALLERY ── */
+  .gallery-section { background: var(--black); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(190px, 260px);
+    grid-auto-flow: dense;
+    gap: 0.75rem;
+    margin-top: 3rem;
+  }
+  .gallery-item {
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--smoke);
+  }
+  .gallery-item:nth-child(1) { grid-column: span 6; grid-row: span 2; }
+  .gallery-item:nth-child(2) { grid-column: span 6; }
+  .gallery-item:nth-child(3),
+  .gallery-item:nth-child(4) { grid-column: span 3; }
+  .gallery-item:nth-child(5),
+  .gallery-item:nth-child(6) { grid-column: span 6; }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(1.1);
+    transition: filter 0.4s, transform 0.5s;
+    display: block;
+  }
+  .gallery-item:hover img { filter: grayscale(0%) contrast(1.1); transform: scale(1.03); }
+
+  /* ── INSTAGRAM ── */
+  .instagram-section {
+    background: var(--deep);
+    text-align: center;
+  }
+  .instagram-section .section-title { margin-bottom: 1rem; }
+  .instagram-section > p {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--cream-dim);
+    line-height: 1.8;
+  }
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.7rem;
+    max-width: 1180px;
+    margin: 3rem auto 0;
+  }
+  .instagram-post {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 2px;
+    border: 1px solid rgba(240,232,216,0.1);
+    background: var(--smoke);
+    color: var(--cream);
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    appearance: none;
+    isolation: isolate;
+  }
+  .instagram-post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(16%) contrast(1.06) brightness(0.86);
+    transition: filter 0.35s, transform 0.45s;
+  }
+  .instagram-post:hover img,
+  .instagram-post:focus-visible img {
+    filter: grayscale(0%) contrast(1.1) brightness(0.68);
+    transform: scale(1.035);
+  }
+  .instagram-play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(240,232,216,0.55);
+    background: rgba(10,8,6,0.38);
+    backdrop-filter: blur(2px);
+    color: var(--cream);
+    opacity: 1;
+    transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    pointer-events: none;
+  }
+  .instagram-post:hover .instagram-play,
+  .instagram-post:focus-visible .instagram-play {
+    border-color: rgba(212,168,55,0.75);
+    background: rgba(10,8,6,0.58);
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+  .instagram-play .lucide-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    margin-left: 2px;
+  }
+  .instagram-post:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+  }
+  .instagram-cta {
+    margin-top: 2rem;
+  }
+
+  /* ── INSTAGRAM LIGHTBOX ── */
+  .ig-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(8,6,5,0.88);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.28s ease;
+  }
+  .ig-modal.open { display: flex; opacity: 1; }
+  .ig-modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.28s ease;
+  }
+  .ig-modal.open .ig-modal-dialog { transform: none; }
+  .ig-modal-frame {
+    width: 100%;
+    height: 78vh;
+    max-height: 720px;
+    border: none;
+    border-radius: 6px;
+    background: var(--cream);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    display: block;
+  }
+  .ig-modal-close {
+    position: absolute;
+    top: -3.1rem; right: 0;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(240,232,216,0.3);
+    background: rgba(240,232,216,0.06);
+    color: var(--cream);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .ig-modal-close:hover {
+    background: rgba(212,168,55,0.12);
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .ig-modal-close .lucide-icon { width: 20px; height: 20px; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--smoke); text-align: center; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+  .testimonial {
+    background: rgba(240,232,216,0.04);
+    border: 1px solid rgba(240,232,216,0.1);
+    border-radius: 3px;
+    padding: 2rem;
+    text-align: left;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--rust);
+    opacity: 0.3;
+    position: absolute;
+    top: 0.5rem; left: 1.2rem;
+    line-height: 1;
+  }
+  .testimonial-text {
+    color: var(--cream);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1.2rem;
+    padding-top: 1.5rem;
+  }
+  .testimonial-author {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .testimonial-role {
+    font-size: 0.72rem;
+    color: var(--cream-dim);
+    margin-top: 0.2rem;
+  }
+
+  /* ── DATES ── */
+  .dates-section { background: var(--deep); }
+  .dates-section .section-title { margin-bottom: 3rem; }
+  .dates-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .dates-table th {
+    text-align: left;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(196,98,45,0.3);
+  }
+  .dates-table td {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(240,232,216,0.07);
+    vertical-align: middle;
+  }
+  .date-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--amber);
+    width: 140px;
+  }
+  .date-city {
+    font-weight: 600;
+    color: var(--cream);
+    font-size: 0.95rem;
+  }
+  .date-event { color: var(--cream-dim); font-size: 0.88rem; }
+  .date-cta {
+    text-align: right;
+  }
+  .btn-outline-sm {
+    padding: 0.42rem 0.85rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--cream-dim);
+    border-color: rgba(240,232,216,0.22);
+    text-decoration: none;
+  }
+  .btn-outline-sm:hover {
+    background: rgba(240,232,216,0.08);
+    border-color: rgba(212,168,55,0.6);
+    color: var(--cream);
+    filter: none;
+    transform: translateY(-1px);
+  }
+
+  /* ── PRESS KIT ── */
+  .presskit-section {
+    background: var(--plum);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .presskit-section .section-title em { color: var(--amber); }
+  .presskit-section p { color: rgba(240,232,216,0.7); line-height: 1.8; margin-bottom: 2rem; }
+  .kit-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .kit-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(240,232,216,0.05);
+    border: 1px solid rgba(240,232,216,0.1);
+    padding: 1rem 1.2rem;
+    border-radius: 3px;
+  }
+  .kit-item-icon {
+    color: var(--amber);
+    font-size: 1.3rem;
+  }
+  .kit-item-name { font-size: 0.85rem; color: var(--cream); font-weight: 500; }
+  .kit-item-desc { font-size: 0.75rem; color: var(--cream-dim); }
+
+  /* ── CONTACT ── */
+  .contact-section { background: var(--black); }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    max-width: 1000px;
+  }
+  .contact-info p { color: var(--cream-dim); line-height: 1.8; margin-bottom: 2rem; }
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .contact-detail-icon {
+    width: 40px; height: 40px;
+    background: rgba(196,98,45,0.15);
+    border: 1px solid rgba(196,98,45,0.35);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--amber);
+    font-size: 1rem;
+  }
+  .contact-detail-text { font-size: 0.9rem; color: var(--cream); }
+  .contact-detail-text small { display: block; font-size: 0.72rem; color: var(--cream-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.1rem; }
+
+  .social-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .social-link {
+    width: 42px; height: 42px;
+    border: 1px solid rgba(240,232,216,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cream-dim);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .social-link:hover { border-color: var(--amber); color: var(--amber); background: rgba(212,168,55,0.08); }
+
+  /* Form */
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(240,232,216,0.05);
+    border: 1px solid rgba(240,232,216,0.15);
+    border-radius: 2px;
+    padding: 0.85rem 1rem;
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+    outline: none;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--amber);
+    background: rgba(212,168,55,0.04);
+  }
+  .form-group select option { background: var(--deep); }
+  .form-group textarea { min-height: 100px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid rgba(240,232,216,0.08);
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-logo {
+    height: 56px;
+    width: 90px;
+    display: block;
+    color: var(--cream);
+    opacity: 0.92;
+  }
+  .footer-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-top: 0.3rem;
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.75rem;
+    color: var(--cream-dim);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--amber); }
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(184,169,138,0.5);
+    text-align: right;
+  }
+  .footer-social { display: flex; gap: 0.6rem; }
+  .footer-social a {
+    color: var(--cream-dim);
+    font-size: 1rem;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+  .footer-social a:hover { color: var(--amber); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-logo-img { height: 48px; width: 77px; }
+    .footer-logo { height: 46px; width: 74px; margin: 0 auto; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 0 1.5rem 4rem; }
+    .about-section,
+    .repertoire-section,
+    .presskit-section,
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .members-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .instagram-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item { grid-column: auto !important; grid-row: auto !important; }
+    .gallery-item img { min-height: 160px; }
+    .songs-list { columns: 1; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-copy { text-align: center; }
+    .wave-divider { padding: 0 1.5rem; }
+    .about-stats { gap: 1.5rem; }
+  }
+
+  @media (max-width: 560px) {
+    .instagram-grid { gap: 0.55rem; }
+    .instagram-play { width: 44px; height: 44px; }
+    .ig-modal { padding: 1rem; }
+    .ig-modal-dialog { max-width: 340px; }
+    .ig-modal-frame { height: 72vh; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="kozmic-logo" viewBox="0 0 1366 847"><path d="M1236.12 553.879C1237.21 553.333 1238.58 554.153 1239.13 554.973C1246.51 566.184 1247.88 581.224 1248.43 594.349C1248.97 604.739 1249.25 615.131 1248.15 625.521C1248.43 625.795 1248.97 626.069 1248.97 626.615V627.162C1250.34 631.264 1252.25 637.826 1256.63 639.193C1259.64 640.013 1262.92 638.1 1265.38 636.459C1271.12 632.631 1277.41 626.615 1284.52 626.068C1294.91 624.975 1302.29 633.451 1312.14 634.818C1328.27 637.279 1341.4 623.881 1351.24 612.67L1352.06 612.943C1353.7 610.756 1356.71 614.037 1354.8 616.225C1344.95 627.436 1330.46 642.201 1313.78 639.74C1303.66 638.1 1292.45 627.162 1282.06 631.537C1274.95 634.818 1269.21 641.655 1261.55 643.569C1256.08 644.937 1252.53 641.928 1249.79 637.826C1248.97 643.295 1247.06 648.764 1243.23 650.679C1241.04 655.327 1238.03 659.429 1233.66 662.437C1224.64 668.452 1213.15 670.913 1202.49 673.921C1200.03 674.741 1198.93 670.913 1201.12 669.819C1212.06 664.897 1210.96 645.756 1206.32 635.912C1192.37 644.389 1189.91 665.171 1189.36 679.937V682.944C1190.73 681.577 1192.37 680.483 1193.74 679.39C1195.1 678.57 1196.74 679.117 1197.29 680.757C1201.94 696.616 1197.02 713.844 1195.92 729.704C1195.92 731.891 1192.64 732.711 1191.82 730.524C1190.46 726.696 1189.36 722.594 1188.27 718.492H1188C1183.07 720.406 1177.88 721.774 1172.96 723.961C1168.31 726.148 1163.66 728.337 1158.74 730.524C1150.81 733.806 1142.88 737.087 1134.95 739.821C1137.96 753.767 1142.06 767.986 1146.43 781.658C1152.17 799.432 1157.64 818.846 1170.5 833.065C1172.41 834.979 1169.13 837.986 1167.21 835.8C1154.36 821.581 1148.62 802.713 1142.88 784.939C1137.96 770.721 1133.85 755.954 1130.57 741.188C1129.21 741.462 1128.11 742.009 1127.02 742.282C1117.17 745.564 1107.33 749.118 1097.49 752.126C1087.37 754.86 1077.25 757.048 1067.41 761.149C1066.04 761.696 1064.4 760.603 1064.4 758.962C1064.95 753.22 1067.68 747.751 1069.87 742.556C1072.6 736.267 1074.52 729.703 1076.98 723.141C1082.17 709.195 1087.64 695.249 1093.38 681.304C1098.85 667.632 1104.32 653.959 1110.06 640.561L1114.99 629.076C1113.89 629.076 1113.07 628.529 1113.07 627.436V623.334C1102.68 627.709 1095.02 635.366 1088.46 644.39C1086.82 646.85 1084.63 648.491 1081.63 648.491C1077.8 648.218 1076.7 643.57 1072.6 647.397C1068.77 650.952 1066.31 654.507 1063.58 658.608C1061.94 660.796 1059.75 662.983 1057.02 662.437C1054.83 662.163 1053.19 661.343 1051.82 659.702C1050.18 658.062 1050.18 658.882 1048.54 660.796C1046.9 662.983 1044.71 665.718 1043.62 668.452C1042.52 671.46 1040.06 681.303 1034.59 678.569C1032.95 677.749 1031.86 676.382 1031.04 674.741C1031.04 674.197 1029.96 672.3 1029.94 672.28C1028.85 674.194 1028.3 676.109 1027.48 678.022C1025.84 682.671 1022.01 690.875 1016 690.328C1012.72 690.055 1011.62 688.14 1010.8 685.953C1009.98 692.789 1008.07 702.085 1003.69 697.164C1001.23 694.156 1000.96 687.866 1000.96 684.312C1000.96 679.937 1001.23 675.288 1004.79 672.28C1006.7 670.367 1009.71 673.648 1007.52 675.562C1004.24 678.296 1004.51 686.226 1005.88 691.148V690.602C1006.43 688.688 1006.43 687.046 1006.43 685.405C1006.43 682.671 1006.43 679.936 1007.52 677.476C1008.34 675.836 1010.26 675.562 1011.35 676.655C1013.26 678.296 1013.54 680.757 1014.63 683.218C1016.82 688.686 1022.29 679.39 1023.11 677.202C1024.2 674.194 1025.84 667.086 1030.22 667.358C1031.86 667.359 1032.95 668.726 1033.77 670.093C1034.32 671.186 1034.87 672.28 1035.41 673.101C1036.78 675.287 1038.7 668.999 1038.7 668.999C1040.34 663.804 1044.16 656.421 1049.36 653.96C1050.73 653.14 1052.37 653.687 1053.46 654.78C1054.28 655.327 1054.83 656.421 1055.65 656.968C1058.66 658.881 1059.75 654.507 1060.84 653.14C1063.85 648.491 1069.05 641.381 1075.06 640.561C1078.34 640.014 1081.35 646.303 1084.09 641.654C1086 638.647 1088.19 635.365 1090.92 632.904C1097.21 626.889 1104.59 621.147 1113.07 618.139C1114.16 617.865 1115.53 618.139 1116.08 619.232C1116.9 620.873 1116.9 622.24 1116.9 623.607C1119.91 616.498 1122.64 609.389 1124.83 602.006C1125.38 599.545 1128.93 600.365 1128.93 602.826C1127.29 642.475 1124.28 682.671 1130.57 722.047C1131.39 726.695 1132.21 731.071 1133.03 735.446C1141.51 732.438 1149.71 729.156 1157.92 725.602C1162.84 723.414 1167.76 721.227 1172.41 719.039C1176.51 716.852 1180.89 716.305 1185.26 714.391H1186.63C1185.26 707.008 1184.17 699.625 1184.17 692.242C1178.7 696.89 1172.96 700.992 1166.39 701.539C1169.67 707.008 1168.58 713.297 1163.38 718.766C1162.56 719.312 1161.47 719.312 1160.65 718.766C1155.18 714.391 1152.99 708.101 1155.18 702.633C1154.91 702.359 1154.36 702.086 1154.36 701.812C1153.81 700.719 1154.36 699.352 1155.46 698.805C1156 698.531 1156.55 697.985 1157.1 697.984H1158.46C1159.01 697.711 1159.28 697.164 1159.83 696.891C1160.65 696.344 1161.47 696.344 1162.29 696.891C1170.49 698.258 1177.6 692.515 1184.17 686.772C1184.17 682.944 1184.17 679.116 1184.44 675.288C1185.81 659.155 1189.64 638.647 1205.5 630.717C1206.86 630.17 1207.96 630.717 1208.5 631.811C1213.7 640.561 1215.61 657.514 1209.32 667.358C1216.98 665.444 1224.91 662.983 1230.93 658.335C1233.66 656.148 1235.57 653.686 1237.21 650.952C1236.12 650.679 1235.3 650.405 1234.21 649.858C1230.11 647.944 1228.46 642.475 1227.1 638.646C1225.46 633.451 1224.09 628.256 1223 623.061C1218.89 602.279 1213.97 566.457 1236.12 553.879ZM976.076 579.036C976.623 577.122 980.451 576.302 980.451 579.036C980.725 586.692 981.818 594.35 981.818 602.279V629.623C982.365 648.49 983.186 667.358 985.1 685.952C986.193 694.429 987.288 702.906 988.655 711.383C996.038 708.648 1003.97 705.367 1011.9 708.102V708.375C1014.63 709.196 1013.26 713.296 1010.53 712.477C1003.97 710.016 996.585 713.023 990.296 715.484C990.028 715.752 989.499 715.758 989.476 715.758C990.843 723.961 992.483 731.892 994.671 739.821C997.405 749.665 1000.14 759.235 1003.42 768.806C1004.79 773.181 1006.7 784.939 1011.08 787.127C1013.54 788.221 1011.08 792.048 1008.62 790.682C1003.42 787.947 1002.33 779.743 1000.69 774.821C997.679 766.345 994.944 757.868 992.483 749.118C989.476 738.454 987.014 728.063 985.1 717.398C981.272 719.039 977.443 720.68 973.889 722.32C963.771 726.969 953.654 733.259 942.99 736.54C936.428 738.454 929.318 740.094 926.31 732.712C923.028 724.782 924.122 713.844 925.489 705.914C929.044 684.039 937.795 662.983 946.818 642.748C951.74 631.537 956.936 620.6 962.404 609.662C965.139 604.467 967.6 599.271 970.061 594.075C972.248 589.153 974.982 584.505 976.076 579.036ZM1123.74 617.592C1120.46 625.795 1116.9 633.999 1113.34 642.202C1107.6 655.6 1102.13 669.273 1096.67 682.944C1091.2 696.89 1085.45 710.562 1080.26 724.781C1078.07 731.344 1075.88 737.907 1073.15 744.196C1071.51 748.024 1069.59 751.853 1068.5 755.954C1076.7 752.946 1085.45 751.032 1093.93 748.571C1104.87 745.29 1115.81 741.462 1126.47 737.907H1126.2C1127.02 737.634 1127.84 737.087 1128.66 737.087C1127.84 733.259 1127.02 729.156 1126.47 725.328C1120.73 689.507 1122.37 653.413 1123.74 617.592ZM977.17 591.067C974.709 596.81 971.701 602.279 968.967 607.748C964.045 617.592 959.396 627.162 954.748 637.006C945.724 656.42 936.974 676.382 932.052 697.438C929.591 707.555 927.404 719.859 930.411 730.25C933.419 740.094 953.381 727.789 959.123 724.781V725.055C967.326 720.953 975.803 716.852 984.553 713.297C983.186 706.188 982.092 698.805 981.271 691.422C979.084 672.281 978.264 653.139 977.717 633.998V606.381C977.717 601.186 977.443 596.263 977.17 591.067ZM1193.19 684.858C1191.55 685.952 1190.18 687.32 1188.54 688.688C1188.82 698.805 1189.64 708.922 1192.1 718.766C1193.74 707.555 1195.65 695.796 1193.19 684.858ZM1161.2 702.086C1157.64 705.914 1158.19 710.563 1161.74 714.391C1164.75 710.289 1165.03 705.914 1161.2 702.086ZM658.335 602.279C660.249 602.279 662.163 602.553 664.351 602.553C666.264 602.826 668.452 603.373 670.366 603.646C672.28 603.92 674.195 604.74 675.835 605.561C677.475 606.381 678.843 607.476 679.937 608.843C681.03 610.21 681.851 612.124 682.124 614.038C682.397 615.952 682.124 617.866 681.577 619.507C680.757 621.147 679.936 622.788 678.569 624.429C677.476 626.069 675.835 627.437 674.194 628.804C672.554 630.171 670.64 631.538 668.726 632.632C669.546 632.905 670.367 633.179 671.46 633.452C672.553 633.726 673.374 634.273 674.468 634.819C675.561 635.366 676.382 635.913 677.202 636.733C678.022 637.553 678.843 638.374 679.39 639.468C679.629 639.946 680.078 640.843 680.369 641.609L680.598 642.248C680.848 642.911 681.213 643.709 681.463 644.526L681.691 645.347C681.983 646.303 682.432 647.261 682.671 648.218L682.944 648.765C683.491 649.858 683.765 650.953 684.038 652.047C684.858 654.508 685.405 657.242 686.226 659.977H662.983L663.804 659.156C664.077 658.883 664.35 658.609 664.351 658.062V656.422C664.351 653.141 664.077 650.405 663.53 648.218C662.983 646.031 662.436 644.116 661.89 642.749C661.343 641.382 660.796 640.288 660.249 639.468C659.702 638.648 659.155 638.101 658.608 637.827C657.515 638.374 656.421 638.921 655.601 639.194C654.781 639.741 653.96 640.015 653.413 640.288V652.867C653.686 653.687 653.96 654.508 653.96 655.328L654.78 657.789C655.054 658.882 655.327 659.43 655.874 659.977H632.631C632.904 659.43 633.451 658.609 633.725 657.789C633.998 656.969 634.545 656.148 634.545 655.328C634.818 654.508 634.818 653.687 634.818 652.867V609.39C634.818 608.57 634.545 607.749 634.545 606.929C634.272 606.109 633.998 605.287 633.725 604.467C633.451 603.647 633.177 602.826 632.631 602.279H658.335ZM712.203 602.006C711.964 602.484 711.515 603.173 711.224 603.887L710.995 604.502C710.707 605.219 710.289 605.938 710.289 606.655C709.742 607.475 709.742 608.296 709.742 609.116V652.594C710.016 653.414 710.289 654.235 710.289 655.055L711.109 657.516C711.383 658.336 711.656 659.156 712.203 659.703H689.233C689.507 659.156 690.055 658.336 690.328 657.516C690.602 656.696 691.148 655.875 691.148 655.055C691.422 654.235 691.422 653.414 691.422 652.594V609.116C691.422 608.296 691.149 607.475 691.148 606.655L690.328 604.194C690.055 603.374 689.78 602.553 689.233 602.006H712.203ZM789.86 602.006C789.382 602.484 788.903 603.173 788.607 603.887L788.379 604.502C788.091 605.22 787.673 605.938 787.673 606.655C787.126 607.475 787.126 608.296 787.126 609.116V640.562C787.126 642.749 786.853 644.664 787.126 646.305C787.399 647.945 787.673 649.586 787.946 650.68C788.493 652.046 789.04 652.867 789.86 653.414C790.681 653.961 791.776 654.234 793.416 654.234C795.056 654.234 796.151 653.961 796.971 653.414C797.791 652.867 798.611 651.773 798.885 650.68C799.432 649.586 799.705 647.945 799.705 646.305V608.843C799.432 608.023 799.158 607.202 799.158 606.382L798.338 603.921L797.518 604.194C797.244 603.374 796.97 602.553 796.424 602.006H819.393C819.153 602.484 818.705 603.173 818.413 603.887L818.185 604.502C817.897 605.22 817.479 605.938 817.479 606.655C817.205 607.475 817.205 608.296 817.205 609.116V640.562C817.205 643.296 816.658 645.758 815.291 647.945C813.924 650.133 812.283 652.32 810.096 653.961C807.908 655.601 805.447 656.969 802.439 658.062C799.705 659.156 796.696 659.703 793.142 659.703C789.587 659.703 786.579 659.156 783.571 658.062C780.564 656.969 778.102 655.601 775.915 653.961C773.728 652.321 772.087 650.133 770.72 647.945C769.353 645.758 768.806 643.296 768.806 640.562V609.116C768.806 608.296 768.532 607.475 768.532 606.655L767.712 604.194C767.439 603.374 767.165 602.553 766.618 602.006H789.86ZM736.266 601.732C740.914 602.006 744.47 602.279 747.478 602.826C750.485 603.373 752.946 604.193 754.587 605.287C756.227 606.654 757.595 607.748 758.415 609.389C759.235 611.029 759.782 612.67 759.782 614.584C760.055 615.677 759.782 616.772 759.782 617.865C759.235 618.959 758.962 620.054 758.415 620.874C757.868 621.694 757.321 622.515 756.501 623.335C755.681 624.155 754.86 624.976 754.04 625.522L754.587 626.069C754.86 626.342 755.134 626.616 755.407 626.616C757.868 628.804 760.056 631.538 761.696 634.272L761.97 633.999C763.61 636.733 764.978 639.468 765.524 642.202C765.798 644.936 766.071 647.398 765.798 649.858C765.251 652.319 764.43 654.507 762.79 656.147C761.423 657.514 759.509 658.608 757.595 659.155C755.681 659.702 753.493 659.702 751.032 659.702C748.571 659.429 746.109 658.882 743.648 657.788C741.188 656.694 738.726 655.327 736.266 653.687C736.539 654.78 736.813 655.601 737.086 656.694C737.359 657.788 737.906 658.608 738.453 659.155H715.211C715.484 658.608 716.031 657.788 716.305 656.968C716.578 656.148 717.125 655.327 717.125 654.507C717.398 653.687 717.398 652.866 717.398 652.046V608.842C717.398 608.022 717.125 607.201 717.125 606.381L716.305 603.92C716.031 603.1 715.757 602.279 715.211 601.732H736.266ZM629.35 614.857C627.436 613.217 625.521 611.85 623.334 610.756C621.42 609.662 619.232 608.842 617.318 608.295C615.405 607.748 613.49 607.201 612.123 607.201C610.483 606.928 609.389 606.928 608.842 606.928H607.201V652.319C607.475 653.139 607.748 653.96 607.748 654.78L608.568 657.241C608.842 658.061 609.115 658.882 609.662 659.429H586.692C586.932 658.95 587.38 658.263 587.672 657.549L587.9 656.934C588.188 656.216 588.607 655.498 588.607 654.78C588.881 653.96 588.881 653.139 588.881 652.319V606.928H587.513C586.966 606.928 585.871 607.201 584.231 607.201C582.591 607.201 580.95 607.748 579.036 608.295C577.122 608.842 575.208 609.662 573.021 610.756C570.937 611.798 569.102 613.09 567.278 614.628V601.732H629.35V614.857ZM885.84 614.857C883.926 613.217 882.011 611.85 879.824 610.756C877.91 609.662 875.722 608.842 873.809 608.295C871.895 607.748 869.98 607.201 868.613 607.201C866.973 606.928 865.878 606.928 865.331 606.928H863.69V652.319C863.964 653.139 864.237 653.96 864.237 654.78C864.511 655.6 864.785 656.421 865.059 657.241C865.332 658.061 865.606 658.882 866.152 659.429H843.183C843.422 658.95 843.871 658.263 844.162 657.549L844.391 656.934C844.678 656.216 845.097 655.498 845.097 654.78C845.37 653.96 845.37 653.139 845.37 652.319V606.928H844.003C843.456 606.928 842.362 607.201 840.722 607.201C839.081 607.201 837.44 607.748 835.526 608.295C833.612 608.842 831.698 609.662 829.511 610.756C827.427 611.798 825.592 613.09 823.769 614.628V601.732H885.84V614.857ZM931.778 614.857C929.864 613.217 927.95 611.85 925.763 610.756C923.849 609.662 921.661 608.842 919.747 608.295C917.833 607.748 916.191 607.201 914.551 607.201C912.911 606.928 911.817 606.928 911.27 606.928H909.902V624.429C911.269 624.155 912.637 623.608 914.004 623.335C915.371 623.061 916.739 622.515 918.38 621.968C919.747 621.421 921.388 620.873 922.755 620.053C924.122 619.233 925.489 618.412 926.583 617.318V638.374C925.216 637.554 923.848 636.46 922.481 635.64C920.841 634.82 919.473 633.999 917.833 633.452C916.193 632.905 914.824 632.632 913.457 632.085C912.09 631.812 910.722 631.265 909.629 631.265V654.78H911.27C912.09 654.78 913.458 654.233 915.098 654.233C916.738 653.96 918.38 653.686 920.294 652.866C922.208 652.046 924.122 651.499 926.036 650.405C927.95 649.312 929.864 648.218 931.505 646.577V659.429H888.848C889.121 658.882 889.668 658.061 889.941 657.241C890.215 656.421 890.762 655.6 890.762 654.78C891.308 653.96 891.309 653.139 891.309 652.319H891.582V608.842C891.309 608.022 891.035 607.201 891.035 606.381L890.215 603.92C889.942 603.1 889.668 602.279 889.121 601.732H931.778V614.857ZM736.266 647.124C737.906 648.491 739.821 649.311 741.461 649.585C743.101 650.132 744.469 649.858 745.836 649.038C746.929 648.491 747.478 647.671 748.024 646.304H748.298C748.845 644.937 748.845 643.569 748.845 641.929C748.845 640.288 748.297 638.647 747.75 636.733C747.203 634.82 746.109 632.905 745.016 630.991C743.922 629.077 742.554 627.163 740.914 625.522C739.274 623.609 737.906 622.241 736.266 621.421V647.124ZM1236.67 559.075C1220.54 570.286 1223.54 598.998 1226.28 615.678C1227.64 624.154 1229.29 632.631 1232.57 640.561C1233.11 641.655 1234.21 645.757 1235.85 646.03H1239.68C1241.86 640.561 1242.68 634.545 1243.23 628.529H1243.5C1244.6 616.498 1244.87 604.193 1244.05 591.888C1243.23 580.95 1242.14 568.919 1236.67 559.075ZM657.515 604.467C655.874 604.193 654.233 604.194 652.866 604.74V635.366C654.233 634.819 655.601 633.999 656.968 632.632C658.335 631.538 659.702 629.897 661.069 628.257C662.163 626.616 663.257 624.702 664.077 622.788C664.897 620.601 665.171 618.686 665.171 616.499C664.898 614.039 664.624 611.851 664.077 610.21C663.53 608.57 662.71 607.201 661.89 606.381C660.796 605.287 659.155 604.467 657.515 604.467ZM741.734 605.287C740.094 604.74 738.179 604.194 735.992 604.74H736.266V617.865C739.82 618.139 743.65 618.96 747.204 620.874C748.298 618.687 748.298 616.498 748.298 614.311C748.024 612.123 747.204 610.482 746.11 608.842C745.017 607.201 743.375 606.107 741.734 605.287ZM1067.95 611.303C1069.32 611.85 1070.41 612.943 1070.69 614.311C1071.23 615.678 1070.69 617.045 1070.14 618.139C1069.59 618.959 1067.95 619.506 1067.13 618.686C1066.59 618.412 1066.04 617.865 1065.49 617.318L1064.95 616.771V616.498C1064.4 615.951 1064.13 615.678 1064.12 615.131C1064.12 614.311 1064.4 613.49 1065.22 612.943C1065.22 612.673 1065.49 612.135 1065.49 612.123C1066.04 611.303 1066.86 611.303 1067.95 611.303ZM567.278 614.857H567.005C567.095 614.78 567.188 614.704 567.278 614.628V614.857ZM823.769 614.857H823.495C823.586 614.78 823.678 614.704 823.769 614.628V614.857ZM1255.26 606.928C1256.08 605.834 1257.45 606.107 1258.27 606.928C1259.36 607.748 1259.09 609.115 1258.27 609.936C1256.63 611.576 1254.44 612.67 1251.98 612.67L1251.71 612.943C1250.61 612.943 1249.79 611.576 1249.79 610.482C1250.05 609.457 1251.03 608.672 1252.05 608.578L1252.46 608.559C1253.48 608.466 1254.49 607.697 1255.26 606.928ZM445.596 290.006C492.901 290.006 518.332 294.108 530.363 318.991H530.91C550.051 358.367 552.239 474.58 580.95 546.77H550.598C527.902 546.769 513.956 538.02 506.847 522.16C487.979 480.597 462.823 478.135 442.314 455.713C443.955 464.19 445.322 472.12 446.689 479.229C448.057 487.705 448.877 448.878 448.877 503.292C448.877 557.707 411.415 586.419 380.516 586.419C365.75 586.419 352.625 579.856 345.516 566.458C402.938 566.456 408.681 370.125 462.002 318.444C456.807 303.952 451.611 293.561 445.596 290.006ZM697.438 289.187C731.071 289.187 780.018 310.242 780.018 337.586C780.017 363.879 747.656 396.492 719.156 426.917C722.331 426.792 727.373 426.729 735.173 426.729C771.267 426.729 795.056 468.018 795.057 498.097C795.057 528.175 778.103 556.614 740.368 556.614C733.259 556.614 725.055 555.247 716.305 553.06C729.156 541.575 741.188 508.488 741.188 482.784H741.462C741.462 464.19 735.445 449.971 718.492 449.971C696.07 449.971 664.624 478.956 664.624 525.715C664.624 532.277 665.171 539.388 666.538 546.771H591.341C601.458 530.364 605.561 492.628 605.561 433.564C605.561 374.501 600.091 311.609 592.981 291.101C601.731 292.194 592.162 292.468 618.959 292.468C645.756 292.468 663.804 289.187 697.438 289.187ZM894.589 290.006C870.526 316.803 860.136 362.469 860.136 410.321C860.136 458.174 871.346 504.933 890.214 526.535C902.245 539.934 909.355 545.676 929.316 545.676C949.277 545.676 965.958 532.277 965.958 514.23C965.958 502.472 959.121 488.8 941.348 475.401C929.59 466.104 916.738 459.814 903.613 449.971C886.386 436.572 878.456 429.189 878.456 407.04C878.456 384.891 898.417 366.297 932.598 366.297C941.621 366.297 951.466 367.664 962.403 370.398C949.825 385.711 945.176 368.485 945.176 414.149C945.176 459.815 997.678 497.003 997.678 525.715C997.678 533.645 993.575 541.301 983.185 547.863C973.614 553.879 979.903 556.067 947.638 556.067C915.371 556.067 873.261 544.309 830.057 544.309V544.582C820.76 544.582 811.462 544.855 802.438 546.223C810.095 531.729 816.111 440.947 816.111 393.642C816.111 346.336 812.829 303.405 805.173 290.006H894.589ZM1108.15 286.726C1148.89 288.913 1189.64 316.531 1189.64 349.07C1189.64 363.289 1181.98 378.329 1162.84 392.821C1134.4 348.25 1083.81 332.664 1051 332.664C1032.41 332.664 1019.28 335.945 1019.28 345.242C1019.28 354.539 1038.15 367.391 1088.19 379.97C1141.24 393.369 1190.73 419.346 1190.73 463.644C1190.73 507.941 1149.99 550.052 1089.83 550.052C1059.2 550.052 1024.2 539.114 1009.16 512.316C1003.69 502.473 1001.23 511.769 1001.23 484.425C1001.23 457.081 1024.2 436.572 1050.73 436.572C1058.66 436.572 1066.86 438.486 1075.06 442.588C1069.32 454.072 1066.86 443.682 1066.86 476.769C1066.86 509.855 1088.73 533.919 1108.97 533.919C1129.2 533.919 1148.62 515.051 1148.62 493.176C1148.62 478.137 1139.6 461.456 1115.26 448.878C1092.29 436.573 1063.85 427.276 1042.25 417.158V417.432C1010.53 403.213 997.405 400.205 997.405 362.47C997.405 324.735 1043.07 286.726 1101.04 286.726H1108.15ZM379.97 280.163C384.891 287.272 387.079 277.976 387.079 303.679C387.079 329.382 364.11 355.359 327.469 355.359C314.07 355.359 298.757 351.805 282.077 343.602C271.14 338.133 266.217 334.031 252.818 334.031C239.42 334.031 230.669 349.618 230.669 372.313C230.669 395.009 238.599 423.721 254.186 446.69C251.451 438.761 250.084 444.502 250.084 423.174C250.084 401.845 261.842 384.892 289.46 384.892C292.741 384.892 295.749 385.165 299.304 385.438C313.796 387.353 332.664 393.368 343.055 393.368C353.445 393.368 363.837 390.087 373.134 379.149C375.321 387.899 376.688 381.337 376.688 402.118C376.688 422.9 363.836 432.197 348.25 432.197C332.664 432.197 312.429 424.268 293.015 409.775C284.538 403.486 281.529 401.024 273.053 401.024C264.576 401.025 260.475 411.142 260.475 419.346C260.475 427.549 262.936 437.666 267.584 447.51C280.436 475.674 301.218 487.433 325.281 487.433C340.867 487.432 358.368 481.964 375.868 472.94C377.235 478.956 378.056 484.698 378.056 490.167L378.329 490.714C378.329 527.629 345.515 547.317 310.241 547.317C302.859 547.317 295.202 546.224 288.093 544.583C227.388 530.364 192.934 475.948 192.934 420.713C192.934 414.424 193.481 408.407 194.302 402.118C200.591 357.547 235.591 340.32 235.591 304.499C235.591 297.39 234.224 289.46 230.669 280.437C239.146 287.546 284.264 297.663 320.905 297.663C326.374 297.663 331.57 297.39 336.766 296.843C336.917 296.833 365.243 294.89 379.97 280.163ZM117.737 288.913C149.457 288.913 200.044 302.312 200.044 337.586C200.044 346.063 196.763 355.907 189.653 367.118C151.371 425.088 83.2833 465.284 83.2832 524.074C83.2832 531.457 84.3769 538.841 86.5645 546.497H11.3682C22.8528 515.871 27.2275 481.417 27.2275 423.994C27.2275 366.571 20.1183 311.336 12.4619 292.741C19.843 293.288 5.07959 293.562 34.0635 293.562C63.0483 293.561 86.018 288.913 117.737 288.913ZM699.078 296.296C687.867 296.296 673.921 310.242 666.265 332.117C658.335 355.087 655.874 395.556 655.874 421.533C655.874 447.148 657.469 473.029 658.824 495.243C671.428 425.601 715.762 422.379 716.578 332.117C716.578 306.961 710.289 296.296 699.078 296.296ZM119.378 296.296C108.167 296.296 94.2209 310.242 86.5645 332.117C78.6347 354.813 76.1738 394.189 76.1738 420.439C76.1738 445.513 77.6704 470.836 78.9961 493.072C81.5051 444.898 136.878 417.376 136.878 332.391C136.878 306.961 129.222 296.296 119.378 296.296ZM466.104 331.569C444.775 357.546 438.486 386.805 438.486 414.149C438.486 452.978 471.573 458.995 494.815 478.956C489.347 447.51 479.229 377.234 466.104 331.569ZM141.8 16.0156C163.402 20.6642 186.371 30.5085 189.926 50.7432C190.473 53.477 190.746 23.9463 190.746 58.6729C190.746 93.4001 150.55 118.831 117.463 154.652C130.041 148.363 115.55 145.628 150.823 145.628C186.097 145.628 204.145 180.903 204.145 215.903C204.145 225.747 202.777 235.318 200.043 244.068C194.027 263.756 174.886 272.232 157.386 272.232C139.886 272.232 123.206 264.029 119.925 249.811C149.456 231.763 161.488 205.512 161.488 188.285C161.488 171.059 151.644 157.934 136.604 157.934C131.409 157.934 125.394 159.574 119.104 163.129C94.768 176.528 76.9941 211.529 76.9941 243.795C76.9942 248.99 77.2676 254.186 78.3613 259.381H10C18.4767 238.872 23.125 170.512 23.125 124.847C23.125 79.1817 19.8439 36.7973 12.7344 22.3047C26.1331 25.0391 45.0008 27.501 57.5791 27.501C70.1574 27.5009 83.8299 25.8594 98.8691 21.2109C75.353 49.9225 69.6104 95.041 69.6104 142.073C69.6104 162.308 70.7041 183.09 71.7979 203.052C84.1028 138.246 143.714 73.4395 143.714 28.8682C143.714 24.2197 143.167 20.1172 141.8 16.0156ZM413.876 258.014C411.688 259.381 409.501 261.021 407.04 262.389C408.954 260.748 411.142 259.381 413.876 258.014ZM573.021 10.5469C607.747 10.5471 622.514 23.3992 622.514 37.0713C622.514 50.7434 608.294 66.0564 585.052 72.3457C533.918 85.7444 503.566 140.98 503.565 186.098C503.565 214.262 515.597 238.599 541.574 246.256C547.042 247.896 545.677 248.99 568.099 248.99C590.521 248.99 616.498 244.888 616.498 232.856C616.498 228.755 613.216 223.559 605.286 217.271C595.442 209.614 584.505 203.872 573.841 195.122C561.262 185.005 555.52 183.91 555.52 161.215C555.52 138.519 577.122 118.284 611.85 118.284C619.506 118.284 627.436 119.105 635.912 121.292C619.232 139.066 613.49 145.355 613.49 169.145C613.49 192.934 629.623 210.981 640.014 225.474C645.209 232.856 647.396 227.115 647.396 243.521C647.396 259.928 643.294 261.842 599.271 261.842C555.246 261.842 497.823 251.178 456.26 251.178C439.033 251.178 424.267 253.092 413.876 258.014C470.479 217.817 476.221 111.994 558.801 59.2197C586.692 41.4462 605.013 43.9073 605.013 35.1572C605.013 26.4072 595.989 18.7512 582.864 18.751C569.739 18.751 552.239 25.5868 533.098 45.5479C507.121 72.3452 480.596 84.1034 459.268 84.1035L459.814 84.377C438.212 84.377 422.626 72.0718 422.626 50.4697C422.626 39.532 426.454 26.1331 435.204 10.5469C438.212 23.3987 436.025 27.7744 462.002 27.7744C487.979 27.7742 538.293 10.5469 573.021 10.5469ZM325.007 16.5625C379.969 16.5627 432.471 66.3295 432.471 143.714C432.471 221.098 376.141 259.654 320.085 259.654L318.991 259.928C262.662 259.928 206.606 221.098 206.606 143.987C206.606 108.44 221.099 68.7904 248.443 54.0244C258.286 48.8292 244.889 46.6416 276.607 46.6416C308.327 46.6419 332.39 82.7359 332.391 103.791C332.391 124.476 319.194 144.368 285.543 150.506C285.602 147.99 285.631 143.741 285.631 136.878C285.631 106.526 264.577 68.2446 253.092 68.2432C248.99 68.2432 245.982 73.4392 245.982 86.5645C245.982 93.6739 246.803 103.518 248.99 115.822C259.108 174.886 297.936 244.614 347.43 244.614C372.586 244.614 392.548 224.106 392.548 185.277C392.548 171.058 390.087 154.378 383.798 135.237C368.212 86.291 335.671 40.0793 282.35 40.0791C276.061 40.0791 269.224 40.8995 262.389 42.2666C281.803 24.4929 270.045 16.5625 325.007 16.5625ZM988.655 21.4854C979.632 55.3922 974.983 93.4006 974.983 136.604C974.983 179.809 980.452 223.286 991.116 259.381H916.739C927.404 223.286 932.873 177.348 932.873 136.604C932.873 95.8616 928.224 55.6656 919.2 21.4854H988.655ZM1089.28 22.8516C1099.95 21.4844 1110.61 21.2109 1121 22.3047C1131.39 23.3985 1141.24 25.8604 1150.53 29.9619C1159.83 34.0636 1167.76 39.5321 1174.32 46.6416C1180.88 53.4776 1185.53 61.4081 1187.72 69.8848C1190.18 78.3613 1190.73 86.8379 1189.36 94.7676C1187.99 102.697 1185.26 110.081 1181.16 116.37C1176.78 122.932 1171.59 127.581 1165.03 130.862C1160.1 133.05 1154.91 134.417 1149.44 134.964C1143.97 135.237 1138.5 134.69 1133.03 133.323C1127.56 131.683 1122.64 129.222 1117.99 125.94C1113.34 122.659 1109.79 118.283 1106.78 113.088C1104.05 108.44 1102.41 103.517 1101.59 97.7754C1100.77 92.0332 1100.77 86.5644 1101.59 81.0957C1102.41 75.9003 1104.32 70.7042 1107.05 66.3291C1109.79 61.9541 1113.62 58.3994 1118.54 55.9385C1125.65 52.6574 1131.94 52.1104 1137.41 54.2979C1142.88 56.4854 1146.43 60.5872 1148.07 66.3291C1149.17 70.7041 1148.62 74.8066 1146.43 78.6348C1144.24 82.4626 1140.96 84.6503 1136.59 85.1973C1132.76 85.7441 1129.2 84.9236 1125.65 82.7363C1122.09 80.8223 1120.18 76.994 1119.63 71.5254C1117.99 73.4395 1117.45 76.1738 1117.45 79.4551C1117.45 82.7363 1118.27 85.7442 1119.91 89.0254C1121.55 92.3066 1123.74 95.041 1127.02 97.2285C1130.3 99.4159 1134.13 100.51 1138.5 100.51C1146.7 100.236 1152.99 97.7754 1157.1 93.127C1161.2 88.4785 1163.38 82.1892 1163.93 74.2598C1164.21 69.0644 1163.11 64.1417 1160.92 59.7666C1158.46 55.3916 1155.45 51.8369 1151.35 48.5557C1147.25 45.5479 1142.6 43.0869 1136.86 41.1729C1131.12 39.2588 1125.1 38.712 1118.54 38.7119C1108.15 38.9854 1098.85 41.1729 1090.38 45.2744C1081.9 49.376 1074.52 55.1183 1068.5 62.501C1062.48 69.8839 1057.84 78.3612 1054.83 88.2051C1051.55 98.049 1050.73 108.714 1051.55 120.198C1052.37 131.956 1055.1 142.073 1059.2 150.55C1063.3 159.026 1068.5 166.137 1074.52 171.605C1080.53 177.074 1087.37 181.176 1094.48 183.637C1101.86 186.098 1106.24 187.465 1115.53 187.465C1124.83 187.465 1132.76 186.098 1139.32 183.09C1145.88 180.082 1151.63 176.527 1156.28 172.426C1160.92 168.324 1164.75 163.949 1167.76 159.574C1170.77 155.199 1172.96 151.644 1174.6 148.909C1183.89 158.48 1189.36 169.691 1190.73 182.27C1192.1 195.121 1189.91 206.88 1183.89 218.364C1178.15 229.849 1168.58 239.42 1155.46 247.076C1142.33 255.006 1123.46 258.834 1106.78 258.834C1090.1 258.834 1075.06 255.553 1061.94 248.443C1048.81 241.607 1037.6 232.583 1028.3 221.372H1027.48C1018.19 210.434 1011.08 197.856 1006.15 183.637C1001.23 169.691 998.771 155.199 998.771 140.979C998.771 126.76 1000.41 113.635 1003.42 102.15C1006.43 90.3926 1010.8 80.002 1016 70.9785C1021.47 61.9549 1027.76 54.0245 1034.87 47.4619C1042.25 40.8995 1050.18 35.7041 1058.66 31.876C1068.23 27.501 1078.34 24.4922 1089.28 22.8516ZM680.757 10C689.78 10 697.984 11.6406 705.641 14.9219C713.57 18.2031 720.68 22.5782 727.516 27.7734C734.352 32.9688 740.368 38.9853 746.11 45.8213C751.852 52.6572 756.774 59.4932 761.423 66.876C772.361 83.556 781.931 102.424 789.861 123.753L824.042 17.6562H895.957C894.316 20.1171 892.949 22.8517 891.855 26.4062C891.035 29.961 889.941 33.5165 889.395 37.0713C888.574 40.6259 888.027 44.1807 887.754 47.4619C887.207 50.7431 887.207 53.2041 887.207 55.1182V218.091C887.207 219.731 887.48 222.192 887.754 225.474C888.301 228.481 888.848 232.036 889.395 235.591C889.941 239.145 890.762 242.7 891.855 246.255C892.949 249.81 894.316 252.818 895.957 255.006H815.292C816.933 252.545 818.3 249.81 819.394 246.255C820.214 242.7 821.308 239.145 821.854 235.591C822.401 232.036 822.948 228.755 823.222 225.474C823.495 222.466 824.042 220.005 824.042 218.091V67.9697C821.581 76.4464 818.573 86.0174 815.019 97.2285C811.464 108.166 807.908 119.925 804.08 132.229C800.252 144.534 796.424 156.84 792.596 169.418C788.768 181.996 784.939 193.754 781.385 204.965C777.83 216.176 774.549 226.294 771.541 235.044C768.533 243.794 766.071 250.904 764.431 255.826C758.142 221.646 750.759 192.661 742.556 168.598C734.352 144.535 726.422 124.573 718.492 109.26C710.836 93.9472 703.727 82.462 697.711 74.8057C691.696 67.4233 687.594 62.7747 685.68 61.1338C685.406 72.345 685.953 83.8298 687.32 95.3145C688.414 106.799 690.328 118.284 692.789 129.495C695.25 140.979 697.984 151.644 701.266 162.308C704.547 172.972 707.828 182.816 711.383 192.113C719.586 214.262 728.884 235.318 739.274 255.553H651.772C653.686 253.092 655.054 250.356 656.147 246.802C657.241 243.247 658.335 239.692 658.882 236.138C659.429 232.583 659.976 229.302 660.249 226.021C660.796 223.013 660.796 220.552 660.796 218.638V57.0322C660.796 51.2901 659.429 46.3681 656.968 41.9932H656.421C653.96 37.6184 650.405 34.884 646.304 33.79C646.851 29.6884 648.491 26.1329 650.952 23.125C653.413 20.1173 656.421 17.6562 659.976 15.7422C663.257 13.8282 666.812 12.1875 670.64 11.3672C674.194 10.5469 671.734 10 680.757 10Z" fill="currentColor"/></symbol></defs></svg>
+
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo" aria-label="Kozmic Pearls — inicio">
+    <svg class="nav-logo-img" role="img" aria-label="Kozmic Pearls"><use href="#kozmic-logo"/></svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#banda">La Banda</a></li>
+    <li><a href="#repertorio">Repertorio</a></li>
+    <li><a href="#fechas">Fechas</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#contacto" class="nav-cta">Contratar</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Tributo a Janis Joplin · Desde 2014</span>
+    </div>
+    <h1 class="hero-tagline">Revive la fuerza, la pasión<br>y la <em>libertad</em> de Janis Joplin.</h1>
+    <p>Una banda tributo con más de 10 años de trayectoria, dedicada a mantener vivo el legado de una de las voces más icónicas del rock y el blues.</p>
+    <div class="hero-ctas">
+      <a href="#videos" class="btn-primary">
+        <i data-lucide="play" class="lucide-icon" aria-hidden="true"></i>
+        Ver videos
+      </a>
+      <a href="#contacto" class="btn-secondary">Contratar banda</a>
+      <a href="#fechas" class="btn-secondary">Próximas fechas</a>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="wave-divider">
+  <span class="divider-dot"></span>
+  <svg height="14" viewBox="0 0 600 14" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0 7 Q150 0 300 7 Q450 14 600 7" stroke="#C4622D" stroke-width="1" fill="none"/>
+  </svg>
+  <span class="divider-dot"></span>
+</div>
+
+<!-- VIDEO -->
+<section class="video-section reveal" id="videos">
+  <span class="section-label">En vivo</span>
+  <h2 class="section-title">Siente la <em>energía</em></h2>
+  <p>Una muestra de lo que Kozmic Pearls trae al escenario. Rock, blues y alma de los años 60.</p>
+
+  <div class="video-wrapper">
+    <video controls preload="metadata" playsinline>
+      <source src="assets/video-principal-kp.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+  </div>
+  <p class="video-caption">Kozmic Pearls — En vivo</p>
+  <div class="video-fallback">
+    <a href="https://www.youtube.com/watch?v=nXLbx2aRMho" target="_blank" rel="noopener" class="btn-secondary">Abrir en YouTube</a>
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about-section reveal" id="sobre">
+  <div class="about-img">
+    <div class="about-img-frame"></div>
+    <img src="assets/header-kp-club-chocolate.jpg" alt="Kozmic Pearls en vivo" loading="lazy">
+  </div>
+  <div class="about-text">
+    <span class="section-label">Nuestra historia</span>
+    <h2 class="section-title">Más que un tributo.<br>Un <em>legado vivo.</em></h2>
+    <p>Kozmic Pearls nace hace más de una década con la misión de preservar el legado de Janis Joplin. Desde Venezuela hasta Chile, la banda ha llevado su tributo a distintos escenarios, recreando la energía, autenticidad y emoción que hicieron de Janis una leyenda.</p>
+    <p>Más que un tributo, somos un puente entre generaciones. Nuestro repertorio recorre sus grandes clásicos con un profundo respeto por la obra original, cuidando cada detalle musical para recrear la esencia, el sonido y la intensidad de Janis y las bandas que la acompañaron.</p>
+    <p>Cada presentación celebra la autenticidad, la libertad y la pasión del rock de los 60, conectando al público con el espíritu de una época que marcó para siempre la historia de la música.</p>
+    <div class="about-stats">
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Años en escena</div>
+      </div>
+      <div>
+        <div class="stat-num">90</div>
+        <div class="stat-label">Minutos de show</div>
+      </div>
+      <div>
+        <div class="stat-num">14</div>
+        <div class="stat-label">Canciones en vivo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="wave-divider">
+  <span class="divider-dot"></span>
+  <svg height="14" viewBox="0 0 600 14" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0 7 Q150 14 300 7 Q450 0 600 7" stroke="#D4A837" stroke-width="1" fill="none"/>
+  </svg>
+  <span class="divider-dot"></span>
+</div>
+
+<!-- BAND MEMBERS -->
+<section class="band-section reveal" id="banda">
+  <span class="section-label">Las personas detrás del sonido</span>
+  <h2 class="section-title">Conoce la <em>banda</em></h2>
+  <div class="members-grid">
+    <div class="member-card featured">
+      <img class="member-photo" src="assets/members/patricia-web.jpg" style="object-position: 48% 16%;" alt="Patricia Arenas" loading="lazy">
+      <div class="member-name">Patricia Arenas</div>
+      <div class="member-role">Voz & Caracterización</div>
+      <div class="member-bio">La voz y alma del proyecto. Patricia encarna a Janis con su potencia vocal, presencia escénica y una caracterización que hace vibrar al público. También conocida como @labrujakozmica.</div>
+    </div>
+    <div class="member-card">
+      <img class="member-photo" src="assets/members/cris-web.jpg" style="object-position: 42% 16%;" alt="Cris - Guitarra" loading="lazy">
+      <div class="member-name">Cris</div>
+      <div class="member-role">Guitarra</div>
+      <div class="member-bio">Riffs cargados de blues y rock psicodélico que transportan al público a los festivales de los 60.</div>
+    </div>
+    <div class="member-card">
+      <img class="member-photo" src="assets/members/victor-web.jpg" style="object-position: 46% 14%;" alt="Victor - Bajo" loading="lazy">
+      <div class="member-name">Victor</div>
+      <div class="member-role">Bajo</div>
+      <div class="member-bio">El groove que sostiene cada canción. Victor aporta la base funky y poderosa que caracterizó el sonido de Janis.</div>
+    </div>
+    <div class="member-card">
+      <img class="member-photo" src="assets/members/felipe-web.jpg" style="object-position: 62% 20%;" alt="Felipe - Teclado" loading="lazy">
+      <div class="member-name">Felipe</div>
+      <div class="member-role">Teclado & Órgano</div>
+      <div class="member-bio">Las texturas de Hammond y piano que completan el paisaje sonoro del rock-soul de los años 60.</div>
+    </div>
+    <div class="member-card">
+      <img class="member-photo" src="assets/members/luciano-web.jpg" style="object-position: 40% 30%;" alt="Luciano - Batería" loading="lazy">
+      <div class="member-name">Luciano</div>
+      <div class="member-role">Batería</div>
+      <div class="member-bio">El motor rítmico del show. Su energía detrás del kit mantiene el espíritu crudo y apasionado de Janis.</div>
+    </div>
+  </div>
+</section>
+
+<!-- REPERTOIRE -->
+<section class="repertoire-section reveal" id="repertorio">
+  <div class="repertoire-intro">
+    <span class="section-label">El viaje kózmico</span>
+    <h2 class="section-title">Un show de <em>90 minutos</em> que no olvidarás</h2>
+    <p>Nuestro repertorio recorre los grandes clásicos de Janis con profundo respeto por la obra original. Cada canción es interpretada capturando la esencia, el sonido y la intensidad que definió a Janis Joplin.</p>
+    <p>Un espectáculo enérgico y emotivo que conecta al público con el espíritu de una época que marcó la historia de la música.</p>
+    <div class="show-badge">
+      <div class="show-badge-icon"><i data-lucide="guitar" class="lucide-icon" aria-hidden="true"></i></div>
+      <div>
+        <div class="show-badge-num">+90 min</div>
+        <div class="show-badge-text">de show en vivo</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <ul class="songs-list">
+      <li class="highlight">Piece of My Heart</li>
+      <li class="highlight">Cry Baby</li>
+      <li class="highlight">Ball and Chain</li>
+      <li>Me and Bobby McGee</li>
+      <li>Mercedes Benz</li>
+      <li>Summertime</li>
+      <li>Kozmic Blues</li>
+      <li>Move Over</li>
+      <li>Maybe</li>
+      <li>Try</li>
+      <li>Half Moon</li>
+      <li>Down on Me</li>
+      <li>I Need a Man to Love</li>
+      <li>Little Girl Blue</li>
+    </ul>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section reveal" id="galeria">
+  <span class="section-label">Galería</span>
+  <h2 class="section-title">El escenario como <em>hogar</em></h2>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="assets/gallery-kp-9304.jpg" alt="Kozmic Pearls en Club Chocolate" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/gallery-kp-9440.jpg" alt="Kozmic Pearls en vivo" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/gallery-kp-9192.jpg" alt="Presentación de Kozmic Pearls" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/gallery-kp-9148.jpg" alt="Kozmic Pearls sobre el escenario" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/gallery-kp-9418.jpg" alt="Kozmic Pearls interpretando a Janis Joplin" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/gallery-kp-9383.jpg" alt="Kozmic Pearls en concierto" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram-section reveal" id="instagram">
+  <span class="section-label">Instagram</span>
+  <h2 class="section-title">Momentos <em>kózmicos</em></h2>
+  <p>Escenas del show, backstage y registros en vivo de Kozmic Pearls.</p>
+  <div class="instagram-grid">
+    <button type="button" class="instagram-post" data-shortcode="DSXRyg4kW0E" aria-label="Ver publicación de Kozmic Pearls">
+      <img src="assets/instagram/DSXRyg4kW0E.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
+      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
+    </button>
+    <button type="button" class="instagram-post" data-shortcode="DSWFMThEc7F" aria-label="Ver publicación de Kozmic Pearls">
+      <img src="assets/instagram/DSWFMThEc7F.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
+      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
+    </button>
+    <button type="button" class="instagram-post" data-shortcode="DSLsv1dEVFt" aria-label="Ver publicación de Kozmic Pearls">
+      <img src="assets/instagram/DSLsv1dEVFt.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
+      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
+    </button>
+    <button type="button" class="instagram-post" data-shortcode="DSC3uq5Ebnu" aria-label="Ver publicación de Kozmic Pearls">
+      <img src="assets/instagram/DSC3uq5Ebnu.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
+      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
+    </button>
+    <button type="button" class="instagram-post" data-shortcode="DSQ1uJskezs" aria-label="Ver publicación de Kozmic Pearls">
+      <img src="assets/instagram/DSQ1uJskezs.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
+      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
+    </button>
+    <button type="button" class="instagram-post" data-shortcode="DSBob82kR04" aria-label="Ver publicación de Kozmic Pearls">
+      <img src="assets/instagram/DSBob82kR04.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
+      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
+    </button>
+  </div>
+  <div class="instagram-cta">
+    <a href="https://www.instagram.com/kozmicpearls/" target="_blank" rel="noopener" class="btn-secondary">
+      <i data-lucide="instagram" class="lucide-icon" aria-hidden="true"></i>
+      Seguir en Instagram
+    </a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section reveal">
+  <span class="section-label">Lo que dicen</span>
+  <h2 class="section-title">Voces del <em>público</em></h2>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <p class="testimonial-text">Una experiencia que realmente transporta a la época de Janis Joplin. Patricia tiene una energía en el escenario que eriza la piel desde el primer momento.</p>
+      <div class="testimonial-author">Rodrigo M.</div>
+      <div class="testimonial-role">Productor de eventos, Santiago</div>
+    </div>
+    <div class="testimonial">
+      <p class="testimonial-text">La interpretación vocal y la puesta en escena son impresionantes. Cerraron el festival con todo — el público pedía más y más.</p>
+      <div class="testimonial-author">Claudia V.</div>
+      <div class="testimonial-role">Festival Blues Valparaíso</div>
+    </div>
+    <div class="testimonial">
+      <p class="testimonial-text">Contraté a Kozmic Pearls para un evento corporativo y fue un acierto total. Profesionales en todo sentido y el show es de un nivel altísimo.</p>
+      <div class="testimonial-author">Andrés T.</div>
+      <div class="testimonial-role">Director de Marketing, Hard Rock Café</div>
+    </div>
+  </div>
+</section>
+
+<!-- DATES -->
+<section class="dates-section reveal" id="fechas">
+  <span class="section-label">Agenda</span>
+  <h2 class="section-title">Próximas <em>fechas</em></h2>
+  <table class="dates-table">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Ciudad</th>
+        <th>Evento / Venue</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="date-date">15 Jul 2025</td>
+        <td class="date-city">Santiago</td>
+        <td class="date-event">Woodstock Chile — Parque O'Higgins</td>
+        <td class="date-cta"><button class="btn-outline-sm">Entradas</button></td>
+      </tr>
+      <tr>
+        <td class="date-date">22 Ago 2025</td>
+        <td class="date-city">Valparaíso</td>
+        <td class="date-event">Festival Blues del Puerto</td>
+        <td class="date-cta"><button class="btn-outline-sm">Entradas</button></td>
+      </tr>
+      <tr>
+        <td class="date-date">05 Sep 2025</td>
+        <td class="date-city">Concepción</td>
+        <td class="date-event">Rock en el Bío Bío</td>
+        <td class="date-cta"><button class="btn-outline-sm">Entradas</button></td>
+      </tr>
+      <tr>
+        <td class="date-date">18 Oct 2025</td>
+        <td class="date-city">Santiago</td>
+        <td class="date-event">Club Amanda — Fecha especial</td>
+        <td class="date-cta"><button class="btn-outline-sm">Entradas</button></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PRESS KIT -->
+<section class="presskit-section reveal" id="presskit">
+  <div>
+    <span class="section-label">Para prensa y productores</span>
+    <h2 class="section-title">Descarga el <em>Press Kit</em></h2>
+    <p>Todo lo que necesitas para organizar un show de Kozmic Pearls: historia, rider técnico, fotografías en alta resolución, logos y videos.</p>
+    <a href="#" class="btn-primary">
+      <i data-lucide="download" class="lucide-icon" aria-hidden="true"></i>
+      Descargar Press Kit
+    </a>
+  </div>
+  <div class="kit-items">
+    <div class="kit-item">
+      <div class="kit-item-icon"><i data-lucide="file-text" class="lucide-icon" aria-hidden="true"></i></div>
+      <div>
+        <div class="kit-item-name">Historia & Biografía</div>
+        <div class="kit-item-desc">Texto completo sobre la trayectoria de la banda</div>
+      </div>
+    </div>
+    <div class="kit-item">
+      <div class="kit-item-icon"><i data-lucide="sliders-horizontal" class="lucide-icon" aria-hidden="true"></i></div>
+      <div>
+        <div class="kit-item-name">Rider Técnico</div>
+        <div class="kit-item-desc">Requerimientos de sonido, luces y backline</div>
+      </div>
+    </div>
+    <div class="kit-item">
+      <div class="kit-item-icon"><i data-lucide="camera" class="lucide-icon" aria-hidden="true"></i></div>
+      <div>
+        <div class="kit-item-name">Fotografías HD</div>
+        <div class="kit-item-desc">Fotos en alta resolución para prensa y difusión</div>
+      </div>
+    </div>
+    <div class="kit-item">
+      <div class="kit-item-icon"><i data-lucide="palette" class="lucide-icon" aria-hidden="true"></i></div>
+      <div>
+        <div class="kit-item-name">Logos & Marca</div>
+        <div class="kit-item-desc">Versiones en negro, blanco y full color</div>
+      </div>
+    </div>
+    <div class="kit-item">
+      <div class="kit-item-icon"><i data-lucide="clapperboard" class="lucide-icon" aria-hidden="true"></i></div>
+      <div>
+        <div class="kit-item-name">Videos y Shows</div>
+        <div class="kit-item-desc">Grabaciones en vivo de alta calidad</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section reveal" id="contacto">
+  <span class="section-label">¿Listo para booking?</span>
+  <h2 class="section-title" style="margin-bottom:3rem;">Hablemos de tu <em>evento</em></h2>
+  <div class="contact-inner">
+    <div class="contact-info">
+      <p>¿Tienes un festival, evento corporativo o espacio de música en vivo? Kozmic Pearls lleva el espíritu de Janis Joplin a cualquier escenario con profesionalismo y una energía que el público no olvidará.</p>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><i data-lucide="smartphone" class="lucide-icon" aria-hidden="true"></i></div>
+        <div class="contact-detail-text">
+          <small>WhatsApp</small>
+          +56 9 4873 8356
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><i data-lucide="mail" class="lucide-icon" aria-hidden="true"></i></div>
+        <div class="contact-detail-text">
+          <small>Email</small>
+          <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abc9c4c4c0c2c5ccebc0c4d1c6c2c8dbcecad9c7d885c8c4c6">[email&#160;protected]</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><i data-lucide="map-pin" class="lucide-icon" aria-hidden="true"></i></div>
+        <div class="contact-detail-text">
+          <small>Ubicación</small>
+          Santiago de Chile
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="https://www.instagram.com/kozmicpearls/" target="_blank" class="social-link" title="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@kozmicpearlstributejanisjoplin" target="_blank" class="social-link" title="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+        </a>
+        <a href="https://facebook.com/kozmicpearls" target="_blank" class="social-link" title="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://wa.me/56948738356" target="_blank" class="social-link" title="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="tu@email.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="evento">Tipo de evento</label>
+        <select id="evento">
+          <option value="">Selecciona una opción</option>
+          <option>Festival de música</option>
+          <option>Evento corporativo</option>
+          <option>Venue / Club</option>
+          <option>Evento privado</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" placeholder="Cuéntanos sobre tu evento: fecha, lugar, capacidad..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary">
+        <span>Enviar mensaje</span>
+        <i data-lucide="send" class="lucide-icon" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- INSTAGRAM LIGHTBOX -->
+<div class="ig-modal" id="igModal" role="dialog" aria-modal="true" aria-label="Publicación de Instagram">
+  <div class="ig-modal-dialog">
+    <button class="ig-modal-close" type="button" onclick="closeIgModal()" aria-label="Cerrar">
+      <i data-lucide="x" class="lucide-icon" aria-hidden="true"></i>
+    </button>
+    <iframe class="ig-modal-frame" id="igFrame" src="" allowtransparency="true" allowfullscreen loading="lazy" title="Publicación de Kozmic Pearls en Instagram"></iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <svg class="footer-logo" role="img" aria-label="Kozmic Pearls"><use href="#kozmic-logo"/></svg>
+    <div class="footer-sub">Tributo a Janis Joplin · Santiago, Chile</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#banda">Banda</a></li>
+    <li><a href="#repertorio">Repertorio</a></li>
+    <li><a href="#fechas">Fechas</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#presskit">Press Kit</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/kozmicpearls/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@kozmicpearlstributejanisjoplin" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+    </a>
+    <a href="https://facebook.com/kozmicpearls" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://wa.me/56948738356" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+  </div>
+  <div class="footer-copy">
+    © 2025 Kozmic Pearls<br>
+    Todos los derechos reservados
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+function renderLucideIcons() {
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+renderLucideIcons();
+
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Instagram lightbox — ver los posts dentro de la página
+const igModal = document.getElementById('igModal');
+const igFrame = document.getElementById('igFrame');
+
+function openIgModal(shortcode) {
+  igFrame.src = 'https://www.instagram.com/p/' + shortcode + '/embed/captioned/';
+  igModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeIgModal() {
+  igModal.classList.remove('open');
+  igFrame.src = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.instagram-post').forEach(btn => {
+  btn.addEventListener('click', () => openIgModal(btn.dataset.shortcode));
+});
+
+igModal.addEventListener('click', (e) => {
+  if (e.target === igModal) closeIgModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && igModal.classList.contains('open')) closeIgModal();
+});
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  const sendButtonContent = '<span>Enviar mensaje</span><i data-lucide="send" class="lucide-icon" aria-hidden="true"></i>';
+  btn.innerHTML = '<i data-lucide="check" class="lucide-icon" aria-hidden="true"></i><span>Mensaje enviado</span>';
+  btn.style.backgroundColor = 'rgba(42,124,79,0.16)';
+  btn.style.borderColor = '#2a7c4f';
+  btn.style.color = '#dff4e8';
+  renderLucideIcons();
+  setTimeout(() => {
+    btn.innerHTML = sendButtonContent;
+    btn.style.backgroundColor = '';
+    btn.style.borderColor = '';
+    btn.style.color = '';
+    e.target.reset();
+    renderLucideIcons();
+  }, 3000);
+}
+</script>
+</body>
+</html>
