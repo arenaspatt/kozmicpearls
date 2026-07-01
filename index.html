@@ -60,9 +60,15 @@
   }
   .nav-logo:hover .nav-logo-img { opacity: 0.8; }
 
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+  }
+
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.45rem;
     list-style: none;
   }
   .nav-links a {
@@ -74,6 +80,31 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--amber); }
+
+  .language-switcher {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(240,232,216,0.22);
+    background: rgba(10,8,6,0.48);
+  }
+  .lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--cream-dim);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    padding: 0.42rem 0.55rem;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+  }
+  .lang-btn:hover,
+  .lang-btn.active {
+    background: rgba(212,168,55,0.16);
+    color: var(--cream);
+  }
 
   .nav-cta {
     background: rgba(240,232,216,0.06) !important;
@@ -961,11 +992,25 @@
   .footer-social a:hover { color: var(--amber); }
 
   /* ── MOBILE ── */
+  @media (max-width: 1120px) {
+    .nav-links {
+      gap: 0.8rem;
+    }
+    .nav-links a {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+    }
+    .nav-cta {
+      padding: 0.38rem 0.75rem !important;
+    }
+  }
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-logo-img { height: 48px; width: 77px; }
     .footer-logo { height: 46px; width: 74px; margin: 0 auto; }
     .nav-links { display: none; }
+    .nav-right { gap: 0.75rem; }
     section { padding: 4rem 1.5rem; }
     .hero { padding: 0 1.5rem 4rem; }
     .about-section,
@@ -986,6 +1031,10 @@
   }
 
   @media (max-width: 560px) {
+    .lang-btn {
+      font-size: 0.62rem;
+      padding: 0.34rem 0.42rem;
+    }
     .instagram-grid { gap: 0.55rem; }
     .instagram-play { width: 44px; height: 44px; }
     .ig-modal { padding: 1rem; }
@@ -1012,15 +1061,22 @@
   <a href="#inicio" class="nav-logo" aria-label="Kozmic Pearls — inicio">
     <svg class="nav-logo-img" role="img" aria-label="Kozmic Pearls"><use href="#kozmic-logo"/></svg>
   </a>
-  <ul class="nav-links">
-    <li><a href="#videos">Videos</a></li>
-    <li><a href="#banda">La Banda</a></li>
-    <li><a href="#repertorio">Repertorio</a></li>
-    <li><a href="#fechas">Fechas</a></li>
-    <li><a href="#galeria">Galería</a></li>
-    <li><a href="#instagram">Instagram</a></li>
-    <li><a href="#contacto" class="nav-cta">Contratar</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#videos" data-i18n="navVideos">Videos</a></li>
+      <li><a href="#banda" data-i18n="navBand">La Banda</a></li>
+      <li><a href="#repertorio" data-i18n="navRepertoire">Repertorio</a></li>
+      <li><a href="#fechas" data-i18n="navDates">Fechas</a></li>
+      <li><a href="#galeria" data-i18n="navGallery">Galería</a></li>
+      <li><a href="#instagram">Instagram</a></li>
+      <li><a href="#contacto" class="nav-cta" data-i18n="navBook">Contratar</a></li>
+    </ul>
+    <div class="language-switcher" aria-label="Cambiar idioma">
+      <button type="button" class="lang-btn active" data-lang="es">ES</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="pt">PT</button>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1029,20 +1085,20 @@
   <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
-      <span>Tributo a Janis Joplin · Desde 2014</span>
+      <span data-i18n="heroEyebrow">Tributo a Janis Joplin · Desde 2014</span>
     </div>
-    <h1 class="hero-tagline">
+    <h1 class="hero-tagline" data-i18n="heroTitle">
       <span class="hero-tagline-line">Revive el espíritu, la fuerza</span>
       <span class="hero-tagline-line">y la <em>libertad</em> de Janis Joplin.</span>
     </h1>
-    <p>Una banda tributo con más de 10 años de trayectoria, dedicada a mantener vivo el legado de una de las voces más icónicas del rock y el blues.</p>
+    <p data-i18n="heroText">Una banda tributo con más de 10 años de trayectoria, dedicada a mantener vivo el legado de una de las voces más icónicas del rock y el blues.</p>
     <div class="hero-ctas">
       <a href="#videos" class="btn-primary">
         <i data-lucide="play" class="lucide-icon" aria-hidden="true"></i>
-        Ver videos
+        <span data-i18n="heroVideoCta">Ver videos</span>
       </a>
-      <a href="#contacto" class="btn-secondary">Contratar banda</a>
-      <a href="#fechas" class="btn-secondary">Próximas fechas</a>
+      <a href="#contacto" class="btn-secondary" data-i18n="heroBookCta">Contratar banda</a>
+      <a href="#fechas" class="btn-secondary" data-i18n="heroDatesCta">Próximas fechas</a>
     </div>
   </div>
 </section>
@@ -1058,19 +1114,19 @@
 
 <!-- VIDEO -->
 <section class="video-section reveal" id="videos">
-  <span class="section-label">En vivo</span>
-  <h2 class="section-title">Siente la <em>energía</em></h2>
-  <p>Una muestra de lo que Kozmic Pearls trae al escenario. Rock, blues y alma de los años 60.</p>
+  <span class="section-label" data-i18n="videoLabel">En vivo</span>
+  <h2 class="section-title" data-i18n="videoTitle">Siente la <em>energía</em></h2>
+  <p data-i18n="videoText">Una muestra de lo que Kozmic Pearls trae al escenario. Rock, blues y alma de los años 60.</p>
 
   <div class="video-wrapper">
     <video controls preload="metadata" poster="assets/video-principal-kp-poster.png" playsinline>
       <source src="assets/video-principal-kp.mp4" type="video/mp4">
-      Tu navegador no puede reproducir este video.
+      <span data-i18n="videoUnsupported">Tu navegador no puede reproducir este video.</span>
     </video>
   </div>
-  <p class="video-caption">Kozmic Pearls — En vivo</p>
+  <p class="video-caption" data-i18n="videoCaption">Kozmic Pearls — En vivo</p>
   <div class="video-fallback">
-    <a href="https://www.youtube.com/watch?v=nXLbx2aRMho" target="_blank" rel="noopener" class="btn-secondary">Abrir en YouTube</a>
+    <a href="https://www.youtube.com/watch?v=nXLbx2aRMho" target="_blank" rel="noopener" class="btn-secondary" data-i18n="videoYoutube">Abrir en YouTube</a>
   </div>
 
 </section>
@@ -1082,23 +1138,23 @@
     <img src="assets/header-kp-club-chocolate.jpg" alt="Kozmic Pearls en vivo" loading="lazy">
   </div>
   <div class="about-text">
-    <span class="section-label">Nuestra historia</span>
-    <h2 class="section-title">Más que un tributo.<br>Un <em>legado vivo.</em></h2>
-    <p>Kozmic Pearls nace hace más de una década con la misión de preservar el legado de Janis Joplin. Desde Venezuela hasta Chile, la banda ha llevado su tributo a distintos escenarios, recreando la energía, autenticidad y emoción que hicieron de Janis una leyenda.</p>
-    <p>Más que un tributo, somos un puente entre generaciones. Nuestro repertorio recorre sus grandes clásicos con un profundo respeto por la obra original, cuidando cada detalle musical para recrear la esencia, el sonido y la intensidad de Janis y las bandas que la acompañaron.</p>
-    <p>Cada presentación celebra la autenticidad, la libertad y la pasión del rock de los 60, conectando al público con el espíritu de una época que marcó para siempre la historia de la música.</p>
+    <span class="section-label" data-i18n="aboutLabel">Nuestra historia</span>
+    <h2 class="section-title" data-i18n="aboutTitle">Más que un tributo.<br>Un <em>legado vivo.</em></h2>
+    <p data-i18n="aboutText1">Kozmic Pearls nace hace más de una década con la misión de preservar el legado de Janis Joplin. Desde Venezuela hasta Chile, la banda ha llevado su tributo a distintos escenarios, recreando la energía, autenticidad y emoción que hicieron de Janis una leyenda.</p>
+    <p data-i18n="aboutText2">Más que un tributo, somos un puente entre generaciones. Nuestro repertorio recorre sus grandes clásicos con un profundo respeto por la obra original, cuidando cada detalle musical para recrear la esencia, el sonido y la intensidad de Janis y las bandas que la acompañaron.</p>
+    <p data-i18n="aboutText3">Cada presentación celebra la autenticidad, la libertad y la pasión del rock de los 60, conectando al público con el espíritu de una época que marcó para siempre la historia de la música.</p>
     <div class="about-stats">
       <div>
         <div class="stat-num">10+</div>
-        <div class="stat-label">Años en escena</div>
+        <div class="stat-label" data-i18n="statYears">Años en escena</div>
       </div>
       <div>
         <div class="stat-num">90</div>
-        <div class="stat-label">Minutos de show</div>
+        <div class="stat-label" data-i18n="statMinutes">Minutos de show</div>
       </div>
       <div>
         <div class="stat-num">14</div>
-        <div class="stat-label">Canciones en vivo</div>
+        <div class="stat-label" data-i18n="statSongs">Canciones en vivo</div>
       </div>
     </div>
   </div>
@@ -1115,38 +1171,38 @@
 
 <!-- BAND MEMBERS -->
 <section class="band-section reveal" id="banda">
-  <span class="section-label">Las personas detrás del sonido</span>
-  <h2 class="section-title">Conoce la <em>banda</em></h2>
+  <span class="section-label" data-i18n="bandLabel">Las personas detrás del sonido</span>
+  <h2 class="section-title" data-i18n="bandTitle">Conoce la <em>banda</em></h2>
   <div class="members-grid">
     <div class="member-card featured">
       <img class="member-photo" src="assets/members/patricia-web.jpg" style="object-position: 48% 16%;" alt="Patricia Arenas" loading="lazy">
       <div class="member-name">Patricia Arenas</div>
-      <div class="member-role">Voz & Caracterización</div>
-      <div class="member-bio">La voz y alma del proyecto. Patricia encarna a Janis con su potencia vocal, presencia escénica y una caracterización que hace vibrar al público. También conocida como @labrujakozmica.</div>
+      <div class="member-role" data-i18n="patriciaRole">Voz & Caracterización</div>
+      <div class="member-bio" data-i18n="patriciaBio">La voz y alma del proyecto. Patricia encarna a Janis con su potencia vocal, presencia escénica y una caracterización que hace vibrar al público. También conocida como @labrujakozmica.</div>
     </div>
     <div class="member-card">
       <img class="member-photo" src="assets/members/cris-web.jpg" style="object-position: 42% 16%;" alt="Cris - Guitarra" loading="lazy">
       <div class="member-name">Cris</div>
-      <div class="member-role">Guitarra</div>
-      <div class="member-bio">Riffs cargados de blues y rock psicodélico que transportan al público a los festivales de los 60.</div>
+      <div class="member-role" data-i18n="crisRole">Guitarra</div>
+      <div class="member-bio" data-i18n="crisBio">Riffs cargados de blues y rock psicodélico que transportan al público a los festivales de los 60.</div>
     </div>
     <div class="member-card">
       <img class="member-photo" src="assets/members/victor-web.jpg" style="object-position: 46% 14%;" alt="Victor - Bajo" loading="lazy">
       <div class="member-name">Victor</div>
-      <div class="member-role">Bajo</div>
-      <div class="member-bio">El groove que sostiene cada canción. Victor aporta la base funky y poderosa que caracterizó el sonido de Janis.</div>
+      <div class="member-role" data-i18n="victorRole">Bajo</div>
+      <div class="member-bio" data-i18n="victorBio">El groove que sostiene cada canción. Victor aporta la base funky y poderosa que caracterizó el sonido de Janis.</div>
     </div>
     <div class="member-card">
       <img class="member-photo" src="assets/members/felipe-web.jpg" style="object-position: 62% 20%;" alt="Felipe - Teclado" loading="lazy">
       <div class="member-name">Felipe</div>
-      <div class="member-role">Teclado & Órgano</div>
-      <div class="member-bio">Las texturas de Hammond y piano que completan el paisaje sonoro del rock-soul de los años 60.</div>
+      <div class="member-role" data-i18n="felipeRole">Teclado & Órgano</div>
+      <div class="member-bio" data-i18n="felipeBio">Las texturas de Hammond y piano que completan el paisaje sonoro del rock-soul de los años 60.</div>
     </div>
     <div class="member-card">
       <img class="member-photo" src="assets/members/luciano-web.jpg" style="object-position: 40% 30%;" alt="Luciano - Batería" loading="lazy">
       <div class="member-name">Luciano</div>
-      <div class="member-role">Batería</div>
-      <div class="member-bio">El motor rítmico del show. Su energía detrás del kit mantiene el espíritu crudo y apasionado de Janis.</div>
+      <div class="member-role" data-i18n="lucianoRole">Batería</div>
+      <div class="member-bio" data-i18n="lucianoBio">El motor rítmico del show. Su energía detrás del kit mantiene el espíritu crudo y apasionado de Janis.</div>
     </div>
   </div>
 </section>
@@ -1154,15 +1210,15 @@
 <!-- REPERTOIRE -->
 <section class="repertoire-section reveal" id="repertorio">
   <div class="repertoire-intro">
-    <span class="section-label">El viaje kózmico</span>
-    <h2 class="section-title">Un show de <em>90 minutos</em> que no olvidarás</h2>
-    <p>Nuestro repertorio recorre los grandes clásicos de Janis con profundo respeto por la obra original. Cada canción es interpretada capturando la esencia, el sonido y la intensidad que definió a Janis Joplin.</p>
-    <p>Un espectáculo enérgico y emotivo que conecta al público con el espíritu de una época que marcó la historia de la música.</p>
+    <span class="section-label" data-i18n="repertoireLabel">El viaje kózmico</span>
+    <h2 class="section-title" data-i18n="repertoireTitle">Un show de <em>90 minutos</em> que no olvidarás</h2>
+    <p data-i18n="repertoireText1">Nuestro repertorio recorre los grandes clásicos de Janis con profundo respeto por la obra original. Cada canción es interpretada capturando la esencia, el sonido y la intensidad que definió a Janis Joplin.</p>
+    <p data-i18n="repertoireText2">Un espectáculo enérgico y emotivo que conecta al público con el espíritu de una época que marcó la historia de la música.</p>
     <div class="show-badge">
       <div class="show-badge-icon"><i data-lucide="guitar" class="lucide-icon" aria-hidden="true"></i></div>
       <div>
         <div class="show-badge-num">+90 min</div>
-        <div class="show-badge-text">de show en vivo</div>
+        <div class="show-badge-text" data-i18n="showBadgeText">de show en vivo</div>
       </div>
     </div>
   </div>
@@ -1188,8 +1244,8 @@
 
 <!-- GALLERY -->
 <section class="gallery-section reveal" id="galeria">
-  <span class="section-label">Galería</span>
-  <h2 class="section-title">El escenario como <em>hogar</em></h2>
+  <span class="section-label" data-i18n="galleryLabel">Galería</span>
+  <h2 class="section-title" data-i18n="galleryTitle">El escenario como <em>hogar</em></h2>
   <div class="gallery-grid">
     <div class="gallery-item">
       <img src="assets/gallery-kp-9304.jpg" alt="Kozmic Pearls en Club Chocolate" loading="lazy">
@@ -1215,8 +1271,8 @@
 <!-- INSTAGRAM -->
 <section class="instagram-section reveal" id="instagram">
   <span class="section-label">Instagram</span>
-  <h2 class="section-title">Momentos <em>kózmicos</em></h2>
-  <p>Escenas del show, backstage y registros en vivo de Kozmic Pearls.</p>
+  <h2 class="section-title" data-i18n="instagramTitle">Momentos <em>kózmicos</em></h2>
+  <p data-i18n="instagramText">Escenas del show, backstage y registros en vivo de Kozmic Pearls.</p>
   <div class="instagram-grid">
     <button type="button" class="instagram-post" data-shortcode="DSXRyg4kW0E" aria-label="Ver publicación de Kozmic Pearls">
       <img src="assets/instagram/DSXRyg4kW0E.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
@@ -1246,30 +1302,30 @@
   <div class="instagram-cta">
     <a href="https://www.instagram.com/kozmicpearls/" target="_blank" rel="noopener" class="btn-secondary">
       <i data-lucide="instagram" class="lucide-icon" aria-hidden="true"></i>
-      Seguir en Instagram
+      <span data-i18n="instagramCta">Seguir en Instagram</span>
     </a>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section class="testimonials-section reveal">
-  <span class="section-label">Lo que dicen</span>
-  <h2 class="section-title">Voces del <em>público</em></h2>
+  <span class="section-label" data-i18n="testimonialsLabel">Lo que dicen</span>
+  <h2 class="section-title" data-i18n="testimonialsTitle">Voces del <em>público</em></h2>
   <div class="testimonials-grid">
     <div class="testimonial">
-      <p class="testimonial-text">Una experiencia que realmente transporta a la época de Janis Joplin. Patricia tiene una energía en el escenario que eriza la piel desde el primer momento.</p>
+      <p class="testimonial-text" data-i18n="testimonial1">Una experiencia que realmente transporta a la época de Janis Joplin. Patricia tiene una energía en el escenario que eriza la piel desde el primer momento.</p>
       <div class="testimonial-author">Rodrigo M.</div>
-      <div class="testimonial-role">Productor de eventos, Santiago</div>
+      <div class="testimonial-role" data-i18n="testimonialRole1">Productor de eventos, Santiago</div>
     </div>
     <div class="testimonial">
-      <p class="testimonial-text">La interpretación vocal y la puesta en escena son impresionantes. Cerraron el festival con todo — el público pedía más y más.</p>
+      <p class="testimonial-text" data-i18n="testimonial2">La interpretación vocal y la puesta en escena son impresionantes. Cerraron el festival con todo — el público pedía más y más.</p>
       <div class="testimonial-author">Claudia V.</div>
       <div class="testimonial-role">Festival Blues Valparaíso</div>
     </div>
     <div class="testimonial">
-      <p class="testimonial-text">Contraté a Kozmic Pearls para un evento corporativo y fue un acierto total. Profesionales en todo sentido y el show es de un nivel altísimo.</p>
+      <p class="testimonial-text" data-i18n="testimonial3">Contraté a Kozmic Pearls para un evento corporativo y fue un acierto total. Profesionales en todo sentido y el show es de un nivel altísimo.</p>
       <div class="testimonial-author">Andrés T.</div>
-      <div class="testimonial-role">Director de Marketing, Hard Rock Café</div>
+      <div class="testimonial-role" data-i18n="testimonialRole3">Director de Marketing, Hard Rock Café</div>
     </div>
   </div>
 </section>
@@ -1277,22 +1333,22 @@
 <!-- DATES -->
 <section class="dates-section reveal" id="fechas">
   <span class="section-label">Agenda</span>
-  <h2 class="section-title">Próximas <em>fechas</em></h2>
+  <h2 class="section-title" data-i18n="datesTitle">Próximas <em>fechas</em></h2>
   <table class="dates-table">
     <thead>
       <tr>
-        <th>Fecha</th>
-        <th>Ciudad</th>
-        <th>Evento / Venue</th>
+        <th data-i18n="datesHeaderDate">Fecha</th>
+        <th data-i18n="datesHeaderCity">Ciudad</th>
+        <th data-i18n="datesHeaderEvent">Evento / Venue</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="date-date">12 de septiembre</td>
+        <td class="date-date" data-i18n="datesDate">12 de septiembre</td>
         <td class="date-city">Santiago</td>
         <td class="date-event">LA BATUTA</td>
-        <td class="date-cta"><button class="btn-outline-sm">Entradas</button></td>
+        <td class="date-cta"><button class="btn-outline-sm" data-i18n="datesTickets">Entradas</button></td>
       </tr>
     </tbody>
   </table>
@@ -1301,48 +1357,48 @@
 <!-- PRESS KIT -->
 <section class="presskit-section reveal" id="presskit">
   <div>
-    <span class="section-label">Para prensa y productores</span>
-    <h2 class="section-title">Descarga el <em>Press Kit</em></h2>
-    <p>Todo lo que necesitas para organizar un show de Kozmic Pearls: historia, rider técnico, fotografías en alta resolución, logos y videos.</p>
+    <span class="section-label" data-i18n="pressLabel">Para prensa y productores</span>
+    <h2 class="section-title" data-i18n="pressTitle">Descarga el <em>Press Kit</em></h2>
+    <p data-i18n="pressText">Todo lo que necesitas para organizar un show de Kozmic Pearls: historia, rider técnico, fotografías en alta resolución, logos y videos.</p>
     <a href="#" class="btn-primary">
       <i data-lucide="download" class="lucide-icon" aria-hidden="true"></i>
-      Descargar Press Kit
+      <span data-i18n="pressCta">Descargar Press Kit</span>
     </a>
   </div>
   <div class="kit-items">
     <div class="kit-item">
       <div class="kit-item-icon"><i data-lucide="file-text" class="lucide-icon" aria-hidden="true"></i></div>
       <div>
-        <div class="kit-item-name">Historia & Biografía</div>
-        <div class="kit-item-desc">Texto completo sobre la trayectoria de la banda</div>
+        <div class="kit-item-name" data-i18n="kitName1">Historia & Biografía</div>
+        <div class="kit-item-desc" data-i18n="kitDesc1">Texto completo sobre la trayectoria de la banda</div>
       </div>
     </div>
     <div class="kit-item">
       <div class="kit-item-icon"><i data-lucide="sliders-horizontal" class="lucide-icon" aria-hidden="true"></i></div>
       <div>
-        <div class="kit-item-name">Rider Técnico</div>
-        <div class="kit-item-desc">Requerimientos de sonido, luces y backline</div>
+        <div class="kit-item-name" data-i18n="kitName2">Rider Técnico</div>
+        <div class="kit-item-desc" data-i18n="kitDesc2">Requerimientos de sonido, luces y backline</div>
       </div>
     </div>
     <div class="kit-item">
       <div class="kit-item-icon"><i data-lucide="camera" class="lucide-icon" aria-hidden="true"></i></div>
       <div>
-        <div class="kit-item-name">Fotografías HD</div>
-        <div class="kit-item-desc">Fotos en alta resolución para prensa y difusión</div>
+        <div class="kit-item-name" data-i18n="kitName3">Fotografías HD</div>
+        <div class="kit-item-desc" data-i18n="kitDesc3">Fotos en alta resolución para prensa y difusión</div>
       </div>
     </div>
     <div class="kit-item">
       <div class="kit-item-icon"><i data-lucide="palette" class="lucide-icon" aria-hidden="true"></i></div>
       <div>
-        <div class="kit-item-name">Logos & Marca</div>
-        <div class="kit-item-desc">Versiones en negro, blanco y full color</div>
+        <div class="kit-item-name" data-i18n="kitName4">Logos & Marca</div>
+        <div class="kit-item-desc" data-i18n="kitDesc4">Versiones en negro, blanco y full color</div>
       </div>
     </div>
     <div class="kit-item">
       <div class="kit-item-icon"><i data-lucide="clapperboard" class="lucide-icon" aria-hidden="true"></i></div>
       <div>
-        <div class="kit-item-name">Videos y Shows</div>
-        <div class="kit-item-desc">Grabaciones en vivo de alta calidad</div>
+        <div class="kit-item-name" data-i18n="kitName5">Videos y Shows</div>
+        <div class="kit-item-desc" data-i18n="kitDesc5">Grabaciones en vivo de alta calidad</div>
       </div>
     </div>
   </div>
@@ -1350,11 +1406,11 @@
 
 <!-- CONTACT -->
 <section class="contact-section reveal" id="contacto">
-  <span class="section-label">¿Listo para booking?</span>
-  <h2 class="section-title" style="margin-bottom:3rem;">Hablemos de tu <em>evento</em></h2>
+  <span class="section-label" data-i18n="contactLabel">¿Listo para booking?</span>
+  <h2 class="section-title" style="margin-bottom:3rem;" data-i18n="contactTitle">Hablemos de tu <em>evento</em></h2>
   <div class="contact-inner">
     <div class="contact-info">
-      <p>¿Tienes un festival, evento corporativo o espacio de música en vivo? Kozmic Pearls lleva el espíritu de Janis Joplin a cualquier escenario con profesionalismo y una energía que el público no olvidará.</p>
+      <p data-i18n="contactText">¿Tienes un festival, evento corporativo o espacio de música en vivo? Kozmic Pearls lleva el espíritu de Janis Joplin a cualquier escenario con profesionalismo y una energía que el público no olvidará.</p>
 
       <div class="contact-detail">
         <div class="contact-detail-icon"><i data-lucide="smartphone" class="lucide-icon" aria-hidden="true"></i></div>
@@ -1373,8 +1429,8 @@
       <div class="contact-detail">
         <div class="contact-detail-icon"><i data-lucide="map-pin" class="lucide-icon" aria-hidden="true"></i></div>
         <div class="contact-detail-text">
-          <small>Ubicación</small>
-          Santiago de Chile
+          <small data-i18n="contactLocationLabel">Ubicación</small>
+          <span data-i18n="contactLocation">Santiago de Chile</span>
         </div>
       </div>
 
@@ -1399,31 +1455,31 @@
       <input type="hidden" name="_template" value="table">
       <div class="form-row">
         <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          <label for="nombre" data-i18n="formName">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" data-i18n-placeholder="formNamePlaceholder" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" data-i18n-placeholder="formEmailPlaceholder" required>
         </div>
       </div>
       <div class="form-group">
-        <label for="evento">Tipo de evento</label>
+        <label for="evento" data-i18n="formEvent">Tipo de evento</label>
         <select id="evento" name="tipo_de_evento">
-          <option value="">Selecciona una opción</option>
-          <option>Festival de música</option>
-          <option>Evento corporativo</option>
-          <option>Venue / Club</option>
-          <option>Evento privado</option>
-          <option>Otro</option>
+          <option value="" data-i18n="formEventPlaceholder">Selecciona una opción</option>
+          <option data-i18n="formEventFestival">Festival de música</option>
+          <option data-i18n="formEventCorporate">Evento corporativo</option>
+          <option data-i18n="formEventVenue">Venue / Club</option>
+          <option data-i18n="formEventPrivate">Evento privado</option>
+          <option data-i18n="formEventOther">Otro</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu evento: fecha, lugar, capacidad..."></textarea>
+        <label for="mensaje" data-i18n="formMessage">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu evento: fecha, lugar, capacidad..." data-i18n-placeholder="formMessagePlaceholder"></textarea>
       </div>
       <button type="submit" class="btn-primary">
-        <span>Enviar mensaje</span>
+        <span data-i18n="formSubmit">Enviar mensaje</span>
         <i data-lucide="send" class="lucide-icon" aria-hidden="true"></i>
       </button>
     </form>
@@ -1444,16 +1500,16 @@
 <footer>
   <div>
     <svg class="footer-logo" role="img" aria-label="Kozmic Pearls"><use href="#kozmic-logo"/></svg>
-    <div class="footer-sub">Tributo a Janis Joplin · Santiago, Chile</div>
+    <div class="footer-sub" data-i18n="footerSub">Tributo a Janis Joplin · Santiago, Chile</div>
   </div>
   <ul class="footer-links">
-    <li><a href="#videos">Videos</a></li>
-    <li><a href="#banda">Banda</a></li>
-    <li><a href="#repertorio">Repertorio</a></li>
-    <li><a href="#fechas">Fechas</a></li>
+    <li><a href="#videos" data-i18n="navVideos">Videos</a></li>
+    <li><a href="#banda" data-i18n="footerBand">Banda</a></li>
+    <li><a href="#repertorio" data-i18n="navRepertoire">Repertorio</a></li>
+    <li><a href="#fechas" data-i18n="navDates">Fechas</a></li>
     <li><a href="#instagram">Instagram</a></li>
     <li><a href="#presskit">Press Kit</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#contacto" data-i18n="footerContact">Contacto</a></li>
   </ul>
   <div class="footer-social">
     <a href="https://www.instagram.com/kozmicpearls/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
@@ -1471,12 +1527,345 @@
   </div>
   <div class="footer-copy">
     © 2026 Kozmic Pearls<br>
-    Todos los derechos reservados
+    <span data-i18n="footerRights">Todos los derechos reservados</span>
   </div>
 </footer>
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
+const translations = {
+  es: {
+    pageTitle: 'Kozmic Pearls — Tributo a Janis Joplin',
+    navVideos: 'Videos',
+    navBand: 'La Banda',
+    navRepertoire: 'Repertorio',
+    navDates: 'Fechas',
+    navGallery: 'Galería',
+    navBook: 'Contratar',
+    footerBand: 'Banda',
+    footerContact: 'Contacto',
+    heroEyebrow: 'Tributo a Janis Joplin · Desde 2014',
+    heroTitle: '<span class="hero-tagline-line">Revive el espíritu, la fuerza</span><span class="hero-tagline-line">y la <em>libertad</em> de Janis Joplin.</span>',
+    heroText: 'Una banda tributo con más de 10 años de trayectoria, dedicada a mantener vivo el legado de una de las voces más icónicas del rock y el blues.',
+    heroVideoCta: 'Ver videos',
+    heroBookCta: 'Contratar banda',
+    heroDatesCta: 'Próximas fechas',
+    videoLabel: 'En vivo',
+    videoTitle: 'Siente la <em>energía</em>',
+    videoText: 'Una muestra de lo que Kozmic Pearls trae al escenario. Rock, blues y alma de los años 60.',
+    videoUnsupported: 'Tu navegador no puede reproducir este video.',
+    videoCaption: 'Kozmic Pearls — En vivo',
+    videoYoutube: 'Abrir en YouTube',
+    aboutLabel: 'Nuestra historia',
+    aboutTitle: 'Más que un tributo.<br>Un <em>legado vivo.</em>',
+    aboutText1: 'Kozmic Pearls nace hace más de una década con la misión de preservar el legado de Janis Joplin. Desde Venezuela hasta Chile, la banda ha llevado su tributo a distintos escenarios, recreando la energía, autenticidad y emoción que hicieron de Janis una leyenda.',
+    aboutText2: 'Más que un tributo, somos un puente entre generaciones. Nuestro repertorio recorre sus grandes clásicos con un profundo respeto por la obra original, cuidando cada detalle musical para recrear la esencia, el sonido y la intensidad de Janis y las bandas que la acompañaron.',
+    aboutText3: 'Cada presentación celebra la autenticidad, la libertad y la pasión del rock de los 60, conectando al público con el espíritu de una época que marcó para siempre la historia de la música.',
+    statYears: 'Años en escena',
+    statMinutes: 'Minutos de show',
+    statSongs: 'Canciones en vivo',
+    bandLabel: 'Las personas detrás del sonido',
+    bandTitle: 'Conoce la <em>banda</em>',
+    patriciaRole: 'Voz & Caracterización',
+    patriciaBio: 'La voz y alma del proyecto. Patricia encarna a Janis con su potencia vocal, presencia escénica y una caracterización que hace vibrar al público. También conocida como @labrujakozmica.',
+    crisRole: 'Guitarra',
+    crisBio: 'Riffs cargados de blues y rock psicodélico que transportan al público a los festivales de los 60.',
+    victorRole: 'Bajo',
+    victorBio: 'El groove que sostiene cada canción. Victor aporta la base funky y poderosa que caracterizó el sonido de Janis.',
+    felipeRole: 'Teclado & Órgano',
+    felipeBio: 'Las texturas de Hammond y piano que completan el paisaje sonoro del rock-soul de los años 60.',
+    lucianoRole: 'Batería',
+    lucianoBio: 'El motor rítmico del show. Su energía detrás del kit mantiene el espíritu crudo y apasionado de Janis.',
+    repertoireLabel: 'El viaje kózmico',
+    repertoireTitle: 'Un show de <em>90 minutos</em> que no olvidarás',
+    repertoireText1: 'Nuestro repertorio recorre los grandes clásicos de Janis con profundo respeto por la obra original. Cada canción es interpretada capturando la esencia, el sonido y la intensidad que definió a Janis Joplin.',
+    repertoireText2: 'Un espectáculo enérgico y emotivo que conecta al público con el espíritu de una época que marcó la historia de la música.',
+    showBadgeText: 'de show en vivo',
+    galleryLabel: 'Galería',
+    galleryTitle: 'El escenario como <em>hogar</em>',
+    instagramTitle: 'Momentos <em>kózmicos</em>',
+    instagramText: 'Escenas del show, backstage y registros en vivo de Kozmic Pearls.',
+    instagramCta: 'Seguir en Instagram',
+    testimonialsLabel: 'Lo que dicen',
+    testimonialsTitle: 'Voces del <em>público</em>',
+    testimonial1: 'Una experiencia que realmente transporta a la época de Janis Joplin. Patricia tiene una energía en el escenario que eriza la piel desde el primer momento.',
+    testimonialRole1: 'Productor de eventos, Santiago',
+    testimonial2: 'La interpretación vocal y la puesta en escena son impresionantes. Cerraron el festival con todo — el público pedía más y más.',
+    testimonial3: 'Contraté a Kozmic Pearls para un evento corporativo y fue un acierto total. Profesionales en todo sentido y el show es de un nivel altísimo.',
+    testimonialRole3: 'Director de Marketing, Hard Rock Café',
+    datesTitle: 'Próximas <em>fechas</em>',
+    datesHeaderDate: 'Fecha',
+    datesHeaderCity: 'Ciudad',
+    datesHeaderEvent: 'Evento / Venue',
+    datesDate: '12 de septiembre',
+    datesTickets: 'Entradas',
+    pressLabel: 'Para prensa y productores',
+    pressTitle: 'Descarga el <em>Press Kit</em>',
+    pressText: 'Todo lo que necesitas para organizar un show de Kozmic Pearls: historia, rider técnico, fotografías en alta resolución, logos y videos.',
+    pressCta: 'Descargar Press Kit',
+    kitName1: 'Historia & Biografía',
+    kitDesc1: 'Texto completo sobre la trayectoria de la banda',
+    kitName2: 'Rider Técnico',
+    kitDesc2: 'Requerimientos de sonido, luces y backline',
+    kitName3: 'Fotografías HD',
+    kitDesc3: 'Fotos en alta resolución para prensa y difusión',
+    kitName4: 'Logos & Marca',
+    kitDesc4: 'Versiones en negro, blanco y full color',
+    kitName5: 'Videos y Shows',
+    kitDesc5: 'Grabaciones en vivo de alta calidad',
+    contactLabel: '¿Listo para booking?',
+    contactTitle: 'Hablemos de tu <em>evento</em>',
+    contactText: '¿Tienes un festival, evento corporativo o espacio de música en vivo? Kozmic Pearls lleva el espíritu de Janis Joplin a cualquier escenario con profesionalismo y una energía que el público no olvidará.',
+    contactLocationLabel: 'Ubicación',
+    contactLocation: 'Santiago de Chile',
+    formName: 'Nombre',
+    formNamePlaceholder: 'Tu nombre',
+    formEmailPlaceholder: 'tu@email.com',
+    formEvent: 'Tipo de evento',
+    formEventPlaceholder: 'Selecciona una opción',
+    formEventFestival: 'Festival de música',
+    formEventCorporate: 'Evento corporativo',
+    formEventVenue: 'Venue / Club',
+    formEventPrivate: 'Evento privado',
+    formEventOther: 'Otro',
+    formMessage: 'Mensaje',
+    formMessagePlaceholder: 'Cuéntanos sobre tu evento: fecha, lugar, capacidad...',
+    formSubmit: 'Enviar mensaje',
+    footerSub: 'Tributo a Janis Joplin · Santiago, Chile',
+    footerRights: 'Todos los derechos reservados'
+  },
+  en: {
+    pageTitle: 'Kozmic Pearls — Janis Joplin Tribute',
+    navVideos: 'Videos',
+    navBand: 'The Band',
+    navRepertoire: 'Setlist',
+    navDates: 'Dates',
+    navGallery: 'Gallery',
+    navBook: 'Book',
+    footerBand: 'Band',
+    footerContact: 'Contact',
+    heroEyebrow: 'Janis Joplin Tribute · Since 2014',
+    heroTitle: '<span class="hero-tagline-line">Revive the spirit, power</span><span class="hero-tagline-line">and <em>freedom</em> of Janis Joplin.</span>',
+    heroText: 'A tribute band with more than 10 years on stage, dedicated to keeping alive the legacy of one of rock and blues’ most iconic voices.',
+    heroVideoCta: 'Watch videos',
+    heroBookCta: 'Book the band',
+    heroDatesCta: 'Upcoming dates',
+    videoLabel: 'Live',
+    videoTitle: 'Feel the <em>energy</em>',
+    videoText: 'A glimpse of what Kozmic Pearls brings to the stage: rock, blues, and the soul of the 60s.',
+    videoUnsupported: 'Your browser cannot play this video.',
+    videoCaption: 'Kozmic Pearls — Live',
+    videoYoutube: 'Open on YouTube',
+    aboutLabel: 'Our story',
+    aboutTitle: 'More than a tribute.<br>A <em>living legacy.</em>',
+    aboutText1: 'Kozmic Pearls was born more than a decade ago with the mission of preserving Janis Joplin’s legacy. From Venezuela to Chile, the band has brought its tribute to different stages, recreating the energy, authenticity, and emotion that made Janis a legend.',
+    aboutText2: 'More than a tribute, we are a bridge between generations. Our repertoire travels through her greatest classics with deep respect for the original work, taking care of every musical detail to recreate the essence, sound, and intensity of Janis and the bands that accompanied her.',
+    aboutText3: 'Every performance celebrates the authenticity, freedom, and passion of 60s rock, connecting audiences with the spirit of an era that forever shaped music history.',
+    statYears: 'Years on stage',
+    statMinutes: 'Minutes of show',
+    statSongs: 'Live songs',
+    bandLabel: 'The people behind the sound',
+    bandTitle: 'Meet the <em>band</em>',
+    patriciaRole: 'Vocals & Characterization',
+    patriciaBio: 'The voice and soul of the project. Patricia embodies Janis with vocal power, stage presence, and a characterization that moves the audience. Also known as @labrujakozmica.',
+    crisRole: 'Guitar',
+    crisBio: 'Blues-heavy and psychedelic rock riffs that take the audience back to the festivals of the 60s.',
+    victorRole: 'Bass',
+    victorBio: 'The groove that holds every song together. Victor brings the funky, powerful foundation that shaped Janis’ sound.',
+    felipeRole: 'Keys & Organ',
+    felipeBio: 'Hammond and piano textures that complete the sonic landscape of 60s rock-soul.',
+    lucianoRole: 'Drums',
+    lucianoBio: 'The rhythmic engine of the show. His energy behind the kit keeps Janis’ raw and passionate spirit alive.',
+    repertoireLabel: 'The kozmic journey',
+    repertoireTitle: 'A <em>90-minute</em> show you will not forget',
+    repertoireText1: 'Our setlist travels through Janis’ greatest classics with deep respect for the original work. Each song is performed to capture the essence, sound, and intensity that defined Janis Joplin.',
+    repertoireText2: 'An energetic and emotional show that connects audiences with the spirit of an era that shaped music history.',
+    showBadgeText: 'live show',
+    galleryLabel: 'Gallery',
+    galleryTitle: 'The stage as <em>home</em>',
+    instagramTitle: '<em>Kozmic</em> moments',
+    instagramText: 'Scenes from the show, backstage, and live records from Kozmic Pearls.',
+    instagramCta: 'Follow on Instagram',
+    testimonialsLabel: 'What they say',
+    testimonialsTitle: 'Voices from the <em>audience</em>',
+    testimonial1: 'An experience that truly transports you to Janis Joplin’s era. Patricia has an energy on stage that gives you chills from the first moment.',
+    testimonialRole1: 'Event producer, Santiago',
+    testimonial2: 'The vocal performance and staging are impressive. They closed the festival with everything — the audience kept asking for more.',
+    testimonial3: 'I hired Kozmic Pearls for a corporate event and it was a total win. Professional in every way, and the show is top level.',
+    testimonialRole3: 'Marketing Director, Hard Rock Café',
+    datesTitle: 'Upcoming <em>dates</em>',
+    datesHeaderDate: 'Date',
+    datesHeaderCity: 'City',
+    datesHeaderEvent: 'Event / Venue',
+    datesDate: 'September 12',
+    datesTickets: 'Tickets',
+    pressLabel: 'For press and producers',
+    pressTitle: 'Download the <em>Press Kit</em>',
+    pressText: 'Everything you need to organize a Kozmic Pearls show: story, technical rider, high-resolution photos, logos, and videos.',
+    pressCta: 'Download Press Kit',
+    kitName1: 'Story & Biography',
+    kitDesc1: 'Full text about the band’s journey',
+    kitName2: 'Technical Rider',
+    kitDesc2: 'Sound, lighting, and backline requirements',
+    kitName3: 'HD Photos',
+    kitDesc3: 'High-resolution photos for press and promotion',
+    kitName4: 'Logos & Brand',
+    kitDesc4: 'Black, white, and full-color versions',
+    kitName5: 'Videos and Shows',
+    kitDesc5: 'High-quality live recordings',
+    contactLabel: 'Ready for booking?',
+    contactTitle: 'Let’s talk about your <em>event</em>',
+    contactText: 'Do you have a festival, corporate event, or live music venue? Kozmic Pearls brings the spirit of Janis Joplin to any stage with professionalism and energy the audience will not forget.',
+    contactLocationLabel: 'Location',
+    contactLocation: 'Santiago, Chile',
+    formName: 'Name',
+    formNamePlaceholder: 'Your name',
+    formEmailPlaceholder: 'your@email.com',
+    formEvent: 'Event type',
+    formEventPlaceholder: 'Select an option',
+    formEventFestival: 'Music festival',
+    formEventCorporate: 'Corporate event',
+    formEventVenue: 'Venue / Club',
+    formEventPrivate: 'Private event',
+    formEventOther: 'Other',
+    formMessage: 'Message',
+    formMessagePlaceholder: 'Tell us about your event: date, location, capacity...',
+    formSubmit: 'Send message',
+    footerSub: 'Janis Joplin Tribute · Santiago, Chile',
+    footerRights: 'All rights reserved'
+  },
+  pt: {
+    pageTitle: 'Kozmic Pearls — Tributo a Janis Joplin',
+    navVideos: 'Vídeos',
+    navBand: 'A Banda',
+    navRepertoire: 'Repertório',
+    navDates: 'Datas',
+    navGallery: 'Galeria',
+    navBook: 'Contratar',
+    footerBand: 'Banda',
+    footerContact: 'Contato',
+    heroEyebrow: 'Tributo a Janis Joplin · Desde 2014',
+    heroTitle: '<span class="hero-tagline-line">Reviva o espírito, a força</span><span class="hero-tagline-line">e a <em>liberdade</em> de Janis Joplin.</span>',
+    heroText: 'Uma banda tributo com mais de 10 anos de trajetória, dedicada a manter vivo o legado de uma das vozes mais icônicas do rock e do blues.',
+    heroVideoCta: 'Ver vídeos',
+    heroBookCta: 'Contratar banda',
+    heroDatesCta: 'Próximas datas',
+    videoLabel: 'Ao vivo',
+    videoTitle: 'Sinta a <em>energia</em>',
+    videoText: 'Uma amostra do que Kozmic Pearls leva ao palco. Rock, blues e a alma dos anos 60.',
+    videoUnsupported: 'Seu navegador não pode reproduzir este vídeo.',
+    videoCaption: 'Kozmic Pearls — Ao vivo',
+    videoYoutube: 'Abrir no YouTube',
+    aboutLabel: 'Nossa história',
+    aboutTitle: 'Mais que um tributo.<br>Um <em>legado vivo.</em>',
+    aboutText1: 'Kozmic Pearls nasceu há mais de uma década com a missão de preservar o legado de Janis Joplin. Da Venezuela ao Chile, a banda levou seu tributo a diferentes palcos, recriando a energia, autenticidade e emoção que fizeram de Janis uma lenda.',
+    aboutText2: 'Mais que um tributo, somos uma ponte entre gerações. Nosso repertório percorre seus grandes clássicos com profundo respeito pela obra original, cuidando de cada detalhe musical para recriar a essência, o som e a intensidade de Janis e das bandas que a acompanharam.',
+    aboutText3: 'Cada apresentação celebra a autenticidade, a liberdade e a paixão do rock dos anos 60, conectando o público ao espírito de uma época que marcou para sempre a história da música.',
+    statYears: 'Anos em cena',
+    statMinutes: 'Minutos de show',
+    statSongs: 'Músicas ao vivo',
+    bandLabel: 'As pessoas por trás do som',
+    bandTitle: 'Conheça a <em>banda</em>',
+    patriciaRole: 'Voz & Caracterização',
+    patriciaBio: 'A voz e a alma do projeto. Patricia incorpora Janis com potência vocal, presença de palco e uma caracterização que emociona o público. Também conhecida como @labrujakozmica.',
+    crisRole: 'Guitarra',
+    crisBio: 'Riffs carregados de blues e rock psicodélico que transportam o público aos festivais dos anos 60.',
+    victorRole: 'Baixo',
+    victorBio: 'O groove que sustenta cada música. Victor traz a base funky e poderosa que caracterizou o som de Janis.',
+    felipeRole: 'Teclado & Órgão',
+    felipeBio: 'Texturas de Hammond e piano que completam a paisagem sonora do rock-soul dos anos 60.',
+    lucianoRole: 'Bateria',
+    lucianoBio: 'O motor rítmico do show. Sua energia atrás da bateria mantém vivo o espírito cru e apaixonado de Janis.',
+    repertoireLabel: 'A viagem kózmica',
+    repertoireTitle: 'Um show de <em>90 minutos</em> que você não vai esquecer',
+    repertoireText1: 'Nosso repertório percorre os grandes clássicos de Janis com profundo respeito pela obra original. Cada música é interpretada capturando a essência, o som e a intensidade que definiram Janis Joplin.',
+    repertoireText2: 'Um espetáculo enérgico e emotivo que conecta o público ao espírito de uma época que marcou a história da música.',
+    showBadgeText: 'de show ao vivo',
+    galleryLabel: 'Galeria',
+    galleryTitle: 'O palco como <em>lar</em>',
+    instagramTitle: 'Momentos <em>kózmicos</em>',
+    instagramText: 'Cenas do show, backstage e registros ao vivo de Kozmic Pearls.',
+    instagramCta: 'Seguir no Instagram',
+    testimonialsLabel: 'O que dizem',
+    testimonialsTitle: 'Vozes do <em>público</em>',
+    testimonial1: 'Uma experiência que realmente transporta para a época de Janis Joplin. Patricia tem uma energia no palco que arrepia desde o primeiro momento.',
+    testimonialRole1: 'Produtor de eventos, Santiago',
+    testimonial2: 'A interpretação vocal e a presença de palco são impressionantes. Fecharam o festival com tudo — o público pedia cada vez mais.',
+    testimonial3: 'Contratei Kozmic Pearls para um evento corporativo e foi um acerto total. Profissionais em todos os sentidos e o show é de altíssimo nível.',
+    testimonialRole3: 'Diretor de Marketing, Hard Rock Café',
+    datesTitle: 'Próximas <em>datas</em>',
+    datesHeaderDate: 'Data',
+    datesHeaderCity: 'Cidade',
+    datesHeaderEvent: 'Evento / Venue',
+    datesDate: '12 de setembro',
+    datesTickets: 'Ingressos',
+    pressLabel: 'Para imprensa e produtores',
+    pressTitle: 'Baixe o <em>Press Kit</em>',
+    pressText: 'Tudo o que você precisa para organizar um show de Kozmic Pearls: história, rider técnico, fotos em alta resolução, logos e vídeos.',
+    pressCta: 'Baixar Press Kit',
+    kitName1: 'História & Biografia',
+    kitDesc1: 'Texto completo sobre a trajetória da banda',
+    kitName2: 'Rider Técnico',
+    kitDesc2: 'Requisitos de som, luzes e backline',
+    kitName3: 'Fotos HD',
+    kitDesc3: 'Fotos em alta resolução para imprensa e divulgação',
+    kitName4: 'Logos & Marca',
+    kitDesc4: 'Versões em preto, branco e coloridas',
+    kitName5: 'Vídeos e Shows',
+    kitDesc5: 'Gravações ao vivo em alta qualidade',
+    contactLabel: 'Pronto para booking?',
+    contactTitle: 'Vamos falar do seu <em>evento</em>',
+    contactText: 'Você tem um festival, evento corporativo ou espaço de música ao vivo? Kozmic Pearls leva o espírito de Janis Joplin a qualquer palco com profissionalismo e uma energia que o público não vai esquecer.',
+    contactLocationLabel: 'Localização',
+    contactLocation: 'Santiago do Chile',
+    formName: 'Nome',
+    formNamePlaceholder: 'Seu nome',
+    formEmailPlaceholder: 'seu@email.com',
+    formEvent: 'Tipo de evento',
+    formEventPlaceholder: 'Selecione uma opção',
+    formEventFestival: 'Festival de música',
+    formEventCorporate: 'Evento corporativo',
+    formEventVenue: 'Venue / Club',
+    formEventPrivate: 'Evento privado',
+    formEventOther: 'Outro',
+    formMessage: 'Mensagem',
+    formMessagePlaceholder: 'Conte-nos sobre seu evento: data, local, capacidade...',
+    formSubmit: 'Enviar mensagem',
+    footerSub: 'Tributo a Janis Joplin · Santiago, Chile',
+    footerRights: 'Todos os direitos reservados'
+  }
+};
+
+function setLanguage(lang) {
+  const dictionary = translations[lang] || translations.es;
+  document.documentElement.lang = lang;
+  document.title = dictionary.pageTitle;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dictionary[key]) el.innerHTML = dictionary[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (dictionary[key]) el.setAttribute('placeholder', dictionary[key]);
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    const active = btn.dataset.lang === lang;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-pressed', String(active));
+  });
+  try { localStorage.setItem('kozmic-language', lang); } catch (e) {}
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+});
+
+let savedLanguage = 'es';
+try {
+  savedLanguage = localStorage.getItem('kozmic-language') || 'es';
+} catch (e) {}
+setLanguage(savedLanguage);
+
 function renderLucideIcons() {
   if (window.lucide) {
     window.lucide.createIcons();
