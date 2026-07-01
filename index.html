@@ -172,6 +172,24 @@
     font-style: italic;
     color: var(--amber);
   }
+  .hero-tagline-line { display: block; }
+
+  @media (min-width: 901px) {
+    .hero-content { max-width: 1160px; }
+    .hero h1.hero-tagline {
+      max-width: 1160px;
+      font-size: 3.2rem;
+    }
+    .hero-tagline-line { white-space: nowrap; }
+  }
+
+  @media (min-width: 1180px) {
+    .hero h1.hero-tagline { font-size: 4.35rem; }
+  }
+
+  @media (min-width: 1480px) {
+    .hero h1.hero-tagline { font-size: 5rem; }
+  }
 
   .hero p {
     font-size: 1.05rem;
@@ -1013,7 +1031,10 @@
       <div class="hero-eyebrow-line"></div>
       <span>Tributo a Janis Joplin · Desde 2014</span>
     </div>
-    <h1 class="hero-tagline">Revive la fuerza, la pasión<br>y la <em>libertad</em> de Janis Joplin.</h1>
+    <h1 class="hero-tagline">
+      <span class="hero-tagline-line">Revive el espíritu, la fuerza</span>
+      <span class="hero-tagline-line">y la <em>libertad</em> de Janis Joplin.</span>
+    </h1>
     <p>Una banda tributo con más de 10 años de trayectoria, dedicada a mantener vivo el legado de una de las voces más icónicas del rock y el blues.</p>
     <div class="hero-ctas">
       <a href="#videos" class="btn-primary">
@@ -1042,7 +1063,7 @@
   <p>Una muestra de lo que Kozmic Pearls trae al escenario. Rock, blues y alma de los años 60.</p>
 
   <div class="video-wrapper">
-    <video controls preload="metadata" playsinline>
+    <video controls preload="metadata" poster="assets/video-principal-kp-poster.png" playsinline>
       <source src="assets/video-principal-kp.mp4" type="video/mp4">
       Tu navegador no puede reproducir este video.
     </video>
@@ -1447,7 +1468,7 @@
     </a>
   </div>
   <div class="footer-copy">
-    © 2025 Kozmic Pearls<br>
+    © 2026 Kozmic Pearls<br>
     Todos los derechos reservados
   </div>
 </footer>
