@@ -1002,6 +1002,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
     max-width: 1000px;
+    width: 100%;
   }
   .contact-info p { color: var(--cream-dim); line-height: 1.8; margin-bottom: 2rem; }
   .contact-detail {
@@ -1020,7 +1021,17 @@
     color: var(--amber);
     font-size: 1rem;
   }
-  .contact-detail-text { font-size: 0.9rem; color: var(--cream); }
+  .contact-info,
+  .contact-form,
+  .form-group {
+    min-width: 0;
+  }
+  .contact-detail-text {
+    min-width: 0;
+    font-size: 0.9rem;
+    color: var(--cream);
+    overflow-wrap: anywhere;
+  }
   .contact-detail-text small { display: block; font-size: 0.72rem; color: var(--cream-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.1rem; }
   .contact-detail-text a {
     color: inherit;
@@ -1046,7 +1057,7 @@
   .social-link:hover { border-color: var(--amber); color: var(--amber); background: rgba(212,168,55,0.08); }
 
   /* Form */
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
   .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
   .form-group label {
     font-size: 0.7rem;
@@ -1068,6 +1079,8 @@
     transition: border-color 0.2s;
     outline: none;
     appearance: none;
+    width: 100%;
+    min-width: 0;
   }
   .form-group input:focus,
   .form-group select:focus,
@@ -1077,7 +1090,7 @@
   }
   .form-group select option { background: var(--deep); }
   .form-group textarea { min-height: 100px; resize: vertical; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 
   /* ── FOOTER ── */
   footer {
@@ -1157,6 +1170,7 @@
     .repertoire-section,
     .presskit-section,
     .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
     .members-grid { grid-template-columns: repeat(2, 1fr); }
     .testimonials-grid { grid-template-columns: 1fr; }
     .instagram-grid { grid-template-columns: 1fr 1fr; }
@@ -1175,6 +1189,15 @@
     .lang-btn {
       font-size: 0.62rem;
       padding: 0.34rem 0.42rem;
+    }
+    .contact-section .section-title { margin-bottom: 2rem !important; }
+    .contact-inner { gap: 2.2rem; }
+    .contact-detail { align-items: flex-start; gap: 0.8rem; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-size: 1rem;
+      padding: 0.85rem 0.9rem;
     }
     .members-grid { grid-template-columns: 1fr; }
     .instagram-grid { gap: 0.55rem; }
@@ -1323,9 +1346,9 @@
         <span data-i18n="memberPassLabel">Pase backstage</span>
         <span class="member-pass-code">KP-01</span>
       </div>
-      <img class="member-photo" src="assets/members/patricia-web.jpg" style="object-position: 48% 16%;" alt="Patricia Arenas" loading="lazy">
+      <img class="member-photo" src="assets/members/patricia-web.jpg" style="object-position: 48% 16%;" alt="Patt La bruja kozmica" loading="lazy">
       <div class="member-pass-body">
-        <div class="member-name">Patricia Arenas</div>
+        <div class="member-name">Patt &quot;La bruja kozmica&quot;</div>
         <div class="member-role" data-i18n="patriciaRole">Voz & Caracterización</div>
         <p class="member-quote" data-i18n="patriciaQuote">&quot;La voz también es memoria.&quot;</p>
         <div class="member-fact">
