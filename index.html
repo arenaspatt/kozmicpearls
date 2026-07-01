@@ -678,7 +678,14 @@
   .songs-list li.highlight::before { opacity: 1; background: var(--rust); }
 
   /* ── GALLERY ── */
-  .gallery-section { background: var(--black); }
+  .gallery-section {
+    background: var(--black);
+    text-align: center;
+  }
+  .gallery-section .section-label,
+  .gallery-section .section-title {
+    text-align: center;
+  }
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -686,6 +693,9 @@
     grid-auto-flow: dense;
     gap: 0.75rem;
     margin-top: 3rem;
+    margin-inline: auto;
+    max-width: 1180px;
+    text-align: left;
   }
   .gallery-item {
     overflow: hidden;
