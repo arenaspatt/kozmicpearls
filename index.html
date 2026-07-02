@@ -1609,7 +1609,30 @@
 
   @media (max-width: 560px) {
     .hero {
-      padding: 0 1.1rem 3.5rem;
+      min-height: 100svh;
+      padding: 0 1.1rem calc(5.8rem + env(safe-area-inset-bottom));
+    }
+    .hero-content {
+      transform: translateY(-2.2rem);
+    }
+    .hero-eyebrow {
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      margin-bottom: 1.55rem;
+      line-height: 1.58;
+    }
+    .hero-ctas {
+      gap: 0.7rem;
+    }
+    .hero-ctas .btn-primary,
+    .hero-ctas .btn-secondary {
+      flex: 1 1 calc(50% - 0.35rem);
+      min-width: 0;
+      padding-inline: 0.75rem;
     }
     .hero-bg,
     .hero::before,
