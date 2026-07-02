@@ -2239,7 +2239,7 @@
   <span class="ambient-audio-icon ambient-audio-icon-off"><i data-lucide="volume-x" class="lucide-icon" aria-hidden="true"></i></span>
   <span class="ambient-audio-label" data-i18n="audioPlay">Encender audio</span>
 </button>
-<audio class="ambient-audio-player" id="ambientAudioPlayer" src="assets/audio/instrumental-live-1969.mp3" preload="auto" autoplay loop aria-hidden="true"></audio>
+<audio class="ambient-audio-player" id="ambientAudioPlayer" src="assets/audio/combination-of-the-two.mp3" preload="auto" autoplay aria-hidden="true"></audio>
 
 <!-- FOOTER -->
 <footer>
@@ -2695,8 +2695,10 @@ function renderLucideIcons() {
 renderLucideIcons();
 
 const AMBIENT_AUDIO_VOLUME = 0.42;
+const AMBIENT_AUDIO_START = 18;
 let ambientAudioPlaying = false;
 let ambientAudioAutoplayPending = true;
+let ambientAudioStartReady = false;
 
 function getActiveDictionary() {
   return translations[currentLanguage] || translations.es;
@@ -2716,6 +2718,32 @@ function updateAmbientAudioButton() {
   if (label) label.textContent = labelText;
 }
 
+function cueAmbientAudioStart(player, force = false) {
+  if (!player || (!force && ambientAudioStartReady)) return;
+
+  try {
+    player.currentTime = AMBIENT_AUDIO_START;
+    ambientAudioStartReady = true;
+  } catch (error) {}
+}
+
+function waitForAmbientAudioMetadata(player) {
+  if (!player || player.readyState > 0) return Promise.resolve();
+
+  return new Promise(resolve => {
+    let settled = false;
+    const done = () => {
+      if (settled) return;
+      settled = true;
+      resolve();
+    };
+
+    player.addEventListener('loadedmetadata', done, { once: true });
+    player.addEventListener('canplay', done, { once: true });
+    window.setTimeout(done, 1200);
+  });
+}
+
 async function playAmbientAudio(options = {}) {
   const player = document.getElementById('ambientAudioPlayer');
   if (!player) return;
@@ -2723,6 +2751,8 @@ async function playAmbientAudio(options = {}) {
   try {
     player.volume = AMBIENT_AUDIO_VOLUME;
     player.muted = false;
+    await waitForAmbientAudioMetadata(player);
+    cueAmbientAudioStart(player);
     await player.play();
     ambientAudioPlaying = true;
     ambientAudioAutoplayPending = false;
@@ -2752,6 +2782,9 @@ function initAmbientAudio() {
   if (player) {
     player.volume = AMBIENT_AUDIO_VOLUME;
     player.muted = false;
+    player.addEventListener('loadedmetadata', () => {
+      cueAmbientAudioStart(player);
+    }, { once: true });
     player.addEventListener('pause', () => {
       ambientAudioPlaying = false;
       updateAmbientAudioButton();
@@ -2759,6 +2792,12 @@ function initAmbientAudio() {
     player.addEventListener('play', () => {
       ambientAudioPlaying = true;
       updateAmbientAudioButton();
+    });
+    player.addEventListener('ended', () => {
+      ambientAudioPlaying = false;
+      ambientAudioStartReady = false;
+      cueAmbientAudioStart(player, true);
+      playAmbientAudio();
     });
   }
 
