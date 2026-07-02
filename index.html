@@ -394,23 +394,21 @@
   }
   .video-psychedelic-bg {
     position: absolute;
-    inset: -28%;
+    inset: -46% -40%;
     z-index: -1;
     pointer-events: none;
     opacity: var(--video-bg-opacity);
-    filter: blur(var(--video-bg-blur)) saturate(1.65) hue-rotate(var(--video-bg-hue));
+    filter: blur(var(--video-bg-blur)) saturate(1.75) hue-rotate(var(--video-bg-hue));
     transform: scale(var(--video-bg-scale));
     transform-origin: center;
     background:
-      conic-gradient(from 90deg at 50% 50%,
-        rgba(212,168,55,0.95),
-        rgba(196,98,45,0.78),
-        rgba(110,46,107,0.72),
-        rgba(32,88,96,0.62),
-        rgba(212,168,55,0.95)),
-      radial-gradient(circle at 28% 34%, rgba(240,232,216,0.28), transparent 22%),
-      radial-gradient(circle at 74% 64%, rgba(196,98,45,0.34), transparent 28%);
+      radial-gradient(circle at 18% 24%, rgba(212,168,55,0.95) 0 9%, rgba(212,168,55,0.42) 24%, transparent 43%),
+      radial-gradient(circle at 78% 20%, rgba(196,98,45,0.9) 0 10%, rgba(196,98,45,0.36) 26%, transparent 46%),
+      radial-gradient(circle at 64% 72%, rgba(110,46,107,0.82) 0 13%, rgba(110,46,107,0.4) 30%, transparent 54%),
+      radial-gradient(circle at 28% 76%, rgba(32,88,96,0.7) 0 11%, rgba(32,88,96,0.32) 28%, transparent 50%),
+      radial-gradient(circle at 50% 48%, rgba(240,232,216,0.34) 0 8%, rgba(240,232,216,0.18) 20%, transparent 38%);
     mix-blend-mode: screen;
+    will-change: transform, filter, opacity;
     animation: videoPsychedelicFlow 14s linear infinite;
   }
   .video-section.video-is-playing .video-psychedelic-bg {
@@ -423,22 +421,24 @@
   .video-psychedelic-bg::after {
     content: '';
     position: absolute;
-    inset: 8%;
-    border-radius: 50%;
+    inset: 4%;
     pointer-events: none;
   }
   .video-psychedelic-bg::before {
     background:
-      radial-gradient(ellipse at 38% 45%, rgba(240,232,216,0.32), transparent 24%),
-      radial-gradient(ellipse at 62% 54%, rgba(212,168,55,0.45), transparent 32%);
+      radial-gradient(circle at 36% 44%, rgba(240,232,216,0.34) 0 9%, transparent 28%),
+      radial-gradient(circle at 60% 54%, rgba(212,168,55,0.5) 0 13%, transparent 36%),
+      radial-gradient(circle at 82% 78%, rgba(196,98,45,0.38) 0 10%, transparent 30%);
     animation: videoPsychedelicDrift 9s ease-in-out infinite alternate;
   }
   .video-psychedelic-bg::after {
-    inset: 16%;
-    border: 1px solid rgba(240,232,216,0.1);
-    box-shadow:
-      0 0 var(--video-glow-outer) rgba(212,168,55,0.45),
-      inset 0 0 var(--video-glow-inner) rgba(196,98,45,0.35);
+    inset: 10%;
+    background:
+      radial-gradient(circle at 48% 48%, rgba(212,168,55,0.32) 0 17%, transparent 40%),
+      radial-gradient(circle at 58% 38%, rgba(196,98,45,0.28) 0 13%, transparent 34%);
+    filter:
+      drop-shadow(0 0 var(--video-glow-outer) rgba(212,168,55,0.42))
+      drop-shadow(0 0 var(--video-glow-inner) rgba(196,98,45,0.34));
     animation: videoPsychedelicPulse 4.5s ease-in-out infinite;
   }
   .video-section > *:not(.video-psychedelic-bg) {
@@ -480,9 +480,9 @@
     background: var(--black);
   }
   @keyframes videoPsychedelicFlow {
-    0% { transform: scale(var(--video-bg-scale)) rotate(0deg) translate3d(-2%, -1%, 0); }
-    50% { transform: scale(var(--video-bg-scale)) rotate(180deg) translate3d(2%, 1%, 0); }
-    100% { transform: scale(var(--video-bg-scale)) rotate(360deg) translate3d(-2%, -1%, 0); }
+    0% { transform: scale(var(--video-bg-scale)) rotate(0deg) translate3d(-4%, -2%, 0); }
+    50% { transform: scale(var(--video-bg-scale)) rotate(12deg) translate3d(4%, 3%, 0); }
+    100% { transform: scale(var(--video-bg-scale)) rotate(0deg) translate3d(-4%, -2%, 0); }
   }
   @keyframes videoPsychedelicDrift {
     0% { transform: translate3d(-5%, 3%, 0) scale(0.95); opacity: 0.75; }
@@ -905,6 +905,10 @@
   .instagram-cta {
     margin-top: 2rem;
   }
+  .instagram-cta-icon {
+    fill: currentColor;
+    stroke: none;
+  }
 
   /* ── INSTAGRAM LIGHTBOX ── */
   .ig-modal {
@@ -1098,13 +1102,49 @@
     border: 1px solid rgba(240,232,216,0.1);
     padding: 1rem 1.2rem;
     border-radius: 3px;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+  .kit-item:hover,
+  .kit-item:focus-visible {
+    background: rgba(240,232,216,0.08);
+    border-color: rgba(212,168,55,0.45);
+    transform: translateY(-2px);
+  }
+  .kit-item:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
   }
   .kit-item-icon {
     color: var(--amber);
     font-size: 1.3rem;
+    width: 34px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .kit-item-copy { flex: 1; min-width: 0; }
   .kit-item-name { font-size: 0.85rem; color: var(--cream); font-weight: 500; }
   .kit-item-desc { font-size: 0.75rem; color: var(--cream-dim); }
+  .kit-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: auto;
+    color: var(--amber);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .kit-download .lucide-icon {
+    width: 13px;
+    height: 13px;
+  }
 
   /* ── CONTACT ── */
   .contact-section { background: var(--black); }
@@ -1705,7 +1745,9 @@
   </div>
   <div class="instagram-cta">
     <a href="https://www.instagram.com/kozmicpearls/" target="_blank" rel="noopener" class="btn-secondary">
-      <i data-lucide="instagram" class="lucide-icon" aria-hidden="true"></i>
+      <svg class="lucide-icon instagram-cta-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
       <span data-i18n="instagramCta">Seguir en Instagram</span>
     </a>
   </div>
@@ -1749,7 +1791,7 @@
     </thead>
     <tbody>
       <tr>
-        <td class="date-date" data-i18n="datesDate">12 de septiembre</td>
+        <td class="date-date" data-i18n="datesDate">12 de sep.</td>
         <td class="date-city">Santiago</td>
         <td class="date-event">LA BATUTA</td>
         <td class="date-cta"><button class="btn-outline-sm" data-i18n="datesTickets">Entradas</button></td>
@@ -1760,7 +1802,7 @@
     <p data-i18n="datesBookingQuestion">¿Quieres que Kozmic Pearls se presente en tu ciudad?</p>
     <a href="#contacto" class="btn-secondary">
       <i data-lucide="send" class="lucide-icon" aria-hidden="true"></i>
-      <span data-i18n="datesBookingCta">Contrata el show aquí.</span>
+      <span data-i18n="datesBookingCta">Contrata el show aquí</span>
     </a>
   </div>
 </section>
@@ -1771,47 +1813,52 @@
     <span class="section-label" data-i18n="pressLabel">Para prensa y productores</span>
     <h2 class="section-title" data-i18n="pressTitle">Press Kit para Productores</h2>
     <p data-i18n="pressText">Todo lo que necesitas para organizar un show de Kozmic Pearls: historia, rider técnico, fotografías en alta resolución, logos y videos.</p>
-    <a href="#" class="btn-primary">
+    <a href="assets/presskit/kozmic-pearls-epk-completo.zip" download="kozmic-pearls-epk-completo.zip" class="btn-primary">
       <i data-lucide="download" class="lucide-icon" aria-hidden="true"></i>
-      <span data-i18n="pressCta">Descargar Press Kit</span>
+      <span data-i18n="pressCta">Descargar EPK</span>
     </a>
   </div>
   <div class="kit-items">
-    <div class="kit-item">
+    <a class="kit-item" href="assets/presskit/kozmic-pearls-historia-biografia.txt" download="kozmic-pearls-historia-biografia.txt" aria-label="Descargar Historia y Biografia">
       <div class="kit-item-icon"><i data-lucide="file-text" class="lucide-icon" aria-hidden="true"></i></div>
-      <div>
+      <div class="kit-item-copy">
         <div class="kit-item-name" data-i18n="kitName1">Historia & Biografía</div>
         <div class="kit-item-desc" data-i18n="kitDesc1">Texto completo sobre la trayectoria de la banda</div>
       </div>
-    </div>
-    <div class="kit-item">
+      <span class="kit-download"><i data-lucide="download" class="lucide-icon" aria-hidden="true"></i><span data-i18n="kitDownload">Descargar</span></span>
+    </a>
+    <a class="kit-item" href="assets/presskit/kozmic-pearls-rider-tecnico.txt" download="kozmic-pearls-rider-tecnico.txt" aria-label="Descargar Rider Tecnico">
       <div class="kit-item-icon"><i data-lucide="sliders-horizontal" class="lucide-icon" aria-hidden="true"></i></div>
-      <div>
+      <div class="kit-item-copy">
         <div class="kit-item-name" data-i18n="kitName2">Rider Técnico</div>
         <div class="kit-item-desc" data-i18n="kitDesc2">Requerimientos de sonido, luces y backline</div>
       </div>
-    </div>
-    <div class="kit-item">
+      <span class="kit-download"><i data-lucide="download" class="lucide-icon" aria-hidden="true"></i><span data-i18n="kitDownload">Descargar</span></span>
+    </a>
+    <a class="kit-item" href="assets/presskit/kozmic-pearls-fotografias-hd.zip" download="kozmic-pearls-fotografias-hd.zip" aria-label="Descargar Fotografias HD">
       <div class="kit-item-icon"><i data-lucide="camera" class="lucide-icon" aria-hidden="true"></i></div>
-      <div>
+      <div class="kit-item-copy">
         <div class="kit-item-name" data-i18n="kitName3">Fotografías HD</div>
         <div class="kit-item-desc" data-i18n="kitDesc3">Fotos en alta resolución para prensa y difusión</div>
       </div>
-    </div>
-    <div class="kit-item">
+      <span class="kit-download"><i data-lucide="download" class="lucide-icon" aria-hidden="true"></i><span data-i18n="kitDownload">Descargar</span></span>
+    </a>
+    <a class="kit-item" href="assets/presskit/kozmic-pearls-logos-marca.zip" download="kozmic-pearls-logos-marca.zip" aria-label="Descargar Logos y Marca">
       <div class="kit-item-icon"><i data-lucide="palette" class="lucide-icon" aria-hidden="true"></i></div>
-      <div>
+      <div class="kit-item-copy">
         <div class="kit-item-name" data-i18n="kitName4">Logos & Marca</div>
         <div class="kit-item-desc" data-i18n="kitDesc4">Versiones en negro, blanco y full color</div>
       </div>
-    </div>
-    <div class="kit-item">
+      <span class="kit-download"><i data-lucide="download" class="lucide-icon" aria-hidden="true"></i><span data-i18n="kitDownload">Descargar</span></span>
+    </a>
+    <a class="kit-item" href="assets/video-principal-kp.mp4" download="kozmic-pearls-video-en-vivo.mp4" aria-label="Descargar Videos y Shows">
       <div class="kit-item-icon"><i data-lucide="clapperboard" class="lucide-icon" aria-hidden="true"></i></div>
-      <div>
+      <div class="kit-item-copy">
         <div class="kit-item-name" data-i18n="kitName5">Videos y Shows</div>
         <div class="kit-item-desc" data-i18n="kitDesc5">Grabaciones en vivo de alta calidad</div>
       </div>
-    </div>
+      <span class="kit-download"><i data-lucide="download" class="lucide-icon" aria-hidden="true"></i><span data-i18n="kitDownload">Descargar</span></span>
+    </a>
   </div>
 </section>
 
@@ -2026,14 +2073,14 @@ const translations = {
     datesHeaderDate: 'Fecha',
     datesHeaderCity: 'Ciudad',
     datesHeaderEvent: 'Evento / Venue',
-    datesDate: '12 de septiembre',
+    datesDate: '12 de sep.',
     datesTickets: 'Entradas',
     datesBookingQuestion: '¿Quieres que Kozmic Pearls se presente en tu ciudad?',
-    datesBookingCta: 'Contrata el show aquí.',
+    datesBookingCta: 'Contrata el show aquí',
     pressLabel: 'Para prensa y productores',
     pressTitle: 'Press Kit para Productores',
     pressText: 'Todo lo que necesitas para organizar un show de Kozmic Pearls: historia, rider técnico, fotografías en alta resolución, logos y videos.',
-    pressCta: 'Descargar Press Kit',
+    pressCta: 'Descargar EPK',
     kitName1: 'Historia & Biografía',
     kitDesc1: 'Texto completo sobre la trayectoria de la banda',
     kitName2: 'Rider Técnico',
@@ -2044,6 +2091,7 @@ const translations = {
     kitDesc4: 'Versiones en negro, blanco y full color',
     kitName5: 'Videos y Shows',
     kitDesc5: 'Grabaciones en vivo de alta calidad',
+    kitDownload: 'Descargar',
     contactLabel: '¿Listo para booking?',
     contactTitle: 'Lleva la energía de Janis Joplin a tu <em>próximo evento</em>',
     contactText: '¿Tienes un festival, evento corporativo o espacio de música en vivo? Kozmic Pearls lleva el espíritu de Janis Joplin a cualquier escenario con profesionalismo y una energía que el público no olvidará.',
@@ -2146,14 +2194,14 @@ const translations = {
     datesHeaderDate: 'Date',
     datesHeaderCity: 'City',
     datesHeaderEvent: 'Event / Venue',
-    datesDate: 'September 12',
+    datesDate: 'Sep. 12',
     datesTickets: 'Tickets',
     datesBookingQuestion: 'Do you want Kozmic Pearls to perform in your city?',
-    datesBookingCta: 'Book the show here.',
+    datesBookingCta: 'Book the show here',
     pressLabel: 'For press and producers',
     pressTitle: 'Press Kit for Producers',
     pressText: 'Everything you need to organize a Kozmic Pearls show: story, technical rider, high-resolution photos, logos, and videos.',
-    pressCta: 'Download Press Kit',
+    pressCta: 'Download EPK',
     kitName1: 'Story & Biography',
     kitDesc1: 'Full text about the band’s journey',
     kitName2: 'Technical Rider',
@@ -2164,6 +2212,7 @@ const translations = {
     kitDesc4: 'Black, white, and full-color versions',
     kitName5: 'Videos and Shows',
     kitDesc5: 'High-quality live recordings',
+    kitDownload: 'Download',
     contactLabel: 'Ready for booking?',
     contactTitle: 'Bring the energy of Janis Joplin to your <em>next event</em>',
     contactText: 'Do you have a festival, corporate event, or live music venue? Kozmic Pearls brings the spirit of Janis Joplin to any stage with professionalism and energy the audience will not forget.',
@@ -2266,14 +2315,14 @@ const translations = {
     datesHeaderDate: 'Data',
     datesHeaderCity: 'Cidade',
     datesHeaderEvent: 'Evento / Venue',
-    datesDate: '12 de setembro',
+    datesDate: '12 de set.',
     datesTickets: 'Ingressos',
     datesBookingQuestion: 'Quer que Kozmic Pearls se apresente na sua cidade?',
-    datesBookingCta: 'Contrate o show aqui.',
+    datesBookingCta: 'Contrate o show aqui',
     pressLabel: 'Para imprensa e produtores',
     pressTitle: 'Press Kit para Produtores',
     pressText: 'Tudo o que você precisa para organizar um show de Kozmic Pearls: história, rider técnico, fotos em alta resolução, logos e vídeos.',
-    pressCta: 'Baixar Press Kit',
+    pressCta: 'Baixar EPK',
     kitName1: 'História & Biografia',
     kitDesc1: 'Texto completo sobre a trajetória da banda',
     kitName2: 'Rider Técnico',
@@ -2284,6 +2333,7 @@ const translations = {
     kitDesc4: 'Versões em preto, branco e coloridas',
     kitName5: 'Vídeos e Shows',
     kitDesc5: 'Gravações ao vivo em alta qualidade',
+    kitDownload: 'Baixar',
     contactLabel: 'Pronto para booking?',
     contactTitle: 'Leve a energia de Janis Joplin para seu <em>próximo evento</em>',
     contactText: 'Você tem um festival, evento corporativo ou espaço de música ao vivo? Kozmic Pearls leva o espírito de Janis Joplin a qualquer palco com profissionalismo e uma energia que o público não vai esquecer.',
