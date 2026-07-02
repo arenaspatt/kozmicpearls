@@ -58,7 +58,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 3rem;
+    padding: 0.55rem 3rem;
     background: linear-gradient(to bottom, rgba(10,8,6,0.95), transparent);
     transition: background 0.3s;
   }
@@ -70,8 +70,8 @@
     text-decoration: none;
   }
   .nav-logo-img {
-    height: 72px;
-    width: 116px;
+    height: 56px;
+    width: 90px;
     display: block;
     color: var(--cream);
     transition: opacity 0.2s;
@@ -81,7 +81,7 @@
   .nav-right {
     display: flex;
     align-items: center;
-    gap: 1.3rem;
+    gap: 1rem;
   }
 
   .nav-links {
@@ -114,7 +114,7 @@
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.12em;
-    padding: 0.42rem 0.55rem;
+    padding: 0.34rem 0.5rem;
     text-transform: uppercase;
     transition: background 0.2s, color 0.2s;
   }
@@ -128,7 +128,7 @@
     background: rgba(240,232,216,0.06) !important;
     color: var(--cream) !important;
     border: 1px solid rgba(240,232,216,0.34) !important;
-    padding: 0.45rem 1rem !important;
+    padding: 0.36rem 0.85rem !important;
     text-shadow: none;
     font-size: 0.72rem !important;
   }
@@ -146,17 +146,134 @@
     min-height: 100vh;
     display: flex;
     align-items: flex-end;
-    padding: 0 3rem 6rem;
+    padding: 0 clamp(1.8rem, 4vw, 4.8rem) clamp(4rem, 8vw, 7rem);
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 44%, rgba(240,232,216,0.06), transparent 32%),
+      #050403;
+    isolation: isolate;
+    --hero-tv-shape: polygon(
+      6.5% 1.8%,
+      93.5% 1.8%,
+      96.4% 2.9%,
+      98.2% 6.6%,
+      99.1% 15%,
+      99.7% 34%,
+      99.7% 66%,
+      99.1% 85%,
+      98.2% 93.4%,
+      96.4% 97.1%,
+      93.5% 98.2%,
+      6.5% 98.2%,
+      3.6% 97.1%,
+      1.8% 93.4%,
+      0.9% 85%,
+      0.3% 66%,
+      0.3% 34%,
+      0.9% 15%,
+      1.8% 6.6%,
+      3.6% 2.9%
+    );
+  }
+
+  .hero-tv-mask {
+    position: absolute;
+    width: 0;
+    height: 0;
     overflow: hidden;
   }
 
   .hero-bg {
     position: absolute;
-    inset: 0;
+    inset: clamp(0.65rem, 1.45vw, 1.55rem);
+    z-index: 0;
+    overflow: hidden;
+    border-radius: clamp(62px, 9vw, 154px) / clamp(42px, 6.2vw, 108px);
+    clip-path: var(--hero-tv-shape);
+    clip-path: url(#hero-tv-screen);
+    transform: perspective(1200px) rotateX(0.35deg) scaleX(0.992);
+    transform-origin: center;
     background:
-      linear-gradient(to top, rgba(10,8,6,1) 0%, rgba(10,8,6,0.6) 40%, rgba(10,8,6,0.2) 70%, rgba(10,8,6,0.4) 100%),
-      linear-gradient(to right, rgba(10,8,6,0.7) 0%, transparent 50%),
-      url('assets/header-kp-live-9188.jpg') center/cover no-repeat;
+      radial-gradient(ellipse at 50% 48%, rgba(255,255,255,0.13), transparent 56%),
+      linear-gradient(to bottom, rgba(240,232,216,0.22) 0%, rgba(240,232,216,0.08) 34%, transparent 70%),
+      linear-gradient(to top, rgba(10,8,6,0.96) 0%, rgba(10,8,6,0.52) 36%, rgba(10,8,6,0.08) 66%, rgba(10,8,6,0.34) 100%),
+      linear-gradient(to right, rgba(10,8,6,0.78) 0%, rgba(10,8,6,0.22) 46%, transparent 70%),
+      url('assets/header-kp-live-9188.jpg') center/cover no-repeat,
+      #d9d2bf;
+    background-blend-mode: screen, soft-light, normal, normal, normal;
+    box-shadow:
+      inset 0 0 38px rgba(240,232,216,0.2),
+      inset 0 0 118px rgba(0,0,0,0.68),
+      inset 0 0 260px rgba(0,0,0,0.58);
+    filter: contrast(1.04) saturate(0.95);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: clamp(0.18rem, 0.58vw, 0.7rem);
+    z-index: 6;
+    pointer-events: none;
+    border-radius: clamp(72px, 9.8vw, 170px) / clamp(48px, 6.8vw, 118px);
+    clip-path: var(--hero-tv-shape);
+    clip-path: url(#hero-tv-screen);
+    border: 0;
+    box-shadow:
+      inset 0 0 78px rgba(0,0,0,0.68),
+      inset 0 0 190px rgba(0,0,0,0.42);
+    filter: drop-shadow(0 0 54px rgba(0,0,0,0.92));
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: clamp(0.65rem, 1.45vw, 1.55rem);
+    z-index: 5;
+    pointer-events: none;
+    border-radius: clamp(62px, 9vw, 154px) / clamp(42px, 6.2vw, 108px);
+    clip-path: var(--hero-tv-shape);
+    clip-path: url(#hero-tv-screen);
+    background:
+      radial-gradient(ellipse at 34% 32%, rgba(240,232,216,0.2) 0 8%, transparent 30%),
+      radial-gradient(ellipse at 62% 58%, rgba(240,232,216,0.14) 0 10%, transparent 34%),
+      repeating-linear-gradient(
+        to bottom,
+        rgba(245,240,228,0.16) 0,
+        rgba(245,240,228,0.16) 1px,
+        rgba(6,5,4,0.18) 2px,
+        rgba(6,5,4,0.18) 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.05) 0,
+        rgba(255,255,255,0.05) 1px,
+        transparent 1px,
+        transparent 5px
+      ),
+      radial-gradient(ellipse at 50% 50%, transparent 42%, rgba(0,0,0,0.66) 100%),
+      linear-gradient(106deg, transparent 0 29%, rgba(255,255,255,0.18) 41%, transparent 55% 100%);
+    mix-blend-mode: soft-light;
+    opacity: 0.82;
+    animation: heroScanline 6s linear infinite, heroTubeFlicker 5.6s steps(2, end) infinite;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: -34%;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 14% 74%, rgba(240,232,216,0.34) 0 8%, transparent 33%),
+      radial-gradient(ellipse at 62% 20%, rgba(212,168,55,0.3) 0 10%, transparent 38%),
+      radial-gradient(ellipse at 86% 68%, rgba(196,98,45,0.34) 0 9%, transparent 36%),
+      radial-gradient(ellipse at 38% 46%, rgba(45,27,46,0.52) 0 18%, transparent 52%),
+      radial-gradient(ellipse at 58% 78%, rgba(240,232,216,0.24) 0 11%, transparent 42%),
+      linear-gradient(112deg, transparent 0 15%, rgba(240,232,216,0.18) 31%, transparent 52% 100%);
+    filter: blur(34px) saturate(1.7);
+    mix-blend-mode: screen;
+    opacity: 0.96;
+    animation: heroSmokeDrift 16s ease-in-out infinite alternate;
   }
 
   /* Psychedelic color wash overlay */
@@ -164,14 +281,36 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 30% 60%, rgba(196,98,45,0.15) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 30%, rgba(45,27,46,0.4) 0%, transparent 50%);
+    z-index: 2;
+    background:
+      radial-gradient(ellipse at 52% 50%, transparent 0 44%, rgba(255,255,255,0.08) 48%, transparent 54%),
+      radial-gradient(ellipse at 30% 60%, rgba(196,98,45,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 30%, rgba(45,27,46,0.42) 0%, transparent 50%),
+      linear-gradient(to bottom, rgba(255,255,255,0.08), transparent 16% 72%, rgba(0,0,0,0.36));
     mix-blend-mode: multiply;
+  }
+
+  @keyframes heroSmokeDrift {
+    0% { transform: translate3d(-6%, 4%, 0) scale(1.03) rotate(-1.5deg); opacity: 0.62; }
+    45% { transform: translate3d(3%, -3%, 0) scale(1.11) rotate(1.2deg); opacity: 0.9; }
+    100% { transform: translate3d(7%, 2%, 0) scale(1.16) rotate(-0.7deg); opacity: 0.72; }
+  }
+
+  @keyframes heroScanline {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, -40% 0; }
+    100% { background-position: 0 0, 0 0, 0 18px, 0 0, 0 0, 140% 0; }
+  }
+
+  @keyframes heroTubeFlicker {
+    0%, 100% { opacity: 0.78; }
+    46% { opacity: 0.86; }
+    48% { opacity: 0.72; }
+    50% { opacity: 0.84; }
   }
 
   .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 4;
     max-width: 680px;
   }
 
@@ -1331,8 +1470,8 @@
   }
 
   @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-logo-img { height: 48px; width: 77px; }
+    nav { padding: 0.55rem 1.25rem; }
+    .nav-logo-img { height: 40px; width: 64px; }
     .footer-logo { height: 46px; width: 74px; margin: 0 auto; }
     .nav-links { display: none; }
     .nav-right { gap: 0.75rem; }
@@ -1452,6 +1591,13 @@
 
 <!-- HERO -->
 <section class="hero" id="inicio">
+  <svg class="hero-tv-mask" aria-hidden="true" focusable="false">
+    <defs>
+      <clipPath id="hero-tv-screen" clipPathUnits="objectBoundingBox">
+        <path d="M 0.07 0.018 C 0.04 0.018 0.024 0.038 0.014 0.074 C 0.005 0.122 0.001 0.286 0.001 0.5 C 0.001 0.714 0.005 0.878 0.014 0.926 C 0.024 0.962 0.04 0.982 0.07 0.982 L 0.93 0.982 C 0.96 0.982 0.976 0.962 0.986 0.926 C 0.995 0.878 0.999 0.714 0.999 0.5 C 0.999 0.286 0.995 0.122 0.986 0.074 C 0.976 0.038 0.96 0.018 0.93 0.018 Z"/>
+      </clipPath>
+    </defs>
+  </svg>
   <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">
