@@ -1259,7 +1259,25 @@
     color: var(--cream);
     font-size: 0.95rem;
   }
-  .date-event { color: var(--cream-dim); font-size: 0.88rem; }
+  .date-mobile-label {
+    display: none;
+  }
+  .date-event {
+    color: var(--cream-dim);
+    font-size: 0.88rem;
+  }
+  .date-event-name,
+  .date-venue {
+    display: block;
+  }
+  .date-event-name {
+    color: var(--cream);
+    font-weight: 700;
+  }
+  .date-venue {
+    margin-top: 0.18rem;
+    color: var(--cream-dim);
+  }
   .date-cta {
     text-align: right;
   }
@@ -1298,11 +1316,30 @@
 
   /* ── PRESS KIT ── */
   .presskit-section {
-    background: var(--plum);
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
     align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+      linear-gradient(90deg, rgba(45,27,46,0.96) 0%, rgba(45,27,46,0.84) 42%, rgba(45,27,46,0.72) 100%),
+      url('assets/presskit/fotografias-hd/kozmic-pearls-en-vivo-bn.png') center/cover no-repeat;
+  }
+  .presskit-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 22% 26%, rgba(196,98,45,0.22), transparent 34%),
+      linear-gradient(180deg, rgba(10,8,6,0.28), rgba(10,8,6,0.7));
+    pointer-events: none;
+  }
+  .presskit-section > * {
+    position: relative;
+    z-index: 1;
   }
   .presskit-section .section-title em { color: var(--amber); }
   .presskit-section p { color: rgba(240,232,216,0.7); line-height: 1.8; margin-bottom: 2rem; }
@@ -1695,6 +1732,67 @@
     .wave-divider { padding: 0 1.5rem; }
     .about-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
     .dates-booking { flex-direction: column; align-items: flex-start; }
+    .dates-table,
+    .dates-table tbody,
+    .dates-table tr,
+    .dates-table td {
+      display: block;
+      width: 100%;
+    }
+    .dates-table thead {
+      display: none;
+    }
+    .dates-table tr {
+      padding: 1.15rem;
+      border: 1px solid rgba(212,168,55,0.18);
+      border-radius: 4px;
+      background:
+        linear-gradient(135deg, rgba(240,232,216,0.06), rgba(240,232,216,0.025)),
+        rgba(10,8,6,0.28);
+    }
+    .dates-table td {
+      padding: 0;
+      border-bottom: 0;
+    }
+    .date-date {
+      width: auto;
+      margin-bottom: 0.85rem;
+      font-size: 1.55rem;
+      line-height: 1.05;
+    }
+    .date-city,
+    .date-event {
+      display: grid;
+      grid-template-columns: minmax(6.8rem, 32%) 1fr;
+      gap: 0.9rem;
+      align-items: start;
+      padding-top: 0.8rem !important;
+      border-top: 1px solid rgba(240,232,216,0.08) !important;
+    }
+    .date-mobile-label {
+      display: block;
+      color: var(--rust);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+    .date-city {
+      font-size: 1rem;
+    }
+    .date-event {
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+    }
+    .date-cta {
+      margin-top: 1rem;
+      text-align: left;
+    }
+    .date-cta .btn-outline-sm {
+      width: 100%;
+      min-height: 44px;
+    }
   }
 
   @media (max-width: 560px) {
@@ -2175,9 +2273,16 @@
     <tbody>
       <tr>
         <td class="date-date" data-i18n="datesDate">12 de sep.</td>
-        <td class="date-city">Santiago</td>
-        <td class="date-event">LA BATUTA</td>
-        <td class="date-cta"><button class="btn-outline-sm" data-i18n="datesTickets">Entradas</button></td>
+        <td class="date-city">
+          <span class="date-mobile-label" data-i18n="datesHeaderCity">Ciudad</span>
+          <span>Santiago</span>
+        </td>
+        <td class="date-event">
+          <span class="date-mobile-label" data-i18n="datesHeaderEvent">Evento / Venue</span>
+          <span class="date-event-name" data-i18n="datesEventName">Amy Winehouse con Janis Joplin</span>
+          <span class="date-venue" data-i18n="datesVenue">LA BATUTA</span>
+        </td>
+        <td class="date-cta"><button class="btn-outline-sm" data-i18n="datesTickets">Próximamente</button></td>
       </tr>
     </tbody>
   </table>
@@ -2202,15 +2307,15 @@
     </a>
   </div>
   <div class="kit-items">
-    <a class="kit-item" href="assets/presskit/kozmic-pearls-historia-biografia.txt" download="kozmic-pearls-historia-biografia.txt" aria-label="Descargar Historia y Biografia">
+    <a class="kit-item" href="assets/presskit/dossier/kozmic-pearls-dossier.pdf" download="kozmic-pearls-dossier.pdf" aria-label="Descargar Dossier">
       <div class="kit-item-icon"><i data-lucide="file-text" class="lucide-icon" aria-hidden="true"></i></div>
       <div class="kit-item-copy">
-        <div class="kit-item-name" data-i18n="kitName1">Historia & Biografía</div>
+        <div class="kit-item-name" data-i18n="kitName1">Dossier</div>
         <div class="kit-item-desc" data-i18n="kitDesc1">Texto completo sobre la trayectoria de la banda</div>
       </div>
       <span class="kit-download"><i data-lucide="download" class="lucide-icon" aria-hidden="true"></i><span data-i18n="kitDownload">Descargar</span></span>
     </a>
-    <a class="kit-item" href="assets/presskit/kozmic-pearls-rider-tecnico.txt" download="kozmic-pearls-rider-tecnico.txt" aria-label="Descargar Rider Tecnico">
+    <a class="kit-item" href="assets/presskit/rider-tecnico/kozmic-pearls-rider-tecnico.pdf" download="kozmic-pearls-rider-tecnico.pdf" aria-label="Descargar Rider Tecnico">
       <div class="kit-item-icon"><i data-lucide="sliders-horizontal" class="lucide-icon" aria-hidden="true"></i></div>
       <div class="kit-item-copy">
         <div class="kit-item-name" data-i18n="kitName2">Rider Técnico</div>
@@ -2231,14 +2336,6 @@
       <div class="kit-item-copy">
         <div class="kit-item-name" data-i18n="kitName4">Logos & Marca</div>
         <div class="kit-item-desc" data-i18n="kitDesc4">Versiones en negro, blanco y full color</div>
-      </div>
-      <span class="kit-download"><i data-lucide="download" class="lucide-icon" aria-hidden="true"></i><span data-i18n="kitDownload">Descargar</span></span>
-    </a>
-    <a class="kit-item" href="assets/video-principal-kp.mp4" download="kozmic-pearls-video-en-vivo.mp4" aria-label="Descargar Videos y Shows">
-      <div class="kit-item-icon"><i data-lucide="clapperboard" class="lucide-icon" aria-hidden="true"></i></div>
-      <div class="kit-item-copy">
-        <div class="kit-item-name" data-i18n="kitName5">Videos y Shows</div>
-        <div class="kit-item-desc" data-i18n="kitDesc5">Grabaciones en vivo de alta calidad</div>
       </div>
       <span class="kit-download"><i data-lucide="download" class="lucide-icon" aria-hidden="true"></i><span data-i18n="kitDownload">Descargar</span></span>
     </a>
@@ -2465,14 +2562,16 @@ const translations = {
     datesHeaderCity: 'Ciudad',
     datesHeaderEvent: 'Evento / Venue',
     datesDate: '12 de sep.',
-    datesTickets: 'Entradas',
+    datesEventName: 'Amy Winehouse con Janis Joplin',
+    datesVenue: 'LA BATUTA',
+    datesTickets: 'Próximamente',
     datesBookingQuestion: '¿Quieres que Kozmic Pearls se presente en tu ciudad?',
     datesBookingCta: 'Contrata el show aquí',
     pressLabel: 'Para prensa y productores',
     pressTitle: 'Press Kit para Productores',
     pressText: 'Todo lo que necesitas para organizar un show de Kozmic Pearls: historia, rider técnico, fotografías en alta resolución, logos y videos.',
     pressCta: 'Descargar EPK',
-    kitName1: 'Historia & Biografía',
+    kitName1: 'Dossier',
     kitDesc1: 'Texto completo sobre la trayectoria de la banda',
     kitName2: 'Rider Técnico',
     kitDesc2: 'Requerimientos de sonido, luces y backline',
@@ -2480,8 +2579,6 @@ const translations = {
     kitDesc3: 'Fotos en alta resolución para prensa y difusión',
     kitName4: 'Logos & Marca',
     kitDesc4: 'Versiones en negro, blanco y full color',
-    kitName5: 'Videos y Shows',
-    kitDesc5: 'Grabaciones en vivo de alta calidad',
     kitDownload: 'Descargar',
     contactLabel: '¿Listo para booking?',
     contactTitle: 'Lleva la energía de Janis Joplin a tu <em>próximo evento</em>',
@@ -2588,14 +2685,16 @@ const translations = {
     datesHeaderCity: 'City',
     datesHeaderEvent: 'Event / Venue',
     datesDate: 'Sep. 12',
-    datesTickets: 'Tickets',
+    datesEventName: 'Amy Winehouse with Janis Joplin',
+    datesVenue: 'LA BATUTA',
+    datesTickets: 'Coming soon',
     datesBookingQuestion: 'Do you want Kozmic Pearls to perform in your city?',
     datesBookingCta: 'Book the show here',
     pressLabel: 'For press and producers',
     pressTitle: 'Press Kit for Producers',
     pressText: 'Everything you need to organize a Kozmic Pearls show: story, technical rider, high-resolution photos, logos, and videos.',
     pressCta: 'Download EPK',
-    kitName1: 'Story & Biography',
+    kitName1: 'Dossier',
     kitDesc1: 'Full text about the band’s journey',
     kitName2: 'Technical Rider',
     kitDesc2: 'Sound, lighting, and backline requirements',
@@ -2603,8 +2702,6 @@ const translations = {
     kitDesc3: 'High-resolution photos for press and promotion',
     kitName4: 'Logos & Brand',
     kitDesc4: 'Black, white, and full-color versions',
-    kitName5: 'Videos and Shows',
-    kitDesc5: 'High-quality live recordings',
     kitDownload: 'Download',
     contactLabel: 'Ready for booking?',
     contactTitle: 'Bring the energy of Janis Joplin to your <em>next event</em>',
@@ -2711,14 +2808,16 @@ const translations = {
     datesHeaderCity: 'Cidade',
     datesHeaderEvent: 'Evento / Venue',
     datesDate: '12 de set.',
-    datesTickets: 'Ingressos',
+    datesEventName: 'Amy Winehouse com Janis Joplin',
+    datesVenue: 'LA BATUTA',
+    datesTickets: 'Em breve',
     datesBookingQuestion: 'Quer que Kozmic Pearls se apresente na sua cidade?',
     datesBookingCta: 'Contrate o show aqui',
     pressLabel: 'Para imprensa e produtores',
     pressTitle: 'Press Kit para Produtores',
     pressText: 'Tudo o que você precisa para organizar um show de Kozmic Pearls: história, rider técnico, fotos em alta resolução, logos e vídeos.',
     pressCta: 'Baixar EPK',
-    kitName1: 'História & Biografia',
+    kitName1: 'Dossier',
     kitDesc1: 'Texto completo sobre a trajetória da banda',
     kitName2: 'Rider Técnico',
     kitDesc2: 'Requisitos de som, luzes e backline',
@@ -2726,8 +2825,6 @@ const translations = {
     kitDesc3: 'Fotos em alta resolução para imprensa e divulgação',
     kitName4: 'Logos & Marca',
     kitDesc4: 'Versões em preto, branco e coloridas',
-    kitName5: 'Vídeos e Shows',
-    kitDesc5: 'Gravações ao vivo em alta qualidade',
     kitDownload: 'Baixar',
     contactLabel: 'Pronto para booking?',
     contactTitle: 'Leve a energia de Janis Joplin para seu <em>próximo evento</em>',
