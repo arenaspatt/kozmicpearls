@@ -17,6 +17,28 @@
     --amber: #D4A837;
     --plum: #2D1B2E;
     --smoke: #1A1410;
+    --crt-tv-shape: polygon(
+      6.5% 1.8%,
+      93.5% 1.8%,
+      96.4% 2.9%,
+      98.2% 6.6%,
+      99.1% 15%,
+      99.7% 34%,
+      99.7% 66%,
+      99.1% 85%,
+      98.2% 93.4%,
+      96.4% 97.1%,
+      93.5% 98.2%,
+      6.5% 98.2%,
+      3.6% 97.1%,
+      1.8% 93.4%,
+      0.9% 85%,
+      0.3% 66%,
+      0.3% 34%,
+      0.9% 15%,
+      1.8% 6.6%,
+      3.6% 2.9%
+    );
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,9 +82,20 @@
     justify-content: space-between;
     padding: 0.55rem 3rem;
     background: linear-gradient(to bottom, rgba(10,8,6,0.95), transparent);
-    transition: background 0.3s;
+    border-bottom: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
   }
-  nav.scrolled { background: rgba(10,8,6,0.97); border-bottom: 1px solid rgba(196,98,45,0.2); }
+  nav.scrolled {
+    background:
+      linear-gradient(180deg, rgba(10,8,6,0.82), rgba(10,8,6,0.58));
+    border-bottom: 1px solid rgba(196,98,45,0.2);
+    box-shadow: 0 16px 42px rgba(0,0,0,0.28);
+    -webkit-backdrop-filter: blur(18px) saturate(165%);
+    backdrop-filter: blur(18px) saturate(165%);
+  }
 
   .nav-logo {
     display: flex;
@@ -152,28 +185,7 @@
       radial-gradient(ellipse at 50% 44%, rgba(240,232,216,0.06), transparent 32%),
       #050403;
     isolation: isolate;
-    --hero-tv-shape: polygon(
-      6.5% 1.8%,
-      93.5% 1.8%,
-      96.4% 2.9%,
-      98.2% 6.6%,
-      99.1% 15%,
-      99.7% 34%,
-      99.7% 66%,
-      99.1% 85%,
-      98.2% 93.4%,
-      96.4% 97.1%,
-      93.5% 98.2%,
-      6.5% 98.2%,
-      3.6% 97.1%,
-      1.8% 93.4%,
-      0.9% 85%,
-      0.3% 66%,
-      0.3% 34%,
-      0.9% 15%,
-      1.8% 6.6%,
-      3.6% 2.9%
-    );
+    --hero-tv-shape: var(--crt-tv-shape);
   }
 
   .hero-tv-mask {
@@ -498,7 +510,7 @@
     overflow: hidden;
     --video-energy: 0;
     --video-bg-scale: 1.04;
-    --video-bg-opacity: 0.05;
+    --video-bg-opacity: 0.14;
     --video-bg-blur: 18px;
     --video-bg-hue: 0deg;
     --video-glow-outer: 80px;
@@ -512,17 +524,28 @@
   .video-section::before {
     content: '';
     position: absolute;
-    inset: 0;
+    inset: -30% 0;
     z-index: -2;
     background:
-      radial-gradient(circle at 18% 18%, rgba(78,38,181,0.28), transparent 32%),
-      radial-gradient(circle at 82% 20%, rgba(219,169,37,0.2), transparent 34%),
-      radial-gradient(circle at 48% 88%, rgba(8,86,48,0.42), transparent 56%),
-      linear-gradient(180deg, #020101 0%, #060306 48%, #020101 100%);
+      linear-gradient(180deg, #020101 0%, rgba(2,1,1,0) 18%, rgba(2,1,1,0) 82%, #020101 100%),
+      radial-gradient(circle at 18% 24%, rgba(78,38,181,0.28), transparent 34%),
+      radial-gradient(circle at 82% 28%, rgba(219,169,37,0.2), transparent 36%),
+      radial-gradient(circle at 48% 72%, rgba(8,86,48,0.42), transparent 58%),
+      linear-gradient(180deg, #020101 0%, #060306 50%, #020101 100%);
+  }
+  .video-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, #020101 0%, rgba(2,1,1,0.78) 3%, rgba(2,1,1,0) 13%),
+      linear-gradient(0deg, #020101 0%, rgba(2,1,1,0.78) 3%, rgba(2,1,1,0) 13%);
   }
   .video-psychedelic-bg {
     position: absolute;
-    inset: -46% -40%;
+    inset: -68% -44%;
     z-index: -1;
     pointer-events: none;
     opacity: var(--video-bg-opacity);
@@ -537,13 +560,16 @@
       radial-gradient(circle at 50% 48%, rgba(181,36,229,0.44) 0 8%, rgba(181,36,229,0.2) 20%, transparent 38%);
     mix-blend-mode: screen;
     will-change: transform, filter, opacity;
-    animation: videoPsychedelicFlow 10s linear infinite;
+    animation: videoPsychedelicFlow 7.5s linear infinite;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
   }
   .video-section.video-is-playing .video-psychedelic-bg {
-    animation-duration: 6.5s;
+    animation-duration: 9s;
+    filter: blur(12px) saturate(1.85) brightness(1.04) hue-rotate(var(--video-bg-hue));
   }
   .video-section.video-is-playing .video-psychedelic-bg::before {
-    animation-duration: 4.2s;
+    animation-duration: 7s;
   }
   .video-psychedelic-bg::before,
   .video-psychedelic-bg::after {
@@ -557,7 +583,7 @@
       radial-gradient(circle at 36% 44%, rgba(226,168,26,0.36) 0 9%, transparent 28%),
       radial-gradient(circle at 60% 54%, rgba(79,32,206,0.58) 0 13%, transparent 36%),
       radial-gradient(circle at 82% 78%, rgba(4,181,96,0.42) 0 10%, transparent 30%);
-    animation: videoPsychedelicDrift 7s ease-in-out infinite alternate;
+    animation: videoPsychedelicDrift 5.6s ease-in-out infinite alternate;
   }
   .video-psychedelic-bg::after {
     inset: 10%;
@@ -568,6 +594,10 @@
       drop-shadow(0 0 var(--video-glow-outer) rgba(229,174,33,0.48))
       drop-shadow(0 0 var(--video-glow-inner) rgba(4,181,96,0.4));
     animation: videoPsychedelicPulse 3.6s ease-in-out infinite;
+  }
+  .video-section.video-is-playing .video-psychedelic-bg::after {
+    animation-duration: 6s;
+    opacity: 0.55;
   }
   .video-section > *:not(.video-psychedelic-bg) {
     position: relative;
@@ -583,31 +613,39 @@
   }
   .video-wrapper {
     position: relative;
-    max-width: 900px;
+    max-width: 980px;
     margin: 0 auto;
-    border-radius: 4px;
+    border-radius: clamp(34px, 5vw, 72px) / clamp(24px, 3.8vw, 52px);
+    clip-path: var(--crt-tv-shape);
+    clip-path: url(#hero-tv-screen);
     overflow: hidden;
+    contain: paint;
+    background: transparent;
     box-shadow:
       0 0 80px rgba(196,98,45,var(--video-shadow-rust)),
       0 0 140px rgba(212,168,55,var(--video-shadow-amber));
   }
   .video-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border: 1px solid rgba(212,168,55,var(--video-border-alpha));
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 2;
+    display: none;
+  }
+  .video-wrapper::after {
+    display: none;
   }
   .video-wrapper iframe,
   .video-wrapper video {
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: auto;
     aspect-ratio: 16/9;
     display: block;
     border: none;
+    border-radius: inherit;
+    clip-path: var(--crt-tv-shape);
+    clip-path: url(#hero-tv-screen);
     background: var(--black);
+    box-shadow: none;
+    filter: contrast(1.02) saturate(0.98);
   }
   @keyframes videoPsychedelicFlow {
     0% { transform: scale(var(--video-bg-scale)) rotate(0deg) translate3d(-4%, -2%, 0); }
@@ -634,11 +672,18 @@
 
   /* ── ABOUT ── */
   .about-section {
-    background: var(--black);
+    position: relative;
+    margin-top: -1px;
+    background:
+      linear-gradient(180deg, #020101 0%, #020101 16%, rgba(2,1,1,0.82) 30%, rgba(2,1,1,0) 50%),
+      radial-gradient(circle at 22% 24%, rgba(78,38,181,0.12), transparent 32%),
+      radial-gradient(circle at 64% 18%, rgba(8,86,48,0.18), transparent 36%),
+      linear-gradient(180deg, #020101 0%, #050302 28%, var(--black) 58%);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
     align-items: center;
+    padding-top: 4.6rem;
   }
   .about-img {
     position: relative;
@@ -1564,6 +1609,9 @@
     .repertoire-section,
     .presskit-section,
     .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .about-section {
+      padding-top: 3.4rem;
+    }
     .form-row { grid-template-columns: 1fr; }
     .members-grid { grid-template-columns: repeat(2, 1fr); }
     .testimonials-grid { grid-template-columns: 1fr; }
@@ -1610,10 +1658,11 @@
   @media (max-width: 560px) {
     .hero {
       min-height: 100svh;
-      padding: 0 1.1rem calc(5.8rem + env(safe-area-inset-bottom));
+      align-items: center;
+      padding: calc(4.8rem + env(safe-area-inset-top)) 1.1rem calc(4.8rem + env(safe-area-inset-bottom));
     }
     .hero-content {
-      transform: translateY(-2.2rem);
+      transform: none;
     }
     .hero-eyebrow {
       margin-bottom: 1rem;
@@ -1645,6 +1694,9 @@
     }
     .hero::before {
       inset: 0.25rem;
+    }
+    .video-wrapper {
+      margin-inline: -0.35rem;
     }
     .lang-btn {
       font-size: 0.62rem;
@@ -1747,7 +1799,7 @@
         <i data-lucide="play" class="lucide-icon" aria-hidden="true"></i>
         <span data-i18n="heroVideoCta">Ver Show</span>
       </a>
-      <a href="#contacto" class="btn-secondary" data-i18n="heroBookCta">Contratar Ahora</a>
+      <a href="#contacto" class="btn-secondary" data-i18n="heroBookCta">Contratar</a>
     </div>
   </div>
 </section>
@@ -1769,7 +1821,7 @@
   <p data-i18n="videoText">Cada presentación es una celebración del blues, el soul y el rock psicodélico que hicieron inmortal a Janis Joplin.</p>
 
   <div class="video-wrapper">
-    <video controls preload="metadata" poster="assets/video-principal-kp-poster.png" playsinline>
+    <video controls preload="auto" poster="assets/video-principal-kp-poster.png" playsinline>
       <source src="assets/video-principal-kp.mp4" type="video/mp4">
       <span data-i18n="videoUnsupported">Tu navegador no puede reproducir este video.</span>
     </video>
@@ -2293,7 +2345,7 @@ const translations = {
     heroTitle: '<span class="hero-tagline-line">El tributo más auténtico</span><span class="hero-tagline-line">a <em>Janis Joplin</em> en Latinoamérica</span>',
     heroText: 'Kozmic Pearls presenta un espectáculo en vivo que recrea la energía, la fuerza y la esencia de una de las voces más legendarias de la historia del rock.',
     heroVideoCta: 'Ver Show',
-    heroBookCta: 'Contratar Ahora',
+    heroBookCta: 'Contratar',
     heroDatesCta: 'Próximas fechas',
     videoLabel: 'En vivo',
     videoTitle: 'Vive la experiencia <em>Kozmic Pearls</em>',
@@ -2416,7 +2468,7 @@ const translations = {
     heroTitle: '<span class="hero-tagline-line">The most authentic tribute</span><span class="hero-tagline-line">to <em>Janis Joplin</em> in Latin America</span>',
     heroText: 'Kozmic Pearls presents a live show that recreates the energy, power, and essence of one of the most legendary voices in rock history.',
     heroVideoCta: 'Watch Show',
-    heroBookCta: 'Book Now',
+    heroBookCta: 'Book',
     heroDatesCta: 'Upcoming dates',
     videoLabel: 'Live',
     videoTitle: 'Live the <em>Kozmic Pearls</em> experience',
@@ -2539,7 +2591,7 @@ const translations = {
     heroTitle: '<span class="hero-tagline-line">O tributo mais autêntico</span><span class="hero-tagline-line">a <em>Janis Joplin</em> na América Latina</span>',
     heroText: 'Kozmic Pearls apresenta um espetáculo ao vivo que recria a energia, a força e a essência de uma das vozes mais lendárias da história do rock.',
     heroVideoCta: 'Ver Show',
-    heroBookCta: 'Contratar Agora',
+    heroBookCta: 'Contratar',
     heroDatesCta: 'Próximas datas',
     videoLabel: 'Ao vivo',
     videoTitle: 'Viva a experiência <em>Kozmic Pearls</em>',
@@ -2774,6 +2826,10 @@ function pauseAmbientAudio() {
   updateAmbientAudioButton();
 }
 
+function isVideoInteractionTarget(target) {
+  return Boolean(target?.closest?.('.video-wrapper, .video-wrapper video'));
+}
+
 function initAmbientAudio() {
   const toggle = document.getElementById('ambientAudioToggle');
   const player = document.getElementById('ambientAudioPlayer');
@@ -2814,7 +2870,9 @@ function initAmbientAudio() {
 
   playAmbientAudio({ fromAutoplay: true });
 
-  const retryAutoplay = () => {
+  const retryAutoplay = event => {
+    if (isVideoInteractionTarget(event.target)) return;
+
     if (ambientAudioAutoplayPending && !ambientAudioPlaying) {
       playAmbientAudio({ fromAutoplay: true });
     }
@@ -2831,117 +2889,29 @@ function initReactiveVideoBackground() {
   const video = section?.querySelector('video');
   if (!section || !video) return;
 
-  let audioContext;
-  let analyser;
-  let source;
-  let silentGain;
-  let frequencyData;
-  let animationFrame;
-  let smoothedEnergy = 0;
-
-  function setVideoEnergy(rawEnergy) {
-    smoothedEnergy = smoothedEnergy * 0.78 + rawEnergy * 0.22;
-    const energy = Math.min(1, Math.max(0, smoothedEnergy));
-    section.style.setProperty('--video-bg-scale', (1 + energy * 0.1).toFixed(3));
-    section.style.setProperty('--video-bg-opacity', '0.05');
-    section.style.setProperty('--video-bg-blur', `${Math.max(11, 20 - energy * 9).toFixed(1)}px`);
-    section.style.setProperty('--video-bg-hue', `${Math.round(energy * 160)}deg`);
-    section.style.setProperty('--video-glow-outer', `${Math.round(80 + energy * 160)}px`);
-    section.style.setProperty('--video-glow-inner', `${Math.round(42 + energy * 100)}px`);
-    section.style.setProperty('--video-shadow-rust', (0.22 + energy * 0.28).toFixed(3));
-    section.style.setProperty('--video-shadow-amber', (0.08 + energy * 0.2).toFixed(3));
-    section.style.setProperty('--video-border-alpha', (0.22 + energy * 0.36).toFixed(3));
-  }
-
-  async function setupAudioAnalysis() {
-    if (analyser && frequencyData) return true;
-    const AudioContextConstructor = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContextConstructor) return false;
-
+  const warmUpVideo = () => {
     try {
-      audioContext = audioContext || new AudioContextConstructor();
-      if (audioContext.state === 'suspended') await audioContext.resume();
-      const captureStream = video.captureStream || video.mozCaptureStream;
-      if (!captureStream) return false;
+      video.load();
+    } catch (error) {}
+  };
 
-      const stream = captureStream.call(video);
-      if (!stream.getAudioTracks().length) return false;
-
-      source = source || audioContext.createMediaStreamSource(stream);
-      analyser = audioContext.createAnalyser();
-      silentGain = audioContext.createGain();
-      silentGain.gain.value = 0;
-      analyser.fftSize = 128;
-      analyser.smoothingTimeConstant = 0.78;
-      frequencyData = new Uint8Array(analyser.frequencyBinCount);
-      source.connect(analyser);
-      analyser.connect(silentGain);
-      silentGain.connect(audioContext.destination);
-      return true;
-    } catch (error) {
-      return false;
-    }
+  if (document.readyState === 'complete') {
+    warmUpVideo();
+  } else {
+    window.addEventListener('load', warmUpVideo, { once: true });
   }
 
-  function animateFromPlayback() {
-    if (video.paused || video.ended) {
-      animationFrame = null;
-      setVideoEnergy(0.18);
-      return;
-    }
-
-    const pulse = (Math.sin(video.currentTime * 5.2) + 1) / 2;
-    const drift = (Math.sin(video.currentTime * 2.1) + 1) / 2;
-    setVideoEnergy(0.18 + pulse * 0.18 + drift * 0.08);
-    animationFrame = window.requestAnimationFrame(animateFromPlayback);
-  }
-
-  function animateFromAudio() {
-    if (video.paused || video.ended || !analyser || !frequencyData) {
-      animationFrame = null;
-      setVideoEnergy(0.18);
-      return;
-    }
-
-    analyser.getByteFrequencyData(frequencyData);
-    const usableBins = Math.min(frequencyData.length, 42);
-    let total = 0;
-    for (let i = 0; i < usableBins; i += 1) {
-      total += frequencyData[i];
-    }
-    setVideoEnergy(Math.min(1, (total / (usableBins * 255)) * 2.8));
-    animationFrame = window.requestAnimationFrame(animateFromAudio);
-  }
-
-  function stopAudioAnimation() {
-    if (animationFrame) {
-      window.cancelAnimationFrame(animationFrame);
-      animationFrame = null;
-    }
-    setVideoEnergy(0.18);
-  }
-
-  video.addEventListener('play', async () => {
+  video.addEventListener('play', () => {
     pauseAmbientAudio();
     section.classList.add('video-is-playing');
-    const canAnalyze = await setupAudioAnalysis();
-    if (!animationFrame) {
-      if (canAnalyze) {
-        animateFromAudio();
-      } else {
-        animateFromPlayback();
-      }
-    }
   });
 
   video.addEventListener('pause', () => {
     section.classList.remove('video-is-playing');
-    stopAudioAnimation();
   });
 
   video.addEventListener('ended', () => {
     section.classList.remove('video-is-playing');
-    stopAudioAnimation();
   });
 }
 
