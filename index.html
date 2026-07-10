@@ -1533,6 +1533,18 @@
   .form-group select option { background: var(--deep); }
   .form-group textarea { min-height: 100px; resize: vertical; }
   .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .form-status {
+    display: none;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(240,232,216,0.18);
+    background: rgba(10,8,6,0.72);
+    color: var(--cream);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+  .form-status.visible { display: block; }
+  .form-status.success { border-color: rgba(212,168,55,0.55); color: var(--amber); }
+  .form-status.error { border-color: rgba(196,98,45,0.7); }
 
   /* ── FOOTER ── */
   footer {
@@ -2438,7 +2450,7 @@
       </div>
     </div>
 
-    <form class="contact-form" action="https://formsubmit.co/contacto@kozmicpearls.com" method="POST">
+    <form class="contact-form" id="contactForm" action="https://formsubmit.co/contacto@kozmicpearls.com" method="POST">
       <input type="hidden" name="_subject" value="Nuevo mensaje desde Kozmic Pearls">
       <input type="hidden" name="_template" value="table">
       <div class="form-row">
@@ -2470,6 +2482,7 @@
         <span data-i18n="formSubmit">Enviar mensaje</span>
         <i data-lucide="send" class="lucide-icon" aria-hidden="true"></i>
       </button>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>
@@ -3139,6 +3152,67 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Enviar el formulario sin abandonar la página
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+const formMessages = {
+  es: {
+    sending: 'Enviando mensaje…',
+    success: '¡Mensaje enviado! Gracias por contactarnos. Te responderemos pronto.',
+    error: 'No pudimos enviar el mensaje. Intenta nuevamente o escríbenos a contacto@kozmicpearls.com.'
+  },
+  en: {
+    sending: 'Sending message…',
+    success: 'Message sent! Thank you for contacting us. We will reply soon.',
+    error: 'We could not send the message. Please try again or email contacto@kozmicpearls.com.'
+  },
+  pt: {
+    sending: 'Enviando mensagem…',
+    success: 'Mensagem enviada! Obrigado por entrar em contato. Responderemos em breve.',
+    error: 'Não foi possível enviar a mensagem. Tente novamente ou escreva para contacto@kozmicpearls.com.'
+  }
+};
+
+function setFormStatus(type, message) {
+  if (!formStatus) return;
+  formStatus.className = 'form-status visible ' + type;
+  formStatus.textContent = message;
+}
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const messages = formMessages[currentLanguage] || formMessages.es;
+    const endpoint = contactForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+    submitButton.disabled = true;
+    setFormStatus('', messages.sending);
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(contactForm)
+      });
+      const result = await response.json();
+
+      if (!response.ok || result.success === false || result.success === 'false') {
+        throw new Error(result.message || 'Form submission failed');
+      }
+
+      contactForm.reset();
+      setFormStatus('success', messages.success);
+    } catch (error) {
+      setFormStatus('error', messages.error);
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}
 
 // Instagram lightbox — ver los posts dentro de la página
 const igModal = document.getElementById('igModal');
