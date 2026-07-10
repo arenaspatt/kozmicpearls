@@ -1204,7 +1204,12 @@
   .ig-modal-close .lucide-icon { width: 20px; height: 20px; }
 
   /* ── TESTIMONIALS ── */
-  .testimonials-section { background: var(--smoke); text-align: center; }
+  .testimonials-section {
+    background:
+      linear-gradient(180deg, rgba(18,14,10,0.78), rgba(10,8,6,0.9)),
+      url('assets/gallery-kp-9383.jpg') center 42% / cover no-repeat;
+    text-align: center;
+  }
   .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1212,8 +1217,11 @@
     margin-top: 3.5rem;
   }
   .testimonial {
-    background: rgba(240,232,216,0.04);
-    border: 1px solid rgba(240,232,216,0.1);
+    background: rgba(10,8,6,0.7);
+    border: 1px solid rgba(240,232,216,0.16);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
     border-radius: 3px;
     padding: 2rem;
     text-align: left;
