@@ -1433,7 +1433,12 @@
   }
 
   /* ── CONTACT ── */
-  .contact-section { background: var(--black); }
+  .contact-section {
+    background:
+      linear-gradient(90deg, rgba(10,8,6,0.9) 0%, rgba(10,8,6,0.74) 55%, rgba(10,8,6,0.82) 100%),
+      linear-gradient(180deg, rgba(10,8,6,0.24), rgba(10,8,6,0.7)),
+      url('assets/gallery-kp-9440.jpg') center 38% / cover no-repeat;
+  }
   .contact-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
