@@ -1058,14 +1058,17 @@
   }
   .repertoire-intro p { color: var(--cream-dim); line-height: 1.8; margin-bottom: 1.5rem; }
   .show-badge {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 0.8rem;
     background: rgba(196,98,45,0.15);
     border: 1px solid rgba(196,98,45,0.4);
     padding: 0.8rem 1.5rem;
     border-radius: 0;
+    width: max-content;
+    max-width: 100%;
     margin-top: 1rem;
+    margin-left: auto;
     clip-path: polygon(0 0, 96% 0, 100% 9%, 97% 17%, 100% 25%, 97% 34%, 100% 43%, 97% 52%, 100% 61%, 97% 70%, 100% 79%, 97% 88%, 100% 100%, 0 100%, 3% 90%, 0 80%, 3% 70%, 0 60%, 3% 50%, 0 40%, 3% 30%, 0 20%, 3% 10%);
     transform: rotate(-1.2deg);
   }
