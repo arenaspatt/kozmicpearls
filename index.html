@@ -1011,18 +1011,50 @@
   .repertoire-intro::after {
     content: '';
     position: absolute;
-    width: 360px;
-    height: 360px;
-    left: -190px;
-    bottom: -210px;
-    z-index: -1;
+    width: 420px;
+    height: 420px;
+    left: -140px;
+    bottom: -170px;
+    z-index: -2;
     border-radius: 50%;
     background:
-      radial-gradient(circle, transparent 0 7%, rgba(212,168,55,0.15) 7.5% 9%, transparent 9.5% 20%, rgba(240,232,216,0.05) 20.5% 21.5%, transparent 22% 31%, rgba(240,232,216,0.04) 31.5% 32.5%, transparent 33%),
-      repeating-radial-gradient(circle, rgba(240,232,216,0.025) 0 1px, transparent 1px 5px),
-      #090705;
-    box-shadow: 0 25px 70px rgba(0,0,0,0.45);
-    opacity: 0.72;
+      conic-gradient(from 18deg, transparent 0 7%, rgba(255,255,255,0.12) 9%, transparent 16% 43%, rgba(212,168,55,0.07) 49%, transparent 55% 78%, rgba(255,255,255,0.08) 84%, transparent 91%),
+      radial-gradient(circle, transparent 0 14%, rgba(255,255,255,0.05) 14.3% 14.8%, transparent 15.1% 26%, rgba(255,255,255,0.04) 26.3% 26.7%, transparent 27% 39%, rgba(255,255,255,0.04) 39.3% 39.7%, transparent 40%),
+      repeating-radial-gradient(circle, rgba(255,255,255,0.035) 0 1px, rgba(0,0,0,0.08) 1px 3px, transparent 3px 5px),
+      radial-gradient(circle at 42% 35%, #292827 0, #111 42%, #050505 72%, #161514 100%);
+    box-shadow: 0 34px 85px rgba(0,0,0,0.62), inset 0 0 32px rgba(255,255,255,0.05), inset 0 0 3px rgba(255,255,255,0.3);
+    animation: vinylSpin 9s linear infinite;
+  }
+  .repertoire-intro::before {
+    content: 'KOZMIC\A PEARLS';
+    white-space: pre;
+    position: absolute;
+    width: 116px;
+    height: 116px;
+    left: 12px;
+    bottom: -18px;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, #050403 0 4px, #d7bd75 4.5px 7px, transparent 7.5px),
+      radial-gradient(circle at 35% 28%, rgba(255,255,255,0.28), transparent 28%),
+      conic-gradient(from 20deg, #9c3f25, #d4a837, #6e2f32, #c4622d, #9c3f25);
+    box-shadow: 0 0 0 2px rgba(212,168,55,0.25), inset 0 0 18px rgba(45,20,12,0.38);
+    color: rgba(245,233,205,0.92);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    line-height: 1.05;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.45);
+    animation: vinylSpin 9s linear infinite;
+  }
+  @keyframes vinylSpin {
+    to { transform: rotate(360deg); }
   }
   .repertoire-intro p { color: var(--cream-dim); line-height: 1.8; margin-bottom: 1.5rem; }
   .show-badge {
@@ -2163,6 +2195,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .songs-list li { opacity: 1; transform: none; transition: none; }
+    .repertoire-intro::before,
+    .repertoire-intro::after { animation: none; }
   }
 
   /* Scroll reveal */
