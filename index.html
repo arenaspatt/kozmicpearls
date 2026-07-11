@@ -1005,6 +1005,24 @@
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
     align-items: start;
+    overflow: hidden;
+  }
+  .repertoire-intro { position: relative; z-index: 2; }
+  .repertoire-intro::after {
+    content: '';
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    left: -190px;
+    bottom: -210px;
+    z-index: -1;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, transparent 0 7%, rgba(212,168,55,0.15) 7.5% 9%, transparent 9.5% 20%, rgba(240,232,216,0.05) 20.5% 21.5%, transparent 22% 31%, rgba(240,232,216,0.04) 31.5% 32.5%, transparent 33%),
+      repeating-radial-gradient(circle, rgba(240,232,216,0.025) 0 1px, transparent 1px 5px),
+      #090705;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+    opacity: 0.72;
   }
   .repertoire-intro p { color: var(--cream-dim); line-height: 1.8; margin-bottom: 1.5rem; }
   .show-badge {
@@ -1014,8 +1032,10 @@
     background: rgba(196,98,45,0.15);
     border: 1px solid rgba(196,98,45,0.4);
     padding: 0.8rem 1.5rem;
-    border-radius: 2px;
+    border-radius: 0;
     margin-top: 1rem;
+    clip-path: polygon(0 0, 96% 0, 100% 9%, 97% 17%, 100% 25%, 97% 34%, 100% 43%, 97% 52%, 100% 61%, 97% 70%, 100% 79%, 97% 88%, 100% 100%, 0 100%, 3% 90%, 0 80%, 3% 70%, 0 60%, 3% 50%, 0 40%, 3% 30%, 0 20%, 3% 10%);
+    transform: rotate(-1.2deg);
   }
   .show-badge-icon {
     display: flex;
@@ -1032,6 +1052,40 @@
     font-weight: 900;
   }
 
+  .setlist-card {
+    position: relative;
+    margin: 1rem auto 0;
+    padding: clamp(2.6rem, 5vw, 4.25rem) clamp(1.5rem, 4vw, 3.25rem) 2.5rem;
+    color: #24170f;
+    background:
+      linear-gradient(rgba(93,55,26,0.055) 1px, transparent 1px) 0 2.8rem / 100% 2.85rem,
+      radial-gradient(circle at 12% 8%, rgba(92,54,26,0.09), transparent 20%),
+      radial-gradient(circle at 86% 78%, rgba(92,54,26,0.08), transparent 24%),
+      #e8ddc8;
+    box-shadow: 0 28px 75px rgba(0,0,0,0.48), inset 0 0 55px rgba(88,50,25,0.08);
+    transform: rotate(0.65deg);
+  }
+  .setlist-card::before,
+  .setlist-card::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    width: 112px;
+    height: 34px;
+    background: rgba(205,177,122,0.72);
+    box-shadow: 0 2px 7px rgba(0,0,0,0.2);
+  }
+  .setlist-card::before { left: 8%; transform: rotate(-8deg); }
+  .setlist-card::after { right: 8%; transform: rotate(7deg); }
+  .setlist-heading {
+    margin-bottom: 1.25rem;
+    text-align: center;
+    color: #5e321d;
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    transform: rotate(-1deg);
+  }
   .songs-list {
     columns: 2;
     column-gap: 2rem;
@@ -1042,26 +1096,55 @@
     align-items: center;
     gap: 0.7rem;
     padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(240,232,216,0.08);
-    font-size: 0.88rem;
-    color: var(--cream);
+    border-bottom: 1px solid rgba(62,37,21,0.16);
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.25rem;
+    color: #2c1d14;
     break-inside: avoid;
     font-weight: 400;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
   }
   .songs-list li::before {
     content: '';
     width: 5px; height: 5px;
-    background: var(--amber);
+    background: #8a5a24;
     border-radius: 50%;
     flex-shrink: 0;
     opacity: 0.7;
   }
   .songs-list li.highlight {
-    color: var(--amber);
-    font-weight: 600;
+    position: relative;
+    color: #a54822;
+    font-weight: 700;
   }
   .songs-list li.highlight::before { opacity: 1; background: var(--rust); }
+  .songs-list li.highlight::after {
+    content: '';
+    position: absolute;
+    left: 1.15rem;
+    right: 0.15rem;
+    bottom: 0.34rem;
+    height: 2px;
+    background: rgba(165,72,34,0.48);
+    transform: rotate(-1deg);
+  }
+  .repertoire-section.visible .songs-list li { opacity: 1; transform: none; }
+  .songs-list li:nth-child(2) { transition-delay: 0.05s; }
+  .songs-list li:nth-child(3) { transition-delay: 0.1s; }
+  .songs-list li:nth-child(4) { transition-delay: 0.15s; }
+  .songs-list li:nth-child(5) { transition-delay: 0.2s; }
+  .songs-list li:nth-child(6) { transition-delay: 0.25s; }
+  .songs-list li:nth-child(7) { transition-delay: 0.3s; }
+  .songs-list li:nth-child(8) { transition-delay: 0.35s; }
+  .songs-list li:nth-child(9) { transition-delay: 0.4s; }
+  .songs-list li:nth-child(10) { transition-delay: 0.45s; }
+  .songs-list li:nth-child(11) { transition-delay: 0.5s; }
+  .songs-list li:nth-child(12) { transition-delay: 0.55s; }
+  .songs-list li:nth-child(13) { transition-delay: 0.6s; }
+  .songs-list li:nth-child(14) { transition-delay: 0.65s; }
 
   /* ── GALLERY ── */
   .gallery-section {
@@ -1891,6 +1974,7 @@
     .gallery-lightbox-prev { left: 0.65rem; }
     .gallery-lightbox-next { right: 0.65rem; }
     .songs-list { columns: 1; }
+    .setlist-card { transform: rotate(0.25deg); }
     footer {
       flex-direction: column;
       align-items: center;
@@ -1917,7 +2001,8 @@
     .footer-social { justify-content: center; }
     .footer-copy { text-align: center; }
     .ambient-audio-toggle {
-      right: 1rem;
+      left: 1rem;
+      right: auto;
       bottom: calc(0.9rem + env(safe-area-inset-bottom));
       font-size: 0.62rem;
     }
@@ -2069,6 +2154,10 @@
     .ig-modal { padding: 1rem; }
     .ig-modal-dialog { max-width: 340px; }
     .ig-modal-frame { height: 72vh; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .songs-list li { opacity: 1; transform: none; transition: none; }
   }
 
   /* Scroll reveal */
@@ -2341,7 +2430,8 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="setlist-card">
+    <div class="setlist-heading" data-i18n="setlistHeading">Setlist de esta noche</div>
     <ul class="songs-list">
       <li class="highlight">Piece of My Heart</li>
       <li class="highlight">Cry Baby</li>
@@ -2769,6 +2859,7 @@ const translations = {
     lucianoYears: 'Desde 2024',
     lucianoBio: 'El motor rítmico del show. Su energía detrás del kit mantiene el espíritu crudo y apasionado de Janis.',
     repertoireLabel: 'El viaje kózmico',
+    setlistHeading: 'Setlist de esta noche',
     repertoireTitle: 'Un viaje por la historia del rock',
     repertoireText1: 'Durante 90 minutos el público revive los momentos más icónicos de Janis Joplin, desde Mercedes Benz hasta Piece of My Heart, en un espectáculo lleno de energía, improvisación y emoción.',
     repertoireText2: 'Un espectáculo enérgico y emotivo que conecta al público con el espíritu de una época que marcó la historia de la música.',
@@ -2897,6 +2988,7 @@ const translations = {
     lucianoYears: 'Since 2024',
     lucianoBio: 'The rhythmic engine of the show. His energy behind the kit keeps Janis’ raw and passionate spirit alive.',
     repertoireLabel: 'The kozmic journey',
+    setlistHeading: "Tonight's setlist",
     repertoireTitle: 'A journey through rock history',
     repertoireText1: 'For 90 minutes, the audience relives Janis Joplin’s most iconic moments, from Mercedes Benz to Piece of My Heart, in a show full of energy, improvisation, and emotion.',
     repertoireText2: 'An energetic and emotional show that connects audiences with the spirit of an era that shaped music history.',
@@ -3025,6 +3117,7 @@ const translations = {
     lucianoYears: 'Desde 2024',
     lucianoBio: 'O motor rítmico do show. Sua energia atrás da bateria mantém vivo o espírito cru e apaixonado de Janis.',
     repertoireLabel: 'A viagem kózmica',
+    setlistHeading: 'Setlist desta noite',
     repertoireTitle: 'Uma viagem pela história do rock',
     repertoireText1: 'Durante 90 minutos, o público revive os momentos mais icônicos de Janis Joplin, de Mercedes Benz a Piece of My Heart, em um espetáculo cheio de energia, improvisação e emoção.',
     repertoireText2: 'Um espetáculo enérgico e emotivo que conecta o público ao espírito de uma época que marcou a história da música.',
