@@ -1837,17 +1837,18 @@
     .nav-links {
       display: none;
       position: absolute;
-      top: calc(100% + 0.35rem);
-      left: 1rem;
-      right: 1rem;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      right: 0;
       flex-direction: column;
       gap: 0;
       padding: 0.65rem;
-      border: 1px solid rgba(240,232,216,0.18);
-      background: rgba(10,8,6,0.97);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      -webkit-backdrop-filter: blur(18px);
-      backdrop-filter: blur(18px);
+      border: 0;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(18,14,10,0.94), rgba(10,8,6,0.88));
+      box-shadow: 0 18px 48px rgba(0,0,0,0.38), inset 0 1px rgba(255,255,255,0.04);
+      -webkit-backdrop-filter: blur(20px) saturate(165%);
+      backdrop-filter: blur(20px) saturate(165%);
     }
     .nav-links.open { display: flex; }
     .nav-links a { display: block; padding: 0.85rem 0.75rem; }
