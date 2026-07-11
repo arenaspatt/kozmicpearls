@@ -1080,7 +1080,9 @@
     overflow: hidden;
     border-radius: 2px;
     background: var(--smoke);
+    cursor: zoom-in;
   }
+  .gallery-item:focus-visible { outline: 2px solid var(--amber); outline-offset: 4px; }
   .gallery-item:nth-child(1) { grid-column: span 6; grid-row: span 2; }
   .gallery-item:nth-child(2) { grid-column: span 6; }
   .gallery-item:nth-child(3),
@@ -1097,6 +1099,56 @@
     display: block;
   }
   .gallery-item:hover img { filter: grayscale(0%) contrast(1.1); transform: scale(1.03); }
+
+  .gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem);
+    background: rgba(5,4,3,0.95);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .gallery-lightbox.open { display: flex; opacity: 1; }
+  .gallery-lightbox-image {
+    display: block;
+    max-width: min(1180px, calc(100vw - 8rem));
+    max-height: calc(100vh - 5rem);
+    object-fit: contain;
+    box-shadow: 0 24px 90px rgba(0,0,0,0.65);
+  }
+  .gallery-lightbox-close,
+  .gallery-lightbox-nav {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(240,232,216,0.3);
+    border-radius: 50%;
+    background: rgba(10,8,6,0.72);
+    color: var(--cream);
+    cursor: pointer;
+  }
+  .gallery-lightbox-close:hover,
+  .gallery-lightbox-nav:hover { border-color: var(--amber); color: var(--amber); }
+  .gallery-lightbox-close { top: 1.25rem; right: 1.25rem; }
+  .gallery-lightbox-prev { left: 1.25rem; }
+  .gallery-lightbox-next { right: 1.25rem; }
+  .gallery-lightbox .lucide-icon { width: 22px; height: 22px; }
+  .gallery-lightbox-counter {
+    position: absolute;
+    left: 50%;
+    bottom: 1.15rem;
+    transform: translateX(-50%);
+    color: var(--cream-dim);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
 
   /* ── INSTAGRAM ── */
   .instagram-section {
@@ -1825,6 +1877,11 @@
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .gallery-item { grid-column: auto !important; grid-row: auto !important; }
     .gallery-item img { min-height: 160px; }
+    .gallery-lightbox { padding: 4.5rem 0.75rem; }
+    .gallery-lightbox-image { max-width: calc(100vw - 1.5rem); max-height: calc(100vh - 9rem); }
+    .gallery-lightbox-close { top: 0.9rem; right: 0.9rem; }
+    .gallery-lightbox-prev { left: 0.65rem; }
+    .gallery-lightbox-next { right: 0.65rem; }
     .songs-list { columns: 1; }
     footer {
       flex-direction: column;
@@ -2566,6 +2623,21 @@
     </form>
   </div>
 </section>
+
+<!-- GALLERY LIGHTBOX -->
+<div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Visualizador de fotografías">
+  <button class="gallery-lightbox-close" id="galleryLightboxClose" type="button" aria-label="Cerrar visualizador">
+    <i data-lucide="x" class="lucide-icon" aria-hidden="true"></i>
+  </button>
+  <button class="gallery-lightbox-nav gallery-lightbox-prev" id="galleryLightboxPrev" type="button" aria-label="Fotografía anterior">
+    <i data-lucide="chevron-left" class="lucide-icon" aria-hidden="true"></i>
+  </button>
+  <img class="gallery-lightbox-image" id="galleryLightboxImage" src="" alt="">
+  <button class="gallery-lightbox-nav gallery-lightbox-next" id="galleryLightboxNext" type="button" aria-label="Fotografía siguiente">
+    <i data-lucide="chevron-right" class="lucide-icon" aria-hidden="true"></i>
+  </button>
+  <div class="gallery-lightbox-counter" id="galleryLightboxCounter"></div>
+</div>
 
 <!-- INSTAGRAM LIGHTBOX -->
 <div class="ig-modal" id="igModal" role="dialog" aria-modal="true" aria-label="Publicación de Instagram">
@@ -3310,6 +3382,55 @@ if (contactForm) {
   });
 }
 
+// Galería ampliada
+const galleryItems = [...document.querySelectorAll('.gallery-item')];
+const galleryLightbox = document.getElementById('galleryLightbox');
+const galleryLightboxImage = document.getElementById('galleryLightboxImage');
+const galleryLightboxCounter = document.getElementById('galleryLightboxCounter');
+let activeGalleryIndex = 0;
+
+function showGalleryImage(index) {
+  activeGalleryIndex = (index + galleryItems.length) % galleryItems.length;
+  const sourceImage = galleryItems[activeGalleryIndex].querySelector('img');
+  galleryLightboxImage.src = sourceImage.src;
+  galleryLightboxImage.alt = sourceImage.alt;
+  galleryLightboxCounter.textContent = `${activeGalleryIndex + 1} / ${galleryItems.length}`;
+}
+
+function openGalleryLightbox(index) {
+  showGalleryImage(index);
+  galleryLightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('galleryLightboxClose').focus();
+}
+
+function closeGalleryLightbox() {
+  galleryLightbox.classList.remove('open');
+  galleryLightboxImage.src = '';
+  document.body.style.overflow = '';
+  galleryItems[activeGalleryIndex]?.focus();
+}
+
+galleryItems.forEach((item, index) => {
+  item.setAttribute('role', 'button');
+  item.setAttribute('tabindex', '0');
+  item.setAttribute('aria-label', `Ampliar ${item.querySelector('img').alt}`);
+  item.addEventListener('click', () => openGalleryLightbox(index));
+  item.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openGalleryLightbox(index);
+    }
+  });
+});
+
+document.getElementById('galleryLightboxClose').addEventListener('click', closeGalleryLightbox);
+document.getElementById('galleryLightboxPrev').addEventListener('click', () => showGalleryImage(activeGalleryIndex - 1));
+document.getElementById('galleryLightboxNext').addEventListener('click', () => showGalleryImage(activeGalleryIndex + 1));
+galleryLightbox.addEventListener('click', event => {
+  if (event.target === galleryLightbox) closeGalleryLightbox();
+});
+
 // Instagram lightbox — ver los posts dentro de la página
 const igModal = document.getElementById('igModal');
 const igFrame = document.getElementById('igFrame');
@@ -3335,6 +3456,12 @@ igModal.addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
+  if (galleryLightbox.classList.contains('open')) {
+    if (e.key === 'Escape') closeGalleryLightbox();
+    if (e.key === 'ArrowLeft') showGalleryImage(activeGalleryIndex - 1);
+    if (e.key === 'ArrowRight') showGalleryImage(activeGalleryIndex + 1);
+    return;
+  }
   if (e.key === 'Escape' && igModal.classList.contains('open')) closeIgModal();
 });
 </script>
