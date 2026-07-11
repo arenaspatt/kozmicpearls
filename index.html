@@ -106,19 +106,25 @@
     justify-content: space-between;
     padding: 0.55rem 3rem;
     background: linear-gradient(to bottom, rgba(10,8,6,0.95), transparent);
-    border-bottom: 0;
+    border: 1px solid transparent;
+    border-radius: 0;
     box-shadow: none;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+    transition: top 0.3s ease, left 0.3s ease, right 0.3s ease, padding 0.3s ease, border-radius 0.3s ease, background 0.3s, border-color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
   }
   nav.scrolled {
+    top: 0.7rem;
+    left: clamp(0.75rem, 2.2vw, 2.25rem);
+    right: clamp(0.75rem, 2.2vw, 2.25rem);
+    padding: 0.42rem clamp(1rem, 2.4vw, 2rem);
     background:
-      linear-gradient(180deg, rgba(10,8,6,0.82), rgba(10,8,6,0.58));
-    border-bottom: 1px solid rgba(196,98,45,0.2);
-    box-shadow: 0 16px 42px rgba(0,0,0,0.28);
-    -webkit-backdrop-filter: blur(18px) saturate(165%);
-    backdrop-filter: blur(18px) saturate(165%);
+      linear-gradient(180deg, rgba(18,14,10,0.88), rgba(10,8,6,0.72));
+    border-color: rgba(240,232,216,0.16);
+    border-radius: 16px;
+    box-shadow: 0 18px 48px rgba(0,0,0,0.38), inset 0 1px rgba(255,255,255,0.04);
+    -webkit-backdrop-filter: blur(20px) saturate(165%);
+    backdrop-filter: blur(20px) saturate(165%);
   }
 
   .nav-logo {
