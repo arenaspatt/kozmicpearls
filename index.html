@@ -1451,6 +1451,9 @@
     width: 100%;
     border-collapse: collapse;
   }
+  .dates-table tr[hidden] {
+    display: none;
+  }
   .dates-table th {
     text-align: left;
     font-size: 0.68rem;
@@ -2579,7 +2582,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr data-event-date="2026-09-12">
+      <tr data-event-date="2026-09-12" hidden aria-hidden="true">
         <td class="date-date"><time datetime="2026-09-12" data-i18n="datesDate">12 sep. 2026</time></td>
         <td class="date-city">
           <span class="date-mobile-label" data-i18n="datesHeaderCity">Ciudad</span>
