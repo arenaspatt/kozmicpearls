@@ -30,17 +30,25 @@
 <meta name="twitter:image:alt" content="Kozmic Pearls en vivo — tributo a Janis Joplin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
+  @font-face {
+    font-family: 'Barcelona ITC Std';
+    src: url('assets/kp-2026-barcelona-medium.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+  }
+
   :root {
-    --black: #0A0806;
-    --deep: #120E0A;
-    --cream: #F0E8D8;
-    --cream-dim: #B8A98A;
-    --rust: #C4622D;
-    --amber: #D4A837;
-    --plum: #2D1B2E;
-    --smoke: #1A1410;
+    --black: #0E0914;
+    --deep: #170F21;
+    --cream: #FFF5F1;
+    --cream-dim: #CDBDD5;
+    --rust: #EA3345;
+    --amber: #CF9BFB;
+    --plum: #362044;
+    --smoke: #21162C;
     --crt-tv-shape: polygon(
       6.5% 1.8%,
       93.5% 1.8%,
@@ -78,7 +86,7 @@
   body {
     background: var(--black);
     color: var(--cream);
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.6;
     position: relative;
@@ -105,7 +113,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.55rem 3rem;
-    background: linear-gradient(to bottom, rgba(10,8,6,0.95), transparent);
+    background: linear-gradient(to bottom, rgba(14,9,20,0.95), transparent);
     border: 0;
     border-radius: 0;
     box-shadow: none;
@@ -119,7 +127,7 @@
     right: clamp(0.75rem, 2.2vw, 2.25rem);
     padding: 0.42rem clamp(1rem, 2.4vw, 2rem);
     background:
-      linear-gradient(180deg, rgba(18,14,10,0.88), rgba(10,8,6,0.72));
+      linear-gradient(180deg, rgba(23,15,33,0.88), rgba(14,9,20,0.72));
     border: 0;
     border-radius: 16px;
     box-shadow: 0 18px 48px rgba(0,0,0,0.38), inset 0 1px rgba(255,255,255,0.04);
@@ -165,8 +173,8 @@
   .language-switcher {
     display: flex;
     align-items: center;
-    border: 1px solid rgba(240,232,216,0.22);
-    background: rgba(10,8,6,0.48);
+    border: 1px solid rgba(255,245,241,0.22);
+    background: rgba(14,9,20,0.48);
   }
   .lang-btn {
     border: none;
@@ -183,21 +191,21 @@
   }
   .lang-btn:hover,
   .lang-btn.active {
-    background: rgba(212,168,55,0.16);
+    background: rgba(207,155,251,0.16);
     color: var(--cream);
   }
 
   .nav-cta {
-    background: rgba(240,232,216,0.06) !important;
+    background: rgba(255,245,241,0.06) !important;
     color: var(--cream) !important;
-    border: 1px solid rgba(240,232,216,0.34) !important;
+    border: 1px solid rgba(255,245,241,0.34) !important;
     padding: 0.36rem 0.85rem !important;
     text-shadow: none;
     font-size: 0.72rem !important;
   }
   .nav-cta:hover {
-    background: rgba(240,232,216,0.12) !important;
-    border-color: rgba(212,168,55,0.65) !important;
+    background: rgba(255,245,241,0.12) !important;
+    border-color: rgba(207,155,251,0.65) !important;
     color: var(--cream) !important;
     filter: none !important;
     transform: translateY(-1px);
@@ -208,9 +216,9 @@
     height: 42px;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(240,232,216,0.28);
+    border: 1px solid rgba(255,245,241,0.28);
     border-radius: 12px;
-    background: rgba(10,8,6,0.72);
+    background: rgba(14,9,20,0.72);
     color: var(--cream);
     cursor: pointer;
   }
@@ -225,9 +233,9 @@
     align-items: center;
     gap: 0.55rem;
     padding: 0.78rem 1rem;
-    border: 1px solid rgba(212,168,55,0.7);
+    border: 1px solid rgba(207,155,251,0.7);
     border-radius: 999px;
-    background: rgba(18,14,10,0.92);
+    background: rgba(23,15,33,0.92);
     box-shadow: 0 12px 34px rgba(0,0,0,0.42);
     color: var(--cream);
     font-size: 0.75rem;
@@ -250,7 +258,7 @@
     padding: 0 clamp(1.8rem, 4vw, 4.8rem) clamp(4rem, 8vw, 7rem);
     overflow: hidden;
     background:
-      radial-gradient(ellipse at 50% 44%, rgba(240,232,216,0.06), transparent 32%),
+      radial-gradient(ellipse at 50% 44%, rgba(255,245,241,0.06), transparent 32%),
       #050403;
     isolation: isolate;
     --hero-tv-shape: var(--crt-tv-shape);
@@ -274,11 +282,11 @@
     transform: perspective(1200px) rotateX(0.35deg) scaleX(0.992);
     transform-origin: center;
     background:
-      linear-gradient(to top, rgba(10,8,6,1) 0%, rgba(10,8,6,0.6) 40%, rgba(10,8,6,0.2) 70%, rgba(10,8,6,0.4) 100%),
-      linear-gradient(to right, rgba(10,8,6,0.7) 0%, transparent 50%),
-      url('assets/header-kp-live-9188.jpg') center/cover no-repeat;
+      linear-gradient(to top, rgba(14,9,20,1) 0%, rgba(14,9,20,0.6) 40%, rgba(14,9,20,0.2) 70%, rgba(14,9,20,0.4) 100%),
+      linear-gradient(to right, rgba(14,9,20,0.7) 0%, transparent 50%),
+      url('assets/kp-2026-kozmic-pearls-34.webp') center/cover no-repeat;
     box-shadow:
-      inset 0 0 38px rgba(240,232,216,0.2),
+      inset 0 0 38px rgba(255,245,241,0.2),
       inset 0 0 118px rgba(0,0,0,0.68),
       inset 0 0 260px rgba(0,0,0,0.58);
     filter: contrast(1.04) saturate(0.95);
@@ -310,8 +318,8 @@
     clip-path: var(--hero-tv-shape);
     clip-path: url(#hero-tv-screen);
     background:
-      radial-gradient(ellipse at 34% 32%, rgba(240,232,216,0.2) 0 8%, transparent 30%),
-      radial-gradient(ellipse at 62% 58%, rgba(240,232,216,0.14) 0 10%, transparent 34%),
+      radial-gradient(ellipse at 34% 32%, rgba(255,245,241,0.2) 0 8%, transparent 30%),
+      radial-gradient(ellipse at 62% 58%, rgba(255,245,241,0.14) 0 10%, transparent 34%),
       repeating-linear-gradient(
         to bottom,
         rgba(245,240,228,0.16) 0,
@@ -340,12 +348,12 @@
     z-index: 1;
     pointer-events: none;
     background:
-      radial-gradient(ellipse at 14% 74%, rgba(240,232,216,0.34) 0 8%, transparent 33%),
-      radial-gradient(ellipse at 62% 20%, rgba(212,168,55,0.3) 0 10%, transparent 38%),
-      radial-gradient(ellipse at 86% 68%, rgba(196,98,45,0.34) 0 9%, transparent 36%),
+      radial-gradient(ellipse at 14% 74%, rgba(255,245,241,0.34) 0 8%, transparent 33%),
+      radial-gradient(ellipse at 62% 20%, rgba(207,155,251,0.3) 0 10%, transparent 38%),
+      radial-gradient(ellipse at 86% 68%, rgba(234,51,69,0.34) 0 9%, transparent 36%),
       radial-gradient(ellipse at 38% 46%, rgba(45,27,46,0.52) 0 18%, transparent 52%),
-      radial-gradient(ellipse at 58% 78%, rgba(240,232,216,0.24) 0 11%, transparent 42%),
-      linear-gradient(112deg, transparent 0 15%, rgba(240,232,216,0.18) 31%, transparent 52% 100%);
+      radial-gradient(ellipse at 58% 78%, rgba(255,245,241,0.24) 0 11%, transparent 42%),
+      linear-gradient(112deg, transparent 0 15%, rgba(255,245,241,0.18) 31%, transparent 52% 100%);
     filter: blur(34px) saturate(1.7);
     mix-blend-mode: screen;
     opacity: 0.96;
@@ -359,7 +367,7 @@
     z-index: 2;
     background:
       radial-gradient(ellipse at 52% 50%, transparent 0 44%, rgba(255,255,255,0.08) 48%, transparent 54%),
-      radial-gradient(ellipse at 30% 60%, rgba(196,98,45,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 30% 60%, rgba(234,51,69,0.18) 0%, transparent 60%),
       radial-gradient(ellipse at 70% 30%, rgba(45,27,46,0.42) 0%, transparent 50%),
       linear-gradient(to bottom, rgba(255,255,255,0.08), transparent 16% 72%, rgba(0,0,0,0.36));
     mix-blend-mode: multiply;
@@ -403,7 +411,7 @@
   }
 
   .hero-tagline {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: clamp(1.4rem, 2.6vw, 2.1rem);
     font-weight: 700;
     line-height: 1.25;
@@ -417,7 +425,7 @@
   }
 
   .hero h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: clamp(2.8rem, 6vw, 5.2rem);
     font-weight: 900;
     line-height: 1.05;
@@ -516,14 +524,14 @@
   .btn-primary:active { transform: translateY(0); }
 
   .btn-secondary {
-    background: rgba(240,232,216,0.04);
+    background: rgba(255,245,241,0.04);
     color: var(--cream);
-    border-color: rgba(240,232,216,0.3);
+    border-color: rgba(255,245,241,0.3);
     font-weight: 500;
   }
   .btn-secondary:hover {
-    background: rgba(240,232,216,0.1);
-    border-color: rgba(240,232,216,0.65);
+    background: rgba(255,245,241,0.1);
+    border-color: rgba(255,245,241,0.65);
     color: var(--cream);
     transform: translateY(-1px);
     filter: none;
@@ -562,7 +570,7 @@
   }
 
   .section-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: clamp(2rem, 4vw, 3.4rem);
     font-weight: 900;
     line-height: 1.1;
@@ -570,6 +578,41 @@
     margin-bottom: 2rem;
   }
   .section-title em { color: var(--amber); font-style: italic; }
+
+  /* Expressive seventies-inspired display type, with clean modern UI text. */
+  .hero h1, .section-title, .member-name {
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-synthesis: none;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  .section-title { font-weight: 500; }
+  .section-title em, .hero h1 em {
+    font-style: normal;
+    font-weight: 500;
+  }
+  .section-label { letter-spacing: 0.2em; }
+
+
+  /* Groovy color accents inspired by Janis Joplin's official site. */
+  :root {
+    --pink: #EA3345;
+    --orange: #EA3345;
+  }
+  ::selection { background: var(--pink); color: var(--black); }
+  .btn-primary, .nav-cta {
+    background: var(--pink);
+    border-color: var(--pink);
+    color: var(--black);
+  }
+  .btn-primary:hover, .nav-cta:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--black);
+  }
+  .hero h1 em { color: var(--pink); }
+  .wave-divider svg path { stroke: var(--amber); }
 
   /* ── VIDEO ── */
   .video-section {
@@ -690,8 +733,8 @@
     contain: paint;
     background: transparent;
     box-shadow:
-      0 0 80px rgba(196,98,45,var(--video-shadow-rust)),
-      0 0 140px rgba(212,168,55,var(--video-shadow-amber));
+      0 0 80px rgba(234,51,69,var(--video-shadow-rust)),
+      0 0 140px rgba(207,155,251,var(--video-shadow-amber));
   }
   .video-wrapper::before {
     display: none;
@@ -706,6 +749,7 @@
     width: 100%;
     height: auto;
     aspect-ratio: 16/9;
+    object-fit: contain;
     display: block;
     border: none;
     border-radius: inherit;
@@ -768,13 +812,13 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top right, rgba(196,98,45,0.15), transparent);
+    background: linear-gradient(to top right, rgba(234,51,69,0.15), transparent);
   }
   .about-img-frame {
     position: absolute;
     top: -12px; left: -12px;
     right: 12px; bottom: 12px;
-    border: 1px solid rgba(212,168,55,0.3);
+    border: 1px solid rgba(207,155,251,0.3);
     border-radius: 3px;
     pointer-events: none;
   }
@@ -789,10 +833,10 @@
     gap: 1.5rem;
     margin-top: 2.5rem;
     padding-top: 2.5rem;
-    border-top: 1px solid rgba(240,232,216,0.1);
+    border-top: 1px solid rgba(255,245,241,0.1);
   }
   .stat-num {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: 2.8rem;
     font-weight: 900;
     color: var(--amber);
@@ -833,8 +877,8 @@
     color: var(--black);
     background:
       linear-gradient(135deg, rgba(255,255,255,0.3), transparent 38%),
-      linear-gradient(180deg, rgba(240,232,216,0.97), rgba(216,190,130,0.92));
-    border: 1px solid rgba(212,168,55,0.5);
+      linear-gradient(180deg, rgba(255,245,241,0.97), rgba(216,190,130,0.92));
+    border: 1px solid rgba(207,155,251,0.5);
     border-radius: 4px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.32);
     overflow: hidden;
@@ -937,7 +981,7 @@
     padding: 0 0.35rem 0.35rem;
   }
   .member-name {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: 1.35rem;
     font-weight: 900;
     color: var(--black);
@@ -954,7 +998,7 @@
   .member-quote {
     margin: 0.45rem 0 0.8rem;
     color: rgba(31,12,6,0.92);
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: 1rem;
     font-style: italic;
     font-weight: 700;
@@ -1004,7 +1048,7 @@
     background-image:
       linear-gradient(105deg, rgba(255,255,255,0.025), transparent 34%, rgba(0,0,0,0.16) 72%, transparent),
       radial-gradient(ellipse at 8% 18%, rgba(151,92,45,0.18), transparent 28%),
-      radial-gradient(ellipse at 88% 82%, rgba(212,168,55,0.08), transparent 32%),
+      radial-gradient(ellipse at 88% 82%, rgba(207,155,251,0.08), transparent 32%),
       repeating-linear-gradient(7deg, rgba(239,220,184,0.018) 0 1px, transparent 1px 5px),
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
     background-blend-mode: soft-light, normal, normal, overlay, soft-light;
@@ -1025,7 +1069,7 @@
     z-index: -2;
     border-radius: 50%;
     background:
-      conic-gradient(from 18deg, transparent 0 7%, rgba(255,255,255,0.12) 9%, transparent 16% 43%, rgba(212,168,55,0.07) 49%, transparent 55% 78%, rgba(255,255,255,0.08) 84%, transparent 91%),
+      conic-gradient(from 18deg, transparent 0 7%, rgba(255,255,255,0.12) 9%, transparent 16% 43%, rgba(207,155,251,0.07) 49%, transparent 55% 78%, rgba(255,255,255,0.08) 84%, transparent 91%),
       radial-gradient(circle, transparent 0 14%, rgba(255,255,255,0.05) 14.3% 14.8%, transparent 15.1% 26%, rgba(255,255,255,0.04) 26.3% 26.7%, transparent 27% 39%, rgba(255,255,255,0.04) 39.3% 39.7%, transparent 40%),
       repeating-radial-gradient(circle, rgba(255,255,255,0.035) 0 1px, rgba(0,0,0,0.08) 1px 3px, transparent 3px 5px),
       radial-gradient(circle at 42% 35%, #292827 0, #111 42%, #050505 72%, #161514 100%);
@@ -1048,8 +1092,8 @@
       radial-gradient(circle, #050403 0 4px, #d7bd75 4.5px 7px, transparent 7.5px),
       radial-gradient(circle at 35% 28%, rgba(255,255,255,0.25), transparent 30%),
       linear-gradient(rgba(110,40,25,0.2), rgba(18,8,5,0.34)),
-      url('assets/gallery-kp-9440.jpg') center 42% / cover no-repeat;
-    box-shadow: 0 0 0 2px rgba(212,168,55,0.25), inset 0 0 18px rgba(45,20,12,0.38);
+      url('assets/kp-2026-kozmic-pearls-17.webp') center 42% / cover no-repeat;
+    box-shadow: 0 0 0 2px rgba(207,155,251,0.25), inset 0 0 18px rgba(45,20,12,0.38);
     animation: vinylSpin 9s linear infinite;
   }
   @keyframes vinylSpin {
@@ -1060,8 +1104,8 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    background: rgba(196,98,45,0.15);
-    border: 1px solid rgba(196,98,45,0.4);
+    background: rgba(234,51,69,0.15);
+    border: 1px solid rgba(234,51,69,0.4);
     padding: 0.8rem 1.5rem;
     border-radius: 0;
     width: max-content;
@@ -1080,7 +1124,7 @@
   }
   .show-badge-text { font-size: 0.8rem; letter-spacing: 0.1em; }
   .show-badge-num {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: 1.4rem;
     color: var(--amber);
     font-weight: 900;
@@ -1094,7 +1138,7 @@
   .setlist-heading {
     margin-bottom: 1.25rem;
     color: var(--amber);
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: clamp(1.55rem, 3vw, 2.25rem);
     font-weight: 700;
     line-height: 1.15;
@@ -1109,7 +1153,7 @@
     align-items: center;
     gap: 0.7rem;
     padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(240,232,216,0.12);
+    border-bottom: 1px solid rgba(255,245,241,0.12);
     font-size: 0.92rem;
     color: var(--cream);
     break-inside: avoid;
@@ -1225,9 +1269,9 @@
     justify-content: center;
     width: 46px;
     height: 46px;
-    border: 1px solid rgba(240,232,216,0.3);
+    border: 1px solid rgba(255,245,241,0.3);
     border-radius: 50%;
-    background: rgba(10,8,6,0.72);
+    background: rgba(14,9,20,0.72);
     color: var(--cream);
     cursor: pointer;
   }
@@ -1273,7 +1317,7 @@
     aspect-ratio: 4 / 5;
     overflow: hidden;
     border-radius: 2px;
-    border: 1px solid rgba(240,232,216,0.1);
+    border: 1px solid rgba(255,245,241,0.1);
     background: var(--smoke);
     color: var(--cream);
     padding: 0;
@@ -1305,8 +1349,8 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 1px solid rgba(240,232,216,0.55);
-    background: rgba(10,8,6,0.38);
+    border: 1px solid rgba(255,245,241,0.55);
+    background: rgba(14,9,20,0.38);
     backdrop-filter: blur(2px);
     color: var(--cream);
     opacity: 1;
@@ -1315,8 +1359,8 @@
   }
   .instagram-post:hover .instagram-play,
   .instagram-post:focus-visible .instagram-play {
-    border-color: rgba(212,168,55,0.75);
-    background: rgba(10,8,6,0.58);
+    border-color: rgba(207,155,251,0.75);
+    background: rgba(14,9,20,0.58);
     transform: translate(-50%, -50%) scale(1.04);
   }
   .instagram-play .lucide-icon {
@@ -1376,14 +1420,14 @@
     width: 40px; height: 40px;
     display: flex; align-items: center; justify-content: center;
     border-radius: 50%;
-    border: 1px solid rgba(240,232,216,0.3);
-    background: rgba(240,232,216,0.06);
+    border: 1px solid rgba(255,245,241,0.3);
+    background: rgba(255,245,241,0.06);
     color: var(--cream);
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
   .ig-modal-close:hover {
-    background: rgba(212,168,55,0.12);
+    background: rgba(207,155,251,0.12);
     border-color: var(--amber);
     color: var(--amber);
   }
@@ -1392,8 +1436,8 @@
   /* ── TESTIMONIALS ── */
   .testimonials-section {
     background:
-      linear-gradient(180deg, rgba(18,14,10,0.78), rgba(10,8,6,0.9)),
-      url('assets/gallery-kp-9383.jpg') center 42% / cover no-repeat;
+      linear-gradient(180deg, rgba(23,15,33,0.78), rgba(14,9,20,0.9)),
+      url('assets/kp-2026-kozmic-pearls-26.webp') center 42% / cover no-repeat;
     text-align: center;
   }
   .testimonials-grid {
@@ -1403,8 +1447,8 @@
     margin-top: 3.5rem;
   }
   .testimonial {
-    background: rgba(10,8,6,0.7);
-    border: 1px solid rgba(240,232,216,0.16);
+    background: rgba(14,9,20,0.7);
+    border: 1px solid rgba(255,245,241,0.16);
     box-shadow: 0 18px 50px rgba(0,0,0,0.28);
     -webkit-backdrop-filter: blur(7px);
     backdrop-filter: blur(7px);
@@ -1415,7 +1459,7 @@
   }
   .testimonial::before {
     content: '"';
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: 5rem;
     color: var(--rust);
     opacity: 0.3;
@@ -1461,15 +1505,15 @@
     text-transform: uppercase;
     color: var(--rust);
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(196,98,45,0.3);
+    border-bottom: 1px solid rgba(234,51,69,0.3);
   }
   .dates-table td {
     padding: 1.2rem 0;
-    border-bottom: 1px solid rgba(240,232,216,0.07);
+    border-bottom: 1px solid rgba(255,245,241,0.07);
     vertical-align: middle;
   }
   .date-date {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--amber);
@@ -1517,12 +1561,12 @@
     font-size: 0.68rem;
     letter-spacing: 0.1em;
     color: var(--cream-dim);
-    border-color: rgba(240,232,216,0.22);
+    border-color: rgba(255,245,241,0.22);
     text-decoration: none;
   }
   .btn-outline-sm:hover {
-    background: rgba(240,232,216,0.08);
-    border-color: rgba(212,168,55,0.6);
+    background: rgba(255,245,241,0.08);
+    border-color: rgba(207,155,251,0.6);
     color: var(--cream);
     filter: none;
     transform: translateY(-1px);
@@ -1534,7 +1578,7 @@
   }
   .btn-outline-sm.is-disabled:hover {
     background: transparent;
-    border-color: rgba(240,232,216,0.22);
+    border-color: rgba(255,245,241,0.22);
     color: var(--cream-dim);
     transform: none;
   }
@@ -1550,7 +1594,7 @@
   .dates-booking p {
     margin: 0;
     color: var(--cream);
-    font-family: 'Playfair Display', serif;
+    font-family: 'Barcelona ITC Std', Georgia, serif;
     font-size: clamp(1.35rem, 2.5vw, 2rem);
     font-weight: 800;
     line-height: 1.15;
@@ -1567,7 +1611,7 @@
     isolation: isolate;
     background:
       linear-gradient(90deg, rgba(45,27,46,0.96) 0%, rgba(45,27,46,0.84) 42%, rgba(45,27,46,0.72) 100%),
-      url('assets/presskit/fotografias-hd/kozmic-pearls-en-vivo-bn.png') center/cover no-repeat;
+      url('assets/kp-2026-kozmic-pearls-26.webp') center/cover no-repeat;
   }
   .presskit-section::before {
     content: '';
@@ -1575,8 +1619,8 @@
     inset: 0;
     z-index: -1;
     background:
-      radial-gradient(circle at 22% 26%, rgba(196,98,45,0.22), transparent 34%),
-      linear-gradient(180deg, rgba(10,8,6,0.28), rgba(10,8,6,0.7));
+      radial-gradient(circle at 22% 26%, rgba(234,51,69,0.22), transparent 34%),
+      linear-gradient(180deg, rgba(14,9,20,0.28), rgba(14,9,20,0.7));
     pointer-events: none;
   }
   .presskit-section > * {
@@ -1584,7 +1628,7 @@
     z-index: 1;
   }
   .presskit-section .section-title em { color: var(--amber); }
-  .presskit-section p { color: rgba(240,232,216,0.7); line-height: 1.8; margin-bottom: 2rem; }
+  .presskit-section p { color: rgba(255,245,241,0.7); line-height: 1.8; margin-bottom: 2rem; }
   .kit-items {
     display: flex;
     flex-direction: column;
@@ -1594,8 +1638,8 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: rgba(240,232,216,0.05);
-    border: 1px solid rgba(240,232,216,0.1);
+    background: rgba(255,245,241,0.05);
+    border: 1px solid rgba(255,245,241,0.1);
     padding: 1rem 1.2rem;
     border-radius: 3px;
     color: inherit;
@@ -1605,8 +1649,8 @@
   }
   .kit-item:hover,
   .kit-item:focus-visible {
-    background: rgba(240,232,216,0.08);
-    border-color: rgba(212,168,55,0.45);
+    background: rgba(255,245,241,0.08);
+    border-color: rgba(207,155,251,0.45);
     transform: translateY(-2px);
   }
   .kit-item:focus-visible {
@@ -1645,9 +1689,9 @@
   /* ── CONTACT ── */
   .contact-section {
     background:
-      linear-gradient(90deg, rgba(10,8,6,0.9) 0%, rgba(10,8,6,0.74) 55%, rgba(10,8,6,0.82) 100%),
-      linear-gradient(180deg, rgba(10,8,6,0.24), rgba(10,8,6,0.7)),
-      url('assets/gallery-kp-9440.jpg') center 38% / cover no-repeat;
+      linear-gradient(90deg, rgba(14,9,20,0.9) 0%, rgba(14,9,20,0.74) 55%, rgba(14,9,20,0.82) 100%),
+      linear-gradient(180deg, rgba(14,9,20,0.24), rgba(14,9,20,0.7)),
+      url('assets/kp-2026-kozmic-pearls-17.webp') center 38% / cover no-repeat;
   }
   .contact-inner {
     display: grid;
@@ -1665,8 +1709,8 @@
   }
   .contact-detail-icon {
     width: 40px; height: 40px;
-    background: rgba(196,98,45,0.15);
-    border: 1px solid rgba(196,98,45,0.35);
+    background: rgba(234,51,69,0.15);
+    border: 1px solid rgba(234,51,69,0.35);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
@@ -1698,7 +1742,7 @@
   }
   .social-link {
     width: 42px; height: 42px;
-    border: 1px solid rgba(240,232,216,0.2);
+    border: 1px solid rgba(255,245,241,0.2);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     color: var(--cream-dim);
@@ -1706,7 +1750,7 @@
     font-size: 1rem;
     transition: border-color 0.2s, color 0.2s, background 0.2s;
   }
-  .social-link:hover { border-color: var(--amber); color: var(--amber); background: rgba(212,168,55,0.08); }
+  .social-link:hover { border-color: var(--amber); color: var(--amber); background: rgba(207,155,251,0.08); }
 
   /* Form */
   .contact-form { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
@@ -1721,12 +1765,12 @@
   .form-group input,
   .form-group select,
   .form-group textarea {
-    background: rgba(240,232,216,0.05);
-    border: 1px solid rgba(240,232,216,0.15);
+    background: rgba(255,245,241,0.05);
+    border: 1px solid rgba(255,245,241,0.15);
     border-radius: 2px;
     padding: 0.85rem 1rem;
     color: var(--cream);
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', system-ui, sans-serif;
     font-size: 0.9rem;
     transition: border-color 0.2s;
     outline: none;
@@ -1738,7 +1782,7 @@
   .form-group select:focus,
   .form-group textarea:focus {
     border-color: var(--amber);
-    background: rgba(212,168,55,0.04);
+    background: rgba(207,155,251,0.04);
   }
   .form-group select option { background: var(--deep); }
   .form-group textarea { min-height: 100px; resize: vertical; }
@@ -1746,20 +1790,20 @@
   .form-status {
     display: none;
     padding: 0.8rem 1rem;
-    border: 1px solid rgba(240,232,216,0.18);
-    background: rgba(10,8,6,0.72);
+    border: 1px solid rgba(255,245,241,0.18);
+    background: rgba(14,9,20,0.72);
     color: var(--cream);
     font-size: 0.82rem;
     line-height: 1.5;
   }
   .form-status.visible { display: block; }
-  .form-status.success { border-color: rgba(212,168,55,0.55); color: var(--amber); }
-  .form-status.error { border-color: rgba(196,98,45,0.7); }
+  .form-status.success { border-color: rgba(207,155,251,0.55); color: var(--amber); }
+  .form-status.error { border-color: rgba(234,51,69,0.7); }
 
   /* ── FOOTER ── */
   footer {
     background: var(--deep);
-    border-top: 1px solid rgba(240,232,216,0.08);
+    border-top: 1px solid rgba(255,245,241,0.08);
     padding: 3rem;
     display: flex;
     align-items: center;
@@ -1802,7 +1846,7 @@
   .footer-links a:hover { color: var(--amber); }
   .footer-copy {
     font-size: 0.72rem;
-    color: rgba(184,169,138,0.5);
+    color: rgba(205,189,213,0.5);
     text-align: right;
   }
   .footer-social {
@@ -1816,7 +1860,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(240,232,216,0.18);
+    border: 1px solid rgba(255,245,241,0.18);
     border-radius: 50%;
     color: var(--cream-dim);
     font-size: 1rem;
@@ -1826,7 +1870,7 @@
   .footer-social a:hover {
     border-color: var(--amber);
     color: var(--amber);
-    background: rgba(212,168,55,0.08);
+    background: rgba(207,155,251,0.08);
   }
 
   /* ── AMBIENT AUDIO ── */
@@ -1851,9 +1895,9 @@
     width: 46px;
     height: 46px;
     min-height: 46px;
-    border: 1px solid rgba(240,232,216,0.28);
+    border: 1px solid rgba(255,245,241,0.28);
     border-radius: 50%;
-    background: rgba(10,8,6,0.78);
+    background: rgba(14,9,20,0.78);
     color: var(--cream);
     backdrop-filter: blur(10px);
     box-shadow: 0 14px 34px rgba(0,0,0,0.38);
@@ -1867,15 +1911,15 @@
     transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
   }
   .ambient-audio-toggle:hover {
-    border-color: rgba(212,168,55,0.72);
+    border-color: rgba(207,155,251,0.72);
     color: var(--amber);
-    background: rgba(18,14,10,0.9);
+    background: rgba(23,15,33,0.9);
     transform: translateY(-1px);
   }
   .ambient-audio-toggle.is-playing {
-    border-color: rgba(212,168,55,0.8);
+    border-color: rgba(207,155,251,0.8);
     color: var(--amber);
-    box-shadow: 0 16px 38px rgba(0,0,0,0.42), 0 0 28px rgba(212,168,55,0.18);
+    box-shadow: 0 16px 38px rgba(0,0,0,0.42), 0 0 28px rgba(207,155,251,0.18);
   }
   .ambient-audio-icon {
     width: 18px;
@@ -1938,7 +1982,7 @@
       padding: 0.65rem;
       border: 0;
       border-radius: 16px;
-      background: linear-gradient(180deg, rgba(18,14,10,0.94), rgba(10,8,6,0.88));
+      background: linear-gradient(180deg, rgba(23,15,33,0.94), rgba(14,9,20,0.88));
       box-shadow: 0 18px 48px rgba(0,0,0,0.38), inset 0 1px rgba(255,255,255,0.04);
       -webkit-backdrop-filter: blur(20px) saturate(165%);
       backdrop-filter: blur(20px) saturate(165%);
@@ -1951,6 +1995,7 @@
     .floating-booking span { display: none; }
     section { padding: 4rem 1.5rem; }
     .hero { padding: 0 1.5rem 4rem; }
+    .hero-bg { background-position: center, center, 68% center; }
     .hero-bg,
     .hero::before,
     .hero::after {
@@ -2045,11 +2090,11 @@
     }
     .dates-table tr {
       padding: 1.15rem;
-      border: 1px solid rgba(212,168,55,0.18);
+      border: 1px solid rgba(207,155,251,0.18);
       border-radius: 4px;
       background:
-        linear-gradient(135deg, rgba(240,232,216,0.06), rgba(240,232,216,0.025)),
-        rgba(10,8,6,0.28);
+        linear-gradient(135deg, rgba(255,245,241,0.06), rgba(255,245,241,0.025)),
+        rgba(14,9,20,0.28);
     }
     .dates-table td {
       padding: 0;
@@ -2068,7 +2113,7 @@
       gap: 0.9rem;
       align-items: start;
       padding-top: 0.8rem !important;
-      border-top: 1px solid rgba(240,232,216,0.08) !important;
+      border-top: 1px solid rgba(255,245,241,0.08) !important;
     }
     .date-mobile-label {
       display: block;
@@ -2193,6 +2238,310 @@
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+  .member-card {
+    background: linear-gradient(150deg, #FFF1F0, #F0DDFB);
+    border-color: rgba(207,155,251,0.65);
+  }
+  .member-card .member-pass-header,
+  .member-card .member-role { color: #78334F; }
+  .member-photo-wrap { background-color: #362044; }
+  .dates-section {
+    background: radial-gradient(ellipse at 90% 5%, rgba(207,155,251,0.12), transparent 55%), var(--deep);
+  }
+  .dates-section .date-cta a:first-child {
+    background: var(--pink);
+    border-color: var(--pink);
+    color: var(--black);
+  }
+  .dates-section .date-cta a:first-child:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--black);
+  }
+
+  /* A record sleeve that presents one musician at a time. */
+  .band-section .band-intro { max-width: 760px; margin-bottom: 1.8rem; }
+  .band-carousel-controls { display: none; }
+  .band-carousel-ready .band-carousel-controls { display:flex; align-items:center; flex-wrap:wrap; gap:.65rem; margin-bottom:1.25rem; }
+  .band-selector { display:flex; flex-wrap:wrap; gap:.5rem; flex:1; }
+  .band-selector button, .band-arrow { font:inherit; font-size:.8rem; color:var(--cream); background:transparent; border:1px solid rgba(207,155,251,.35); border-radius:999px; padding:.65rem 1rem; cursor:pointer; }
+  .band-selector button[aria-pressed="true"] { background:var(--pink); color:var(--black); border-color:var(--pink); }
+  .band-selector button:hover, .band-arrow:hover { border-color:var(--pink); }
+  .band-selector button:focus-visible, .band-arrow:focus-visible { outline:2px solid var(--amber); outline-offset:4px; }
+  .band-counter { color:var(--cream-dim); font-size:.75rem; font-variant-numeric:tabular-nums; }
+  .band-carousel-ready .members-grid { display:block; max-width:1050px; margin:auto; }
+  .band-carousel-ready .member-card { display:grid; grid-template-columns:minmax(240px, .85fr) minmax(0,1.15fr); padding:0; gap:0; background:var(--deep); border:1px solid rgba(207,155,251,.3); border-radius:22px; overflow:hidden; min-height:440px; box-shadow:0 24px 60px rgba(0,0,0,.25); }
+  .band-carousel-ready .member-card[hidden] { display:none; }
+  .band-carousel-ready .member-card::before, .band-carousel-ready .member-card::after, .band-carousel-ready .member-pass-header { display:none; }
+  .band-carousel-ready .member-photo-wrap { grid-column:1; position:relative; aspect-ratio:auto; height:auto; min-height:440px; align-self:stretch; margin:0; border:0; border-radius:0; box-shadow:none; }
+  .band-carousel-ready .member-photo-wrap::before, .band-carousel-ready .member-photo-wrap::after { display:none; }
+  .band-carousel-ready .member-photo { position:absolute; inset:0; width:100%; height:100%; max-width:none; object-fit:cover; display:block; filter:none!important; }
+  .band-carousel-ready .member-pass-body { padding:clamp(1.5rem,4vw,3.5rem); justify-content:center; background:radial-gradient(circle at 100% 0,rgba(207,155,251,.16),transparent 65%); position:relative; overflow:hidden; }
+  .band-carousel-ready .member-pass-body::before { content:'33⅓ RPM / KOZMIC PEARLS'; font-size:.6rem; letter-spacing:.18em; color:var(--cream-dim); margin-bottom:1.5rem; }
+  .band-carousel-ready .member-pass-body::after { content:''; position:absolute; width:230px; height:230px; right:-150px; bottom:-90px; border-radius:50%; border:30px double rgba(207,155,251,.12); outline:1px solid rgba(207,155,251,.15); pointer-events:none; }
+  .band-carousel-ready .member-name { color:var(--cream); font-size:clamp(2rem,4vw,3.3rem); font-weight:500; }
+  .band-carousel-ready .member-role { color:var(--pink); margin-top:.6rem; }
+  .band-carousel-ready .member-quote { color:var(--cream); font-size:1.2rem; font-style:normal; font-weight:500; margin:1rem 0; }
+  .band-carousel-ready .member-fact { margin-top:.6rem; border-color:rgba(207,155,251,.2); }
+  .band-carousel-ready .member-fact-text { color:var(--cream-dim); font-size:.9rem; }
+  .band-carousel-ready .member-fact-label { color:var(--amber); }
+  .band-carousel-ready .member-years { display:none; }
+  .band-carousel-ready .member-card.is-entering { animation:musician-enter .35s ease both; }
+  @keyframes musician-enter { from { opacity:.4; transform:translateX(12px); } to { opacity:1; transform:translateX(0); } }
+  @media(max-width:650px) {
+    .band-carousel-ready .member-card { grid-template-columns:1fr; min-height:0; }
+    .band-carousel-ready .member-photo-wrap { height:300px; min-height:300px; }
+    .band-carousel-ready .member-pass-body { min-height:300px; padding:1.5rem; }
+    .band-carousel-ready .member-pass-body::before { margin-bottom:.8rem; }
+    .band-selector { flex-basis:100%; }
+    .band-selector button { padding:.6rem .8rem; }
+  }
+  @media(prefers-reduced-motion:reduce) { .band-carousel-ready .member-card.is-entering { animation:none; } }
+
+
+  .groovy-organic-divider {
+    display:block;
+    height:clamp(80px,10vw,130px);
+    padding:0;
+    margin:1.5rem 0;
+    background:transparent url('assets/decor/groovy-organic.svg?v=2') center / auto 100% repeat-x;
+    overflow:hidden;
+    border:0;
+  }
+  .groovy-organic-divider:nth-of-type(even) { background-position:65% center; }
+  @media(max-width:650px) {
+    .groovy-organic-divider { height:96px; padding:0; margin:1rem 0; }
+  }
+
+  /* Fit the player to this video's native portrait proportions. */
+  #videos .video-wrapper {
+    width:min(100%, 440px, calc(78svh * 1080 / 1920));
+    max-width:100%;
+    margin-inline:auto;
+    border-radius:20px;
+    clip-path:none;
+  }
+  #videos .video-wrapper video {
+    aspect-ratio:1080 / 1920;
+    width:100%;
+    height:auto;
+    clip-path:none;
+    border-radius:inherit;
+    object-fit:contain;
+  }
+
+  /* Contemporary repertoire layout. */
+  #repertorio {
+    background:radial-gradient(ellipse at 0 0,rgba(207,155,251,.09),transparent 55%),var(--black);
+    background-blend-mode:normal;
+    grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+    gap:clamp(2rem,5vw,5rem);
+    padding-block:clamp(3.5rem,7vw,6rem);
+    border-top:1px solid rgba(207,155,251,.14);
+    border-bottom:1px solid rgba(207,155,251,.14);
+  }
+  #repertorio .repertoire-intro::before,
+  #repertorio .repertoire-intro::after { display:none; }
+  #repertorio .section-title { font-size:clamp(2.2rem,3.7vw,3.8rem); max-width:12ch; margin-bottom:1.5rem; }
+  #repertorio .repertoire-intro p { font-size:.95rem; line-height:1.7; max-width:48ch; margin-bottom:1rem; }
+  #repertorio .show-badge {
+    margin:1.8rem 0 0; padding:1.15rem 1.4rem; width:100%; max-width:360px;
+    clip-path:none; transform:none; border-radius:16px;
+    background:rgba(207,155,251,.07); border:1px solid rgba(207,155,251,.18);
+    gap:1rem;
+  }
+  #repertorio .show-badge-icon { width:44px; height:44px; background:rgba(234,51,69,.1); border-radius:50%; color:var(--pink); }
+  #repertorio .show-badge-num { font-family:'DM Sans',sans-serif; font-weight:500; font-size:2.1rem; line-height:1.15; letter-spacing:-.05em; color:var(--cream); }
+  #repertorio .show-badge-text { color:var(--cream-dim); font-size:.72rem; letter-spacing:.04em; }
+  #repertorio .setlist-card { width:100%; margin:0; padding:clamp(1.2rem,3vw,2rem); border:1px solid rgba(207,155,251,.18); border-radius:24px; background:linear-gradient(140deg,rgba(207,155,251,.08),rgba(234,51,69,.025)); }
+  #repertorio .setlist-heading { font-family:'DM Sans',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--cream-dim); padding-bottom:1.25rem; margin-bottom:.4rem; border-bottom:1px solid rgba(207,155,251,.17); display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+  #repertorio .setlist-heading::after { content:'14 TRACKS'; font-size:.6rem; letter-spacing:.1em; white-space:nowrap; color:var(--pink); border:1px solid rgba(234,51,69,.25); padding:.4rem .65rem; border-radius:999px; }
+  #repertorio .songs-list { columns:auto; display:grid; grid-template-columns:1fr 1fr; gap:0 1.25rem; counter-reset:track; }
+  #repertorio .songs-list li { counter-increment:track; font-size:.82rem; letter-spacing:0; min-height:56px; padding:.8rem .25rem; gap:.75rem; opacity:1; transform:none; border-bottom:1px solid rgba(207,155,251,.1); transition:color .2s,background .2s; }
+  #repertorio .songs-list li::before { content:counter(track,decimal-leading-zero); width:1.6em; height:auto; background:none; color:var(--cream-dim); font-size:.65rem; font-variant-numeric:tabular-nums; opacity:.65; border-radius:0; }
+  #repertorio .songs-list li.highlight { color:var(--pink); font-weight:500; }
+  #repertorio .songs-list li.highlight::before { background:none; color:var(--pink); }
+  #repertorio .songs-list li:hover { color:var(--cream); background:rgba(207,155,251,.05); }
+  @media(max-width:900px) {
+    #repertorio { grid-template-columns:1fr; gap:2rem; }
+    #repertorio .section-title { max-width:20ch; }
+    #repertorio .repertoire-intro p { max-width:65ch; }
+  }
+  @media(max-width:480px) {
+    #repertorio .songs-list { grid-template-columns:1fr; }
+    #repertorio .songs-list li { min-height:48px; font-size:.9rem; }
+    #repertorio .setlist-card { border-radius:18px; }
+  }
+
+
+  .tv-tuning-noise, .tv-tuning-band { position:absolute; inset:0; pointer-events:none; z-index:4; opacity:0; }
+  .tv-tuning-noise { background:url('assets/kp-2026-tv-static.svg') repeat; mix-blend-mode:screen; }
+  .tv-tuning-band { background:linear-gradient(180deg,transparent 30%,rgba(207,155,251,.12) 45%,rgba(255,245,241,.3) 49%,rgba(14,9,20,.65) 51%,transparent 64%); }
+  .hero.is-tuning .hero-bg { animation:tv-find-signal 1.8s ease-out both; }
+  .hero.is-tuning .tv-tuning-noise { animation:tv-noise-settle 1.8s steps(8,end) both; }
+  .hero.is-tuning .tv-tuning-band { animation:tv-tracking 1.8s ease-out both; }
+  @keyframes tv-find-signal {
+    0% { filter:grayscale(1) blur(3px) contrast(1.3); transform:translateX(-5px) scale(1.015); }
+    20% { filter:grayscale(.8) blur(1.5px); transform:translateX(4px) skewX(.7deg) scale(1.012); }
+    42% { filter:grayscale(.5) blur(.8px); transform:translateX(-3px) scale(1.01); }
+    65% { filter:saturate(.8) blur(.3px); transform:translateX(1px) scale(1.005); }
+    100% { filter:contrast(1.04) saturate(.95); transform:perspective(1200px) rotateX(.35deg) scaleX(.992); }
+  }
+  @keyframes tv-noise-settle {
+    0% { opacity:.45; background-position:0 0; }
+    25% { opacity:.3; background-position:45px -65px; }
+    50% { opacity:.17; background-position:-50px 25px; }
+    75% { opacity:.06; background-position:30px 60px; }
+    100% { opacity:0; background-position:0 0; }
+  }
+  @keyframes tv-tracking {
+    0% { opacity:.7; transform:translateY(-65%); }
+    50% { opacity:.35; transform:translateY(10%); }
+    100% { opacity:0; transform:translateY(80%); }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .hero.is-tuning .hero-bg, .hero.is-tuning .tv-tuning-noise, .hero.is-tuning .tv-tuning-band { animation:none; }
+  }
+
+
+  @font-face {
+    font-family:'Janis Regular';
+    src:url('assets/kp-2026-janis-bold-condensed.woff2') format('woff2');
+    font-weight:400;
+    font-style:normal;
+    font-display:swap;
+  }
+  #fechas .section-title {
+    font-family:'Janis Regular',Impact,sans-serif;
+    font-weight:400;
+    font-synthesis:none;
+    text-transform:uppercase;
+    font-size:clamp(3.5rem,8vw,7rem);
+    line-height:.95;
+    letter-spacing:0;
+  }
+  #fechas .section-title em { font-family:inherit; font-style:normal; font-weight:400; }
+
+  #fechas > .section-label,
+  #fechas > .section-title { text-align:center; margin-inline:auto; }
+
+  #fechas .dates-booking {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:1.25rem;
+  }
+  #fechas .dates-booking p { margin:0; }
+
+  .instagram-live-feed { width:100%; max-width:1200px; margin:2.5rem auto 0; min-width:0; }
+
+  p {
+    font-family:'Barcelona ITC Std',Georgia,serif;
+    font-weight:500;
+    font-style:normal;
+    font-synthesis:none;
+  }
+  .hero p, .about-text p, .band-intro,
+  #repertorio .repertoire-intro p, .presskit-section p,
+  .contact-section p, .testimonial-text {
+    font-family:'Barcelona ITC Std',Georgia,serif;
+    font-weight:500;
+    line-height:1.7;
+  }
+
+  @media(max-width:650px) {
+    #repertorio .repertoire-intro { text-align:center; }
+    #repertorio .repertoire-intro .section-title,
+    #repertorio .repertoire-intro p { margin-inline:auto; }
+    #repertorio .show-badge { margin-inline:auto; justify-content:center; text-align:center; }
+  }
+
+  @media(max-width:650px) {
+    #repertorio .show-badge { width:100%; max-width:none; }
+  }
+
+  @media(max-width:900px) {
+    #repertorio .repertoire-intro { text-align:center; min-width:0; }
+    #repertorio .repertoire-intro .section-title,
+    #repertorio .repertoire-intro p { margin-inline:auto; }
+    #repertorio .show-badge {
+      width:100%;
+      max-width:none;
+      margin-inline:0;
+      justify-content:center;
+      text-align:center;
+    }
+  }
+
+  @media(max-width:900px) {
+    #sobre .about-text { text-align:center; }
+    #sobre .about-text .section-title,
+    #sobre .about-text p { margin-inline:auto; }
+  }
+
+  :root { --heading-size:clamp(2.8rem,6vw,5.2rem); }
+  @media(min-width:901px) { :root { --heading-size:3.2rem; } }
+  @media(min-width:1180px) { :root { --heading-size:4.35rem; } }
+  @media(min-width:1480px) { :root { --heading-size:5rem; } }
+  .hero h1.hero-tagline,
+  .section-title,
+  #repertorio .section-title,
+  #fechas .section-title { font-size:var(--heading-size); line-height:1.08; }
+  #repertorio .section-title { max-width:100%; }
+
+  /* Match the reference site's standard section heading scale. */
+  .section-title,
+  #repertorio .section-title,
+  #fechas .section-title { font-size:40px; line-height:1.15; }
+  @media(max-width:520px) {
+    .section-title,
+    #repertorio .section-title,
+    #fechas .section-title { font-size:34px; }
+  }
+
+  #sobre .about-img img { display:block; filter:none; }
+  #sobre .about-img::after { display:none; }
+
+  .section-title,
+  #repertorio .section-title,
+  #fechas .section-title { font-size:60px; line-height:1.08; }
+
+  #fechas .section-title {
+    font-size:clamp(3.5rem,8vw,7rem);
+    line-height:.95;
+  }
+
+  .ambient-audio-toggle {
+    background:var(--cream);
+    color:var(--black);
+    border-color:var(--cream);
+  }
+  .ambient-audio-toggle:hover,
+  .ambient-audio-toggle.is-playing {
+    background:var(--amber);
+    color:var(--black);
+    border-color:var(--amber);
+  }
+  .ambient-audio-toggle:focus-visible {
+    outline:3px solid var(--amber);
+    outline-offset:4px;
+  }
+
+  .ambient-audio-toggle {
+    background:var(--amber);
+    color:#000;
+    border-color:var(--amber);
+  }
+  .ambient-audio-toggle:hover,
+  .ambient-audio-toggle.is-playing { color:#000; }
+
+  .hero-eyebrow-line { flex-shrink:0; }
+  @media(max-width:520px) {
+    .hero-eyebrow { gap:.6rem; }
+    .hero-eyebrow-line { width:24px; }
+  }
 </style>
 </head>
 <body>
@@ -2209,7 +2558,6 @@
       <li><a href="#repertorio" data-i18n="navRepertoire">Repertorio</a></li>
       <li><a href="#fechas" data-i18n="navDates">Fechas</a></li>
       <li><a href="#galeria" data-i18n="navGallery">Galería</a></li>
-      <li><a href="#instagram">Instagram</a></li>
       <li><a href="#presskit">Press Kit</a></li>
       <li><a href="#contacto" class="nav-cta" data-i18n="navBook">Contratar</a></li>
     </ul>
@@ -2233,11 +2581,12 @@
       </clipPath>
     </defs>
   </svg>
-  <div class="hero-bg"></div>
+  <div class="hero-bg"><div class="tv-tuning-noise" aria-hidden="true"></div><div class="tv-tuning-band" aria-hidden="true"></div></div>
   <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
       <span data-i18n="heroEyebrow">Tributo a Janis Joplin · Desde 2014</span>
+      <div class="hero-eyebrow-line" aria-hidden="true"></div>
     </div>
     <h1 class="hero-tagline" data-i18n="heroTitle">
       <span class="hero-tagline-line">El tributo más auténtico</span>
@@ -2255,13 +2604,7 @@
 </section>
 
 <!-- DIVIDER -->
-<div class="wave-divider">
-  <span class="divider-dot"></span>
-  <svg height="14" viewBox="0 0 600 14" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0 7 Q150 0 300 7 Q450 14 600 7" stroke="#C4622D" stroke-width="1" fill="none"/>
-  </svg>
-  <span class="divider-dot"></span>
-</div>
+
 
 <!-- VIDEO -->
 <section class="video-section reveal" id="videos">
@@ -2271,14 +2614,13 @@
   <p data-i18n="videoText">Cada presentación es una celebración del blues, el soul y el rock psicodélico que hicieron inmortal a Janis Joplin.</p>
 
   <div class="video-wrapper">
-    <video controls preload="metadata" poster="assets/video-principal-kp-poster.png" playsinline>
-      <source src="assets/video-principal-kp.mp4" type="video/mp4">
+    <video controls preload="metadata" poster="assets/video-kozmic-2026-poster.jpg" playsinline>
+      <source src="assets/video-kozmic-2026-web.mp4" type="video/mp4">
       <span data-i18n="videoUnsupported">Tu navegador no puede reproducir este video.</span>
     </video>
   </div>
   <p class="video-caption" data-i18n="videoCaption">Kozmic Pearls — En vivo</p>
   <div class="video-fallback">
-    <a href="https://www.youtube.com/watch?v=nXLbx2aRMho" target="_blank" rel="noopener" class="btn-secondary" data-i18n="videoYoutube">Abrir en YouTube</a>
   </div>
 
 </section>
@@ -2286,8 +2628,7 @@
 <!-- ABOUT -->
 <section class="about-section reveal" id="sobre">
   <div class="about-img">
-    <div class="about-img-frame"></div>
-    <img src="assets/header-kp-club-chocolate.jpg" alt="Kozmic Pearls en vivo" loading="lazy">
+    <img src="assets/kp-2026-kozmic-pearls-15-full.webp" alt="Kozmic Pearls en vivo" loading="lazy">
   </div>
   <div class="about-text">
     <span class="section-label" data-i18n="aboutLabel">Nuestra historia</span>
@@ -2315,19 +2656,25 @@
 </section>
 
 <!-- DIVIDER -->
-<div class="wave-divider">
-  <span class="divider-dot"></span>
-  <svg height="14" viewBox="0 0 600 14" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0 7 Q150 14 300 7 Q450 0 600 7" stroke="#D4A837" stroke-width="1" fill="none"/>
-  </svg>
-  <span class="divider-dot"></span>
-</div>
+
 
 <!-- BAND MEMBERS -->
 <section class="band-section reveal" id="banda">
   <span class="section-label" data-i18n="bandLabel">El corazón de Kozmic Pearls</span>
   <h2 class="section-title" data-i18n="bandTitle">Las almas detrás del <em>espectáculo</em></h2>
   <p class="band-intro" data-i18n="bandIntro">Kozmic Pearls reúne a músicos apasionados por el blues, el soul y el rock clásico. Cada uno aporta su propia esencia para dar vida a un espectáculo auténtico, donde el talento individual se une en una experiencia colectiva. Contamos con un elenco flexible de músicos que nos permite mantener la misma calidad y energía en cada presentación.</p>
+  <div class="band-carousel-controls">
+    <div class="band-selector" role="group" aria-label="Músicos">
+      <button type="button" data-musician="0" aria-pressed="false">Patt</button>
+      <button type="button" data-musician="1" aria-pressed="false">Cris</button>
+      <button type="button" data-musician="2" aria-pressed="false">Nico</button>
+      <button type="button" data-musician="3" aria-pressed="false">Felipe</button>
+      <button type="button" data-musician="4" aria-pressed="false">Luciano</button>
+    </div>
+    <span class="band-counter" aria-live="polite" aria-atomic="true">01 / 05</span>
+    <button class="band-arrow" type="button" data-band-step="-1" aria-label="Músico anterior">←</button>
+    <button class="band-arrow" type="button" data-band-step="1" aria-label="Músico siguiente">→</button>
+  </div>
   <div class="members-grid">
     <div class="member-card featured">
       <div class="member-pass-header">
@@ -2335,7 +2682,7 @@
         <span class="member-pass-code">KP-01</span>
       </div>
       <div class="member-photo-wrap">
-        <img class="member-photo" src="assets/members/patricia-web.jpg" style="object-position: 48% 16%;" alt="Patt La bruja kozmica" loading="lazy">
+        <img class="member-photo" src="assets/kp-2026-patricia-azul.webp" style="object-position: 50% 35%;" alt="Patt La bruja kozmica" loading="lazy">
       </div>
       <div class="member-pass-body">
         <div class="member-name">Patt &quot;La bruja kozmica&quot;</div>
@@ -2357,7 +2704,7 @@
         <span class="member-pass-code">KP-02</span>
       </div>
       <div class="member-photo-wrap">
-        <img class="member-photo" src="assets/members/cris-web.jpg" style="object-position: 42% 16%;" alt="Cris - Guitarra" loading="lazy">
+        <img class="member-photo" src="assets/kp-2026-cris.webp" style="object-position: 50% 30%;" alt="Cris - Guitarra" loading="lazy">
       </div>
       <div class="member-pass-body">
         <div class="member-name">Cris</div>
@@ -2379,19 +2726,19 @@
         <span class="member-pass-code">KP-03</span>
       </div>
       <div class="member-photo-wrap">
-        <img class="member-photo" src="assets/members/victor-web.jpg" style="object-position: 46% 14%;" alt="Victor - Bajo" loading="lazy">
+        <img class="member-photo" src="assets/kp-2026-nico.webp" style="object-position: 50% 30%;" alt="Nico - Bajo" loading="lazy">
       </div>
       <div class="member-pass-body">
-        <div class="member-name">Victor</div>
-        <div class="member-role" data-i18n="victorRole">Bajo</div>
-        <p class="member-quote" data-i18n="victorQuote">&quot;El groove sostiene la tormenta.&quot;</p>
+        <div class="member-name">Nico</div>
+        <div class="member-role" data-i18n="nicoRole">Bajo</div>
+        <p class="member-quote" data-i18n="nicoQuote">&quot;El groove sostiene la tormenta.&quot;</p>
         <div class="member-fact">
           <span class="member-fact-label" data-i18n="memberFactLabel">Dato curioso</span>
-          <p class="member-fact-text" data-i18n="victorFact">Su pulso mezcla soul, funk y líneas de bajo que hacen respirar cada clásico de Janis.</p>
+          <p class="member-fact-text" data-i18n="nicoFact">Su pulso mezcla soul, funk y líneas de bajo que hacen respirar cada clásico de Janis.</p>
         </div>
         <div class="member-years">
           <span class="member-years-label" data-i18n="memberYearsLabel">En Kozmic Pearls</span>
-          <strong data-i18n="victorYears">Desde 2024</strong>
+          <strong data-i18n="nicoYears">En vivo</strong>
         </div>
       </div>
     </div>
@@ -2401,7 +2748,7 @@
         <span class="member-pass-code">KP-04</span>
       </div>
       <div class="member-photo-wrap">
-        <img class="member-photo" src="assets/members/felipe-web.jpg" style="object-position: 62% 20%;" alt="Felipe - Teclado" loading="lazy">
+        <img class="member-photo" src="assets/kp-2026-felipe.webp" style="object-position: 50% 30%;" alt="Felipe - Teclado" loading="lazy">
       </div>
       <div class="member-pass-body">
         <div class="member-name">Felipe</div>
@@ -2423,7 +2770,7 @@
         <span class="member-pass-code">KP-05</span>
       </div>
       <div class="member-photo-wrap">
-        <img class="member-photo" src="assets/members/luciano-web.jpg" style="object-position: 40% 30%;" alt="Luciano - Batería" loading="lazy">
+        <img class="member-photo" src="assets/kp-2026-luciano.webp" style="object-position: 50% 30%;" alt="Luciano - Batería" loading="lazy">
       </div>
       <div class="member-pass-body">
         <div class="member-name">Luciano</div>
@@ -2484,64 +2831,23 @@
   <h2 class="section-title" data-i18n="galleryTitle">Cada escenario cuenta una <em>historia</em></h2>
   <div class="gallery-grid">
     <div class="gallery-item">
-      <img src="assets/gallery-kp-9304.jpg" alt="Kozmic Pearls en Club Chocolate" loading="lazy">
+      <img src="assets/kp-2026-kozmic-pearls-08.webp" alt="Voz de Kozmic Pearls en vivo en La Batuta" style="object-position: 50% 40%;" loading="lazy">
     </div>
     <div class="gallery-item">
-      <img src="assets/gallery-kp-9440.jpg" alt="Kozmic Pearls en vivo" loading="lazy">
+      <img src="assets/kp-2026-kozmic-pearls-17.webp" alt="Kozmic Pearls junto al público de La Batuta" style="object-position: 50% 50%;" loading="lazy">
     </div>
     <div class="gallery-item">
-      <img src="assets/gallery-kp-9192.jpg" alt="Presentación de Kozmic Pearls" loading="lazy">
+      <img src="assets/kp-2026-kozmic-pearls-24.webp" alt="Guitarra en vivo en La Batuta" style="object-position: 50% 35%;" loading="lazy">
     </div>
     <div class="gallery-item">
-      <img src="assets/gallery-kp-9148.jpg" alt="Kozmic Pearls sobre el escenario" loading="lazy">
+      <img src="assets/kp-2026-kozmic-pearls-30.webp" alt="Batería de Kozmic Pearls en La Batuta" style="object-position: 50% 50%;" loading="lazy">
     </div>
     <div class="gallery-item">
-      <img src="assets/gallery-kp-9418.jpg" alt="Kozmic Pearls interpretando a Janis Joplin" loading="lazy">
+      <img src="assets/kp-2026-kozmic-pearls-26.webp" alt="El escenario y el público de La Batuta en blanco y negro" style="object-position: 50% 50%;" loading="lazy">
     </div>
     <div class="gallery-item">
-      <img src="assets/gallery-kp-9383.jpg" alt="Kozmic Pearls en concierto" loading="lazy">
+      <img src="assets/kp-2026-kozmic-pearls-44.webp" alt="La banda saluda al público al cierre del concierto" style="object-position: 50% 50%;" loading="lazy">
     </div>
-  </div>
-</section>
-
-<!-- INSTAGRAM -->
-<section class="instagram-section reveal" id="instagram">
-  <span class="section-label">Instagram</span>
-  <h2 class="section-title" data-i18n="instagramTitle">Momentos <em>kózmicos</em></h2>
-  <p data-i18n="instagramText">Escenas del show, backstage y registros en vivo de Kozmic Pearls.</p>
-  <div class="instagram-grid">
-    <button type="button" class="instagram-post" data-shortcode="DSXRyg4kW0E" aria-label="Ver publicación de Kozmic Pearls">
-      <img src="assets/instagram/DSXRyg4kW0E.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
-      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
-    </button>
-    <button type="button" class="instagram-post" data-shortcode="DSWFMThEc7F" aria-label="Ver publicación de Kozmic Pearls">
-      <img src="assets/instagram/DSWFMThEc7F.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
-      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
-    </button>
-    <button type="button" class="instagram-post" data-shortcode="DSLsv1dEVFt" aria-label="Ver publicación de Kozmic Pearls">
-      <img src="assets/instagram/DSLsv1dEVFt.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
-      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
-    </button>
-    <button type="button" class="instagram-post" data-shortcode="DSC3uq5Ebnu" aria-label="Ver publicación de Kozmic Pearls">
-      <img src="assets/instagram/DSC3uq5Ebnu.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
-      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
-    </button>
-    <button type="button" class="instagram-post" data-shortcode="DSQ1uJskezs" aria-label="Ver publicación de Kozmic Pearls">
-      <img src="assets/instagram/DSQ1uJskezs.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
-      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
-    </button>
-    <button type="button" class="instagram-post" data-shortcode="DSBob82kR04" aria-label="Ver publicación de Kozmic Pearls">
-      <img src="assets/instagram/DSBob82kR04.jpg" alt="Publicación de Instagram de Kozmic Pearls" loading="lazy">
-      <span class="instagram-play"><i data-lucide="play" class="lucide-icon" aria-hidden="true"></i></span>
-    </button>
-  </div>
-  <div class="instagram-cta">
-    <a href="https://www.instagram.com/kozmicpearls/" target="_blank" rel="noopener" class="btn-secondary">
-      <svg class="lucide-icon instagram-cta-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-      </svg>
-      <span data-i18n="instagramCta">Seguir en Instagram</span>
-    </a>
   </div>
 </section>
 
@@ -2606,7 +2912,7 @@
           <span class="date-event-name" data-i18n="datesEventName2">Kozmic Pearls en vivo</span>
           <span class="date-venue" data-i18n="datesVenue2">BikerChop</span>
         </td>
-        <td class="date-cta"><div class="date-actions"><a class="btn-outline-sm" target="_blank" rel="noopener" href="https://www.portaldisc.com/evento/kozmicpearls23oct2026" data-i18n="datesBuyTickets">Comprar entradas</a><a class="btn-outline-sm" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Kozmic%20Pearls%20en%20vivo&amp;dates=20261023/20261024&amp;location=BikerChop%2C%20Santiago%2C%20Chile"><i data-lucide="calendar-plus" class="lucide-icon" aria-hidden="true"></i><span data-i18n="datesCalendar">Agregar</span></a></div></td>
+        <td class="date-cta"><div class="date-actions"><a class="btn-outline-sm" target="_blank" rel="noopener" href="https://www.portaldisc.com/evento/kozmicpearls23oct2026" data-i18n="datesBuyTicket">Comprar ticket</a><a class="btn-outline-sm" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Kozmic%20Pearls%20en%20vivo&amp;dates=20261023/20261024&amp;location=BikerChop%2C%20Santiago%2C%20Chile"><i data-lucide="calendar-plus" class="lucide-icon" aria-hidden="true"></i><span data-i18n="datesCalendar">Agregar</span></a></div></td>
       </tr>
       <tr data-event-date="2026-11-06">
         <td class="date-date"><time datetime="2026-11-06" data-i18n="datesDate3">6 nov. 2026</time></td>
@@ -2619,7 +2925,20 @@
           <span class="date-event-name" data-i18n="datesEventName3">Janis Joplin + Amy Winehouse — Tribute Night</span>
           <span class="date-venue" data-i18n="datesVenue3">LA BATUTA · 23:00 hrs</span>
         </td>
-        <td class="date-cta"><div class="date-actions"><a class="btn-outline-sm" target="_blank" rel="noopener" href="https://scl.tickethoy.com/entradas-musica/noche-de-soul-y-rock-en-batuta" data-i18n="datesBuyTickets">Comprar entradas</a><a class="btn-outline-sm" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Janis+Joplin+%2B+Amy+Winehouse+%E2%80%94+Tribute+Night&amp;dates=20261106T230000%2F20261106T230000&amp;ctz=America%2FSantiago&amp;location=La+Batuta%2C+Santiago%2C+Chile"><i data-lucide="calendar-plus" class="lucide-icon" aria-hidden="true"></i><span data-i18n="datesCalendar">Agregar</span></a></div></td>
+        <td class="date-cta"><div class="date-actions"><a class="btn-outline-sm" target="_blank" rel="noopener" href="https://scl.tickethoy.com/entradas-musica/noche-de-soul-y-rock-en-batuta" data-i18n="datesBuyTicket">Comprar ticket</a><a class="btn-outline-sm" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Janis+Joplin+%2B+Amy+Winehouse+%E2%80%94+Tribute+Night&amp;dates=20261106T230000%2F20261106T230000&amp;ctz=America%2FSantiago&amp;location=La+Batuta%2C+Santiago%2C+Chile"><i data-lucide="calendar-plus" class="lucide-icon" aria-hidden="true"></i><span data-i18n="datesCalendar">Agregar</span></a></div></td>
+      </tr>
+      <tr data-event-date="2027-01-30">
+        <td class="date-date"><time datetime="2027-01-30" data-i18n="datesDate4">30 ene. 2027</time></td>
+        <td class="date-city">
+          <span class="date-mobile-label" data-i18n="datesHeaderCity">Ciudad</span>
+          <span>Santiago</span>
+        </td>
+        <td class="date-event">
+          <span class="date-mobile-label" data-i18n="datesHeaderEvent">Evento / Venue</span>
+          <span class="date-event-name" data-i18n="datesEventName2">Kozmic Pearls en vivo</span>
+          <a class="date-venue" href="https://bargrez.cl/" target="_blank" rel="noopener">Bar Grez</a>
+        </td>
+        <td class="date-cta"><div class="date-actions"><span class="btn-outline-sm is-disabled" aria-disabled="true" data-i18n="datesTickets">Próximamente</span><a class="btn-outline-sm" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Kozmic%20Pearls%20en%20Bar%20Grez&amp;dates=20270130/20270131&amp;location=Bar%20Grez%2C%20Providencia%2C%20Santiago"><i data-lucide="calendar-plus" class="lucide-icon" aria-hidden="true"></i><span data-i18n="datesCalendar">Agregar</span></a></div></td>
       </tr>
     </tbody>
   </table>
@@ -2708,21 +3027,6 @@
           <span data-i18n="contactLocation">Santiago de Chile</span>
         </div>
       </div>
-
-      <div class="social-links">
-        <a href="https://www.instagram.com/kozmicpearls/" target="_blank" class="social-link" title="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://www.youtube.com/@kozmicpearlstributejanisjoplin" target="_blank" class="social-link" title="YouTube">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-        </a>
-        <a href="https://facebook.com/kozmicpearls" target="_blank" class="social-link" title="Facebook">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="https://wa.me/56948738356" target="_blank" class="social-link" title="WhatsApp">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        </a>
-      </div>
     </div>
 
     <form class="contact-form" id="contactForm" action="https://formsubmit.co/contacto@kozmicpearls.com" method="POST">
@@ -2793,7 +3097,7 @@
   <span class="ambient-audio-icon ambient-audio-icon-off"><i data-lucide="volume-x" class="lucide-icon" aria-hidden="true"></i></span>
   <span class="ambient-audio-label" data-i18n="audioPlay">Encender audio</span>
 </button>
-<audio class="ambient-audio-player" id="ambientAudioPlayer" data-src="assets/audio/combination-of-the-two.mp3" preload="none" aria-hidden="true"></audio>
+<audio class="ambient-audio-player" id="ambientAudioPlayer" data-src="assets/kp-2026-ball-and-chain-kozmic-pearls.mp3" preload="none" aria-hidden="true"></audio>
 
 <a class="floating-booking" href="https://wa.me/56948738356?text=Hola%20Kozmic%20Pearls%2C%20quiero%20cotizar%20el%20show" target="_blank" rel="noopener" aria-label="Cotizar show por WhatsApp">
   <svg class="floating-booking-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
@@ -2811,7 +3115,6 @@
     <li><a href="#banda" data-i18n="footerBand">Banda</a></li>
     <li><a href="#repertorio" data-i18n="navRepertoire">Repertorio</a></li>
     <li><a href="#fechas" data-i18n="navDates">Fechas</a></li>
-    <li><a href="#instagram">Instagram</a></li>
     <li><a href="#presskit">Press Kit</a></li>
     <li><a href="#contacto" data-i18n="footerContact">Contacto</a></li>
   </ul>
@@ -2859,7 +3162,7 @@ const translations = {
     videoText: 'Cada presentación es una celebración del blues, el soul y el rock psicodélico que hicieron inmortal a Janis Joplin.',
     videoUnsupported: 'Tu navegador no puede reproducir este video.',
     videoCaption: 'Kozmic Pearls — En vivo',
-    videoYoutube: 'Abrir en YouTube',
+    videoYoutube: 'Ver en Google Photos',
     aboutLabel: 'Nuestra historia',
     aboutTitle: 'No imitamos a Janis.<br>Celebramos su <em>legado.</em>',
     aboutText1: 'Cada concierto de Kozmic Pearls nace del respeto por una artista irrepetible, recreando la intensidad de sus presentaciones con músicos en vivo, una producción cuidada y una interpretación apasionada que conecta con nuevas generaciones y con quienes vivieron su música.',
@@ -2883,11 +3186,11 @@ const translations = {
     crisFact: 'Su sonido mira directo a Woodstock: guitarras crudas, fuzz cálido y espíritu psicodélico.',
     crisYears: 'Desde 2024',
     crisBio: 'Riffs cargados de blues y rock psicodélico que transportan al público a los festivales de los 60.',
-    victorRole: 'Bajo',
-    victorQuote: '"El groove sostiene la tormenta."',
-    victorFact: 'Su pulso mezcla soul, funk y líneas de bajo que hacen respirar cada clásico de Janis.',
-    victorYears: 'Desde 2024',
-    victorBio: 'El groove que sostiene cada canción. Victor aporta la base funky y poderosa que caracterizó el sonido de Janis.',
+    nicoRole: 'Bajo',
+    nicoQuote: '"El groove sostiene la tormenta."',
+    nicoFact: 'Su pulso mezcla soul, funk y líneas de bajo que hacen respirar cada clásico de Janis.',
+    nicoYears: 'En vivo',
+    nicoBio: 'El groove que sostiene cada canción. Nico aporta la base funky y poderosa que caracterizó el sonido de Janis.',
     felipeRole: 'Teclado & Órgano',
     felipeQuote: '"El órgano abre la puerta del viaje."',
     felipeFact: 'Sus texturas nacen del Hammond, el piano eléctrico y la niebla soul de finales de los 60.',
@@ -2925,6 +3228,7 @@ const translations = {
     datesVenue: 'LA BATUTA',
     datesDate2: '23 oct. 2026',
     datesDate3: '6 nov. 2026',
+    datesDate4: '30 ene. 2027',
     datesEventName3: 'Janis Joplin + Amy Winehouse — Tribute Night',
     datesVenue3: 'LA BATUTA · 23:00 hrs',
     datesCalendar: 'Agregar',
@@ -2932,6 +3236,7 @@ const translations = {
     datesVenue2: 'BikerChop',
     datesTickets: 'Próximamente',
     datesBuyTickets: 'Comprar entradas',
+    datesBuyTicket: 'Comprar ticket',
     datesBookingQuestion: '¿Quieres que Kozmic Pearls se presente en tu ciudad?',
     datesBookingCta: 'Contrata el show aquí',
     pressLabel: 'Para prensa y productores',
@@ -2992,7 +3297,7 @@ const translations = {
     videoText: 'Every performance is a celebration of the blues, soul, and psychedelic rock that made Janis Joplin immortal.',
     videoUnsupported: 'Your browser cannot play this video.',
     videoCaption: 'Kozmic Pearls — Live',
-    videoYoutube: 'Open on YouTube',
+    videoYoutube: 'View on Google Photos',
     aboutLabel: 'Our story',
     aboutTitle: 'We do not imitate Janis.<br>We celebrate her <em>legacy.</em>',
     aboutText1: 'Every Kozmic Pearls concert is born from respect for a once-in-a-lifetime artist, recreating the intensity of her performances with live musicians, careful production, and a passionate interpretation that connects with new generations and those who lived her music.',
@@ -3016,11 +3321,11 @@ const translations = {
     crisFact: 'His sound points straight to Woodstock: raw guitars, warm fuzz, and psychedelic spirit.',
     crisYears: 'Since 2024',
     crisBio: 'Blues-heavy and psychedelic rock riffs that take the audience back to the festivals of the 60s.',
-    victorRole: 'Bass',
-    victorQuote: '"The groove holds the storm."',
-    victorFact: 'His pulse blends soul, funk, and bass lines that let every Janis classic breathe.',
-    victorYears: 'Since 2024',
-    victorBio: 'The groove that holds every song together. Victor brings the funky, powerful foundation that shaped Janis’ sound.',
+    nicoRole: 'Bass',
+    nicoQuote: '"The groove holds the storm."',
+    nicoFact: 'His pulse blends soul, funk, and bass lines that let every Janis classic breathe.',
+    nicoYears: 'Live',
+    nicoBio: 'The groove that holds every song together. Nico brings the funky, powerful foundation that shaped Janis’ sound.',
     felipeRole: 'Keys & Organ',
     felipeQuote: '"The organ opens the door to the trip."',
     felipeFact: 'His textures grow from Hammond, electric piano, and the soul haze of the late 60s.',
@@ -3058,6 +3363,7 @@ const translations = {
     datesVenue: 'LA BATUTA',
     datesDate2: 'Oct. 23, 2026',
     datesDate3: 'Nov. 6, 2026',
+    datesDate4: 'Jan. 30, 2027',
     datesEventName3: 'Janis Joplin + Amy Winehouse — Tribute Night',
     datesVenue3: 'LA BATUTA · 11:00 PM',
     datesCalendar: 'Add',
@@ -3065,6 +3371,7 @@ const translations = {
     datesVenue2: 'BikerChop',
     datesTickets: 'Coming soon',
     datesBuyTickets: 'Buy tickets',
+    datesBuyTicket: 'Buy ticket',
     datesBookingQuestion: 'Do you want Kozmic Pearls to perform in your city?',
     datesBookingCta: 'Book the show here',
     pressLabel: 'For press and producers',
@@ -3125,7 +3432,7 @@ const translations = {
     videoText: 'Cada apresentação é uma celebração do blues, do soul e do rock psicodélico que tornaram Janis Joplin imortal.',
     videoUnsupported: 'Seu navegador não pode reproduzir este vídeo.',
     videoCaption: 'Kozmic Pearls — Ao vivo',
-    videoYoutube: 'Abrir no YouTube',
+    videoYoutube: 'Ver no Google Photos',
     aboutLabel: 'Nossa história',
     aboutTitle: 'Não imitamos Janis.<br>Celebramos seu <em>legado.</em>',
     aboutText1: 'Cada concerto do Kozmic Pearls nasce do respeito por uma artista irrepetível, recriando a intensidade de suas apresentações com músicos ao vivo, uma produção cuidadosa e uma interpretação apaixonada que conecta novas gerações e quem viveu sua música.',
@@ -3149,11 +3456,11 @@ const translations = {
     crisFact: 'Seu som olha direto para Woodstock: guitarras cruas, fuzz quente e espírito psicodélico.',
     crisYears: 'Desde 2024',
     crisBio: 'Riffs carregados de blues e rock psicodélico que transportam o público aos festivais dos anos 60.',
-    victorRole: 'Baixo',
-    victorQuote: '"O groove sustenta a tempestade."',
-    victorFact: 'Seu pulso mistura soul, funk e linhas de baixo que fazem cada clássico de Janis respirar.',
-    victorYears: 'Desde 2024',
-    victorBio: 'O groove que sustenta cada música. Victor traz a base funky e poderosa que caracterizou o som de Janis.',
+    nicoRole: 'Baixo',
+    nicoQuote: '"O groove sustenta a tempestade."',
+    nicoFact: 'Seu pulso mistura soul, funk e linhas de baixo que fazem cada clássico de Janis respirar.',
+    nicoYears: 'Ao vivo',
+    nicoBio: 'O groove que sustenta cada música. Nico traz a base funky e poderosa que caracterizou o som de Janis.',
     felipeRole: 'Teclado & Órgão',
     felipeQuote: '"O órgão abre a porta da viagem."',
     felipeFact: 'Suas texturas nascem do Hammond, do piano elétrico e da névoa soul do fim dos anos 60.',
@@ -3191,6 +3498,7 @@ const translations = {
     datesVenue: 'LA BATUTA',
     datesDate2: '23 out. 2026',
     datesDate3: '6 nov. 2026',
+    datesDate4: '30 jan. 2027',
     datesEventName3: 'Janis Joplin + Amy Winehouse — Tribute Night',
     datesVenue3: 'LA BATUTA · 23:00 h',
     datesCalendar: 'Adicionar',
@@ -3198,6 +3506,7 @@ const translations = {
     datesVenue2: 'BikerChop',
     datesTickets: 'Em breve',
     datesBuyTickets: 'Comprar ingressos',
+    datesBuyTicket: 'Comprar ingresso',
     datesBookingQuestion: 'Quer que Kozmic Pearls se apresente na sua cidade?',
     datesBookingCta: 'Contrate o show aqui',
     pressLabel: 'Para imprensa e produtores',
@@ -3617,6 +3926,61 @@ document.addEventListener('keydown', (e) => {
   }
   if (e.key === 'Escape' && igModal.classList.contains('open')) closeIgModal();
 });
+</script>
+<script>
+// Manual musician carousel: buttons, keyboard and touch share the same state.
+(() => {
+  const section = document.getElementById('banda');
+  const cards = [...section.querySelectorAll('.member-card')];
+  const selectors = [...section.querySelectorAll('[data-musician]')];
+  const counter = section.querySelector('.band-counter');
+  const grid = section.querySelector('.members-grid');
+  let current = 0;
+  function show(index) {
+    current = (index + cards.length) % cards.length;
+    cards.forEach((card, i) => {
+      card.hidden = i !== current;
+      card.classList.toggle('is-entering', i === current);
+    });
+    selectors.forEach((button, i) => button.setAttribute('aria-pressed', String(i === current)));
+    counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
+  }
+  selectors.forEach((button, i) => button.addEventListener('click', () => show(i)));
+  section.querySelectorAll('[data-band-step]').forEach(button => button.addEventListener('click', () => show(current + Number(button.dataset.bandStep))));
+  section.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    show(current + (event.key === 'ArrowRight' ? 1 : -1));
+    selectors[current].focus();
+  });
+  let touchStart = null;
+  grid.addEventListener('touchstart', event => {
+    touchStart = event.touches.length === 1 ? {x:event.touches[0].clientX, y:event.touches[0].clientY} : null;
+  }, {passive:true});
+  grid.addEventListener('touchend', event => {
+    if (!touchStart || !event.changedTouches.length) return;
+    const dx = event.changedTouches[0].clientX - touchStart.x;
+    const dy = event.changedTouches[0].clientY - touchStart.y;
+    touchStart = null;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4) show(current + (dx < 0 ? 1 : -1));
+  }, {passive:true});
+  grid.addEventListener('touchcancel', () => { touchStart = null; }, {passive:true});
+  section.classList.add('band-carousel-ready');
+  show(0);
+})();
+</script>
+<script>
+(() => {
+  const hero = document.querySelector('.hero');
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!hero || motion.matches) return;
+  hero.classList.add('is-tuning');
+  const finish = () => hero.classList.remove('is-tuning');
+  hero.querySelector('.hero-bg').addEventListener('animationend', event => {
+    if (event.animationName === 'tv-find-signal') finish();
+  });
+  window.setTimeout(finish, 2200);
+})();
 </script>
 </body>
 </html>
