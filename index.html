@@ -2528,6 +2528,38 @@
     .hero-eyebrow { gap:.6rem; }
     .hero-eyebrow-line { width:24px; }
   }
+  /* Contacto centrado, con los tres canales en una fila. */
+  .contact-section { text-align: center; }
+  .contact-section .section-title { margin-left: auto; margin-right: auto; }
+  .contact-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    margin-inline: auto;
+  }
+  .contact-info {
+    display: flex;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem 2.5rem;
+  }
+  .contact-intro {
+    color: var(--cream-dim);
+    line-height: 1.8;
+    max-width: 780px;
+    margin: 0 auto 0.5rem;
+  }
+  .contact-detail { justify-content: center; align-items: center; margin: 0; }
+  .contact-detail-text { text-align: left; }
+  .contact-section .contact-form { max-width: 720px; margin-inline: auto; }
+  .contact-form .form-group { text-align: left; }
+  @media (max-width: 600px) {
+    .contact-info { flex-direction: column; gap: 1.25rem; }
+    .contact-intro { margin-bottom: 0.5rem; }
+    .contact-detail { width: 100%; flex-direction: column; gap: 0.5rem; }
+    .contact-detail-text { text-align: center; }
+  }
 </style>
 </head>
 <body>
@@ -2989,31 +3021,7 @@
   <span class="section-label" data-i18n="contactLabel">¿Listo para booking?</span>
   <h2 class="section-title" style="margin-bottom:3rem;" data-i18n="contactTitle">Lleva la energía de Janis Joplin a tu <em>próximo evento</em></h2>
   <div class="contact-inner">
-    <div class="contact-info">
-      <p data-i18n="contactText">¿Tienes un festival, evento corporativo o espacio de música en vivo? Kozmic Pearls lleva el espíritu de Janis Joplin a cualquier escenario con profesionalismo y una energía que el público no olvidará.</p>
-
-      <div class="contact-detail">
-        <div class="contact-detail-icon"><i data-lucide="smartphone" class="lucide-icon" aria-hidden="true"></i></div>
-        <div class="contact-detail-text">
-          <small>WhatsApp</small>
-          +56 9 4873 8356
-        </div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon"><i data-lucide="mail" class="lucide-icon" aria-hidden="true"></i></div>
-        <div class="contact-detail-text">
-          <small>Email</small>
-          <a href="mailto:contacto@kozmicpearls.com">contacto@kozmicpearls.com</a>
-        </div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon"><i data-lucide="map-pin" class="lucide-icon" aria-hidden="true"></i></div>
-        <div class="contact-detail-text">
-          <small data-i18n="contactLocationLabel">Ubicación</small>
-          <span data-i18n="contactLocation">Santiago de Chile</span>
-        </div>
-      </div>
-    </div>
+      <p class="contact-intro" data-i18n="contactText">¿Tienes un festival, evento corporativo o espacio de música en vivo? Kozmic Pearls lleva el espíritu de Janis Joplin a cualquier escenario con profesionalismo y una energía que el público no olvidará.</p>
 
     <form class="contact-form" id="contactForm" action="https://formsubmit.co/contacto@kozmicpearls.com" method="POST">
       <input type="hidden" name="_subject" value="Nuevo mensaje desde Kozmic Pearls">
@@ -3049,6 +3057,32 @@
       </button>
       <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
     </form>
+
+    <div class="contact-info">
+
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><i data-lucide="smartphone" class="lucide-icon" aria-hidden="true"></i></div>
+        <div class="contact-detail-text">
+          <small>WhatsApp</small>
+          +56 9 4873 8356
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><i data-lucide="mail" class="lucide-icon" aria-hidden="true"></i></div>
+        <div class="contact-detail-text">
+          <small>Email</small>
+          <a href="mailto:contacto@kozmicpearls.com">contacto@kozmicpearls.com</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><i data-lucide="map-pin" class="lucide-icon" aria-hidden="true"></i></div>
+        <div class="contact-detail-text">
+          <small data-i18n="contactLocationLabel">Ubicación</small>
+          <span data-i18n="contactLocation">Santiago de Chile</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
